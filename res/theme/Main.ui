@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="Main" cloudDestinationProperty="Main" layout="BoxLayout" boxLayoutAxis="Y" title="SGS - Men&#xfa;" >
+  <component type="Button" name="Inpeccion" cloudDestinationProperty="Inpeccion" text="Inspecci&#xf3;n de contenedores" >
+  </component>
+  <component type="Button" name="Datos" cloudDestinationProperty="Datos" text="Datos del Contenedor" >
+  </component>
+  <component type="Button" name="ControlEmbarque" cloudDestinationProperty="ControlEmbarque" text="Control de Embarque Granel" >
+  </component>
+  <component type="Button" name="Configuracion" cloudDestinationProperty="Configuracion" text="Configuraci&#xf3;n" >
+  </component>
+</component>
