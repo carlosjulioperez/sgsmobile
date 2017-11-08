@@ -14,6 +14,7 @@
     <image name="Button.dis#borderTopR_1.png" type="multi"  />
     <image name="cal_left_arrow.png" type="multi"  />
     <image name="cal_right_arrow.png" type="multi"  />
+    <image name="chasis.png"  />
     <image name="chbox1.png" type="multi"  />
     <image name="chboxv1.png" type="multi"  />
     <image name="ComboBox.borderBottom_1.png" type="multi"  />
@@ -43,7 +44,10 @@
     <image name="Dialog.borderTop_1.png" type="multi"  />
     <image name="Dialog.borderTopL_1.png" type="multi"  />
     <image name="Dialog.borderTopR_1.png" type="multi"  />
+    <image name="estructuraInferior.png"  />
+    <image name="estructuraInterna.png"  />
     <ui name="Inspeccion" />
+    <image name="lados.png"  />
     <ui name="Main" />
     <image name="Menu.borderBottom_2.png" type="multi"  />
     <image name="Menu.borderBottomL_2.png" type="multi"  />
@@ -63,6 +67,9 @@
     <image name="OKGR.borderTop_1.png" type="multi"  />
     <image name="OKGR.borderTopL_1.png" type="multi"  />
     <image name="OKGR.borderTopR_1.png" type="multi"  />
+    <image name="paredFrontalInterna.png"  />
+    <image name="piso.png"  />
+    <image name="puertas.png"  />
     <image name="round.png" type="multi"  />
     <image name="sliderBlueCenter.png" type="multi"  />
     <image name="sliderBlueLeft.png" type="multi"  />
@@ -73,6 +80,7 @@
     <image name="switch_mask.png" type="multi"  />
     <image name="switch_off.png" type="multi"  />
     <image name="switch_on.png" type="multi"  />
+    <image name="techo.png"  />
     <theme name="Theme">
         <val key="@PopupDialogArrowBool" value="false" />
         <val key="@calTitleDayStyleBool" value="true" />
@@ -813,4 +821,5 @@
     <image name="TitleArea.borderTop_2.png" type="multi"  />
     <image name="TitleArea.borderTopL_2.png" type="multi"  />
     <image name="TitleArea.borderTopR_2.png" type="multi"  />
+    <image name="uniadRefrigeracion.png"  />
 </resource>

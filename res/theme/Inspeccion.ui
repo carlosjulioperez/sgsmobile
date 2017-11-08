@@ -1,21 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <component type="Form" name="Inspeccion" cloudDestinationProperty="Inspeccion" layout="BoxLayout" boxLayoutAxis="Y" title="Inspecci&#xf3;n de Contenedores" >
-  <component type="Tabs" name="Tabs" cloudDestinationProperty="Tabs" >
+  <component type="Tabs" name="Tabs" cloudDestinationProperty="Tabs" rtl="false" >
     <custom name="titles" type="java.lang.String" array="true" dimensions="1" >
       <str>Datos</str>
       <str>Tab</str>
       <str>Tab</str>
       <str>Tab</str>
     </custom>
-    <component type="Container" name="Container" tabTitle="Datos" cloudDestinationProperty="Container" >
-      <component type="TextField" name="TextField" cloudBoundProperty="text" cloudDestinationProperty="TextField" text="TextField" >
-      </component>
-      <component type="TextField" name="TextField1" cloudBoundProperty="text" cloudDestinationProperty="TextField1" text="TextField" >
-      </component>
-      <component type="TextField" name="TextField2" cloudBoundProperty="text" cloudDestinationProperty="TextField2" text="TextField" >
-      </component>
-      <component type="TextField" name="TextField3" cloudBoundProperty="text" cloudDestinationProperty="TextField3" text="TextField" >
+    <component type="Container" name="Container" tabTitle="Datos" cloudDestinationProperty="Container" layout="FlowLayout" flowLayoutFillRows="false" flowLayoutAlign="1" flowLayoutValign="0" >
+      <component type="Container" name="Container4" cloudDestinationProperty="Container4" focusable="false" flatten="true" layout="GridLayout" gridLayoutRows="4" gridLayoutColumns="2" >
+        <component type="TextField" name="ContenedorNum" cloudBoundProperty="text" cloudDestinationProperty="ContenedorNum" text="" hint="Contenedor n&#xfa;mero" >
+        </component>
+        <component type="TextField" name="Tamano" cloudBoundProperty="text" cloudDestinationProperty="TextField1" text="" hint="Tama&#xf1;o" >
+        </component>
+        <component type="TextField" name="Chasis" cloudBoundProperty="text" cloudDestinationProperty="TextField3" text="" hint="Chasis" >
+        </component>
+        <component type="TextField" name="TrailerPlaca" cloudBoundProperty="text" cloudDestinationProperty="TextField2" text="" hint="Trailer placa" >
+        </component>
+        <component type="TextField" name="Cliente" cloudBoundProperty="text" cloudDestinationProperty="Cliente" text="" hint="Cliente" >
+        </component>
+        <component type="TextField" name="Fecha" cloudBoundProperty="text" cloudDestinationProperty="Fecha" focusable="true" enabled="true" text="" hint="Fecha" >
+        </component>
+        <component type="TextField" name="Agencia" cloudBoundProperty="text" cloudDestinationProperty="Agencia" text="" hint="Agencia" >
+        </component>
+        <component type="TextField" name="Vapor" cloudBoundProperty="text" cloudDestinationProperty="Vapor" text="" hint="Vapor" >
+        </component>
+        <component type="TextField" name="Destino" cloudBoundProperty="text" cloudDestinationProperty="Destino" text="" hint="Destino" >
+        </component>
+        <component type="TextField" name="Factura" cloudBoundProperty="text" cloudDestinationProperty="Factura" text="" hint="Factura" >
+        </component>
       </component>
     </component>
     <component type="Container" name="Container1" tabTitle="Tab" cloudDestinationProperty="Container1" >
