@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="Inspeccion" cloudDestinationProperty="Inspeccion" layout="BoxLayout" boxLayoutAxis="Y" title="Inspecci&#xf3;n de Contenedores" >
+  <component type="Tabs" name="Tabs" cloudDestinationProperty="Tabs" >
+    <custom name="titles" type="java.lang.String" array="true" dimensions="1" >
+      <str>Datos</str>
+      <str>Tab</str>
+      <str>Tab</str>
+      <str>Tab</str>
+    </custom>
+    <component type="Container" name="Container" tabTitle="Datos" cloudDestinationProperty="Container" >
+      <component type="TextField" name="TextField" cloudBoundProperty="text" cloudDestinationProperty="TextField" text="TextField" >
+      </component>
+      <component type="TextField" name="TextField1" cloudBoundProperty="text" cloudDestinationProperty="TextField1" text="TextField" >
+      </component>
+      <component type="TextField" name="TextField2" cloudBoundProperty="text" cloudDestinationProperty="TextField2" text="TextField" >
+      </component>
+      <component type="TextField" name="TextField3" cloudBoundProperty="text" cloudDestinationProperty="TextField3" text="TextField" >
+      </component>
+    </component>
+    <component type="Container" name="Container1" tabTitle="Tab" cloudDestinationProperty="Container1" >
+    </component>
+    <component type="Container" name="Container2" tabTitle="Tab" cloudDestinationProperty="Container2" >
+    </component>
+    <component type="Container" name="Container3" tabTitle="Tab" cloudDestinationProperty="Container3" >
+    </component>
+  </component>
+</component>

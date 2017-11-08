@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <component type="Form" name="Main" cloudDestinationProperty="Main" layout="BoxLayout" boxLayoutAxis="Y" title="SGS - Men&#xfa;" >
-  <component type="Button" name="Inpeccion" cloudDestinationProperty="Inpeccion" text="Inspecci&#xf3;n de contenedores" >
+  <component type="Button" name="Inpeccion" cloudDestinationProperty="Inpeccion" commandName="Inspecci&#xf3;n de contenedores" commandId="1" commandAction="Inspeccion" commandBack="false" text="Inspecci&#xf3;n de contenedores" >
   </component>
   <component type="Button" name="Datos" cloudDestinationProperty="Datos" text="Datos del Contenedor" >
   </component>
