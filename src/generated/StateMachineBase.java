@@ -33,6 +33,7 @@ public abstract class StateMachineBase extends UIBuilder {
 
     public Container startApp(Resources res, String resPath, boolean loadTheme) {
         initVars();
+        UIBuilder.registerCustomComponent("DateSpinner", com.codename1.ui.spinner.DateSpinner.class);
         UIBuilder.registerCustomComponent("Container", com.codename1.ui.Container.class);
         UIBuilder.registerCustomComponent("ComponentGroup", com.codename1.ui.ComponentGroup.class);
         UIBuilder.registerCustomComponent("Form", com.codename1.ui.Form.class);
@@ -76,6 +77,7 @@ public abstract class StateMachineBase extends UIBuilder {
 
     public Container createWidget(Resources res, String resPath, boolean loadTheme) {
         initVars();
+        UIBuilder.registerCustomComponent("DateSpinner", com.codename1.ui.spinner.DateSpinner.class);
         UIBuilder.registerCustomComponent("Container", com.codename1.ui.Container.class);
         UIBuilder.registerCustomComponent("ComponentGroup", com.codename1.ui.ComponentGroup.class);
         UIBuilder.registerCustomComponent("Form", com.codename1.ui.Form.class);
@@ -122,18 +124,6 @@ public abstract class StateMachineBase extends UIBuilder {
         this(res, null, loadTheme);
     }
 
-    public com.codename1.ui.TextField findVapor(Component root) {
-        return (com.codename1.ui.TextField)findByName("Vapor", root);
-    }
-
-    public com.codename1.ui.TextField findVapor() {
-        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("Vapor", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextField)findByName("Vapor", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.Button findGrabar(Component root) {
         return (com.codename1.ui.Button)findByName("Grabar", root);
     }
@@ -166,30 +156,6 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.ComponentGroup cmp = (com.codename1.ui.ComponentGroup)findByName("ComponentGroup", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.ComponentGroup)findByName("ComponentGroup", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.CheckBox findC(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("C", root);
-    }
-
-    public com.codename1.ui.CheckBox findC() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("C", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("C", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.ComponentGroup findComponentGroup1(Component root) {
-        return (com.codename1.ui.ComponentGroup)findByName("ComponentGroup1", root);
-    }
-
-    public com.codename1.ui.ComponentGroup findComponentGroup1() {
-        com.codename1.ui.ComponentGroup cmp = (com.codename1.ui.ComponentGroup)findByName("ComponentGroup1", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.ComponentGroup)findByName("ComponentGroup1", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -242,18 +208,6 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.CheckBox findEINT(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("EINT", root);
-    }
-
-    public com.codename1.ui.CheckBox findEINT() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("EINT", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("EINT", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.Container findContainer2(Component root) {
         return (com.codename1.ui.Container)findByName("Container2", root);
     }
@@ -266,26 +220,14 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.TextField findTrailerPlaca(Component root) {
-        return (com.codename1.ui.TextField)findByName("TrailerPlaca", root);
+    public com.codename1.ui.Button findBotonDatos(Component root) {
+        return (com.codename1.ui.Button)findByName("BotonDatos", root);
     }
 
-    public com.codename1.ui.TextField findTrailerPlaca() {
-        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("TrailerPlaca", Display.getInstance().getCurrent());
+    public com.codename1.ui.Button findBotonDatos() {
+        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("BotonDatos", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextField)findByName("TrailerPlaca", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.Button findConfiguracion(Component root) {
-        return (com.codename1.ui.Button)findByName("Configuracion", root);
-    }
-
-    public com.codename1.ui.Button findConfiguracion() {
-        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("Configuracion", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Button)findByName("Configuracion", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.Button)findByName("BotonDatos", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -302,14 +244,38 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.CheckBox findP(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("P", root);
+    public com.codename1.ui.CheckBox findLadosInternosIzquierda(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("LadosInternosIzquierda", root);
     }
 
-    public com.codename1.ui.CheckBox findP() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("P", Display.getInstance().getCurrent());
+    public com.codename1.ui.CheckBox findLadosInternosIzquierda() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("LadosInternosIzquierda", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("P", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.CheckBox)findByName("LadosInternosIzquierda", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.CheckBox findPiso(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("Piso", root);
+    }
+
+    public com.codename1.ui.CheckBox findPiso() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("Piso", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.CheckBox)findByName("Piso", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.Button findBotonInspeccion(Component root) {
+        return (com.codename1.ui.Button)findByName("BotonInspeccion", root);
+    }
+
+    public com.codename1.ui.Button findBotonInspeccion() {
+        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("BotonInspeccion", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Button)findByName("BotonInspeccion", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -326,42 +292,6 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.TextField findFecha(Component root) {
-        return (com.codename1.ui.TextField)findByName("Fecha", root);
-    }
-
-    public com.codename1.ui.TextField findFecha() {
-        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("Fecha", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextField)findByName("Fecha", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.CheckBox findT(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("T", root);
-    }
-
-    public com.codename1.ui.CheckBox findT() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("T", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("T", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.Button findInpeccion(Component root) {
-        return (com.codename1.ui.Button)findByName("Inpeccion", root);
-    }
-
-    public com.codename1.ui.Button findInpeccion() {
-        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("Inpeccion", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Button)findByName("Inpeccion", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.TextField findAgencia(Component root) {
         return (com.codename1.ui.TextField)findByName("Agencia", root);
     }
@@ -374,6 +304,30 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
+    public com.codename1.ui.Button findBotonConfiguracion(Component root) {
+        return (com.codename1.ui.Button)findByName("BotonConfiguracion", root);
+    }
+
+    public com.codename1.ui.Button findBotonConfiguracion() {
+        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("BotonConfiguracion", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Button)findByName("BotonConfiguracion", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.CheckBox findEstructuraInterna(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("EstructuraInterna", root);
+    }
+
+    public com.codename1.ui.CheckBox findEstructuraInterna() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("EstructuraInterna", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.CheckBox)findByName("EstructuraInterna", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
     public com.codename1.ui.Container findContainerTab4(Component root) {
         return (com.codename1.ui.Container)findByName("ContainerTab4", root);
     }
@@ -382,6 +336,150 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("ContainerTab4", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.Container)findByName("ContainerTab4", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.CheckBox findLadosExternosIzquierda(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("LadosExternosIzquierda", root);
+    }
+
+    public com.codename1.ui.CheckBox findLadosExternosIzquierda() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("LadosExternosIzquierda", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.CheckBox)findByName("LadosExternosIzquierda", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.CheckBox findParedFrontalInternaIzquierda(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("ParedFrontalInternaIzquierda", root);
+    }
+
+    public com.codename1.ui.CheckBox findParedFrontalInternaIzquierda() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("ParedFrontalInternaIzquierda", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.CheckBox)findByName("ParedFrontalInternaIzquierda", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.CheckBox findCables(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("Cables", root);
+    }
+
+    public com.codename1.ui.CheckBox findCables() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("Cables", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.CheckBox)findByName("Cables", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.Button findBotonControlEmbarque(Component root) {
+        return (com.codename1.ui.Button)findByName("BotonControlEmbarque", root);
+    }
+
+    public com.codename1.ui.Button findBotonControlEmbarque() {
+        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("BotonControlEmbarque", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Button)findByName("BotonControlEmbarque", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.CheckBox findTecho(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("Techo", root);
+    }
+
+    public com.codename1.ui.CheckBox findTecho() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("Techo", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.CheckBox)findByName("Techo", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.TextArea findObservaciones(Component root) {
+        return (com.codename1.ui.TextArea)findByName("Observaciones", root);
+    }
+
+    public com.codename1.ui.TextArea findObservaciones() {
+        com.codename1.ui.TextArea cmp = (com.codename1.ui.TextArea)findByName("Observaciones", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextArea)findByName("Observaciones", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.Tabs findTabs(Component root) {
+        return (com.codename1.ui.Tabs)findByName("Tabs", root);
+    }
+
+    public com.codename1.ui.Tabs findTabs() {
+        com.codename1.ui.Tabs cmp = (com.codename1.ui.Tabs)findByName("Tabs", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Tabs)findByName("Tabs", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.spinner.DateSpinner findDateSpinner(Component root) {
+        return (com.codename1.ui.spinner.DateSpinner)findByName("DateSpinner", root);
+    }
+
+    public com.codename1.ui.spinner.DateSpinner findDateSpinner() {
+        com.codename1.ui.spinner.DateSpinner cmp = (com.codename1.ui.spinner.DateSpinner)findByName("DateSpinner", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.spinner.DateSpinner)findByName("DateSpinner", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.TextField findVapor(Component root) {
+        return (com.codename1.ui.TextField)findByName("Vapor", root);
+    }
+
+    public com.codename1.ui.TextField findVapor() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("Vapor", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextField)findByName("Vapor", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.ComponentGroup findComponentGroup1(Component root) {
+        return (com.codename1.ui.ComponentGroup)findByName("ComponentGroup1", root);
+    }
+
+    public com.codename1.ui.ComponentGroup findComponentGroup1() {
+        com.codename1.ui.ComponentGroup cmp = (com.codename1.ui.ComponentGroup)findByName("ComponentGroup1", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.ComponentGroup)findByName("ComponentGroup1", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.TextField findTrailerPlaca(Component root) {
+        return (com.codename1.ui.TextField)findByName("TrailerPlaca", root);
+    }
+
+    public com.codename1.ui.TextField findTrailerPlaca() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("TrailerPlaca", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextField)findByName("TrailerPlaca", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.TextField findFecha(Component root) {
+        return (com.codename1.ui.TextField)findByName("Fecha", root);
+    }
+
+    public com.codename1.ui.TextField findFecha() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("Fecha", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextField)findByName("Fecha", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -410,6 +508,18 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
+    public com.codename1.ui.CheckBox findPuertaIzquierda(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("PuertaIzquierda", root);
+    }
+
+    public com.codename1.ui.CheckBox findPuertaIzquierda() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("PuertaIzquierda", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.CheckBox)findByName("PuertaIzquierda", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
     public com.codename1.ui.TextField findContenedorNum(Component root) {
         return (com.codename1.ui.TextField)findByName("ContenedorNum", root);
     }
@@ -418,18 +528,6 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("ContenedorNum", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.TextField)findByName("ContenedorNum", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.Button findControlEmbarque(Component root) {
-        return (com.codename1.ui.Button)findByName("ControlEmbarque", root);
-    }
-
-    public com.codename1.ui.Button findControlEmbarque() {
-        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("ControlEmbarque", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Button)findByName("ControlEmbarque", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -482,18 +580,6 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.CheckBox findLID(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("LID", root);
-    }
-
-    public com.codename1.ui.CheckBox findLID() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("LID", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("LID", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.Label findLabel1(Component root) {
         return (com.codename1.ui.Label)findByName("Label1", root);
     }
@@ -506,50 +592,14 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.CheckBox findLED(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("LED", root);
+    public com.codename1.ui.CheckBox findParedFrontalInternaDerecha(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("ParedFrontalInternaDerecha", root);
     }
 
-    public com.codename1.ui.CheckBox findLED() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("LED", Display.getInstance().getCurrent());
+    public com.codename1.ui.CheckBox findParedFrontalInternaDerecha() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("ParedFrontalInternaDerecha", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("LED", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.CheckBox findLII(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("LII", root);
-    }
-
-    public com.codename1.ui.CheckBox findLII() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("LII", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("LII", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.CheckBox findCables(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("Cables", root);
-    }
-
-    public com.codename1.ui.CheckBox findCables() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("Cables", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("Cables", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.CheckBox findLEI(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("LEI", root);
-    }
-
-    public com.codename1.ui.CheckBox findLEI() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("LEI", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("LEI", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.CheckBox)findByName("ParedFrontalInternaDerecha", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -566,86 +616,50 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.CheckBox findPFII(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("PFII", root);
+    public com.codename1.ui.CheckBox findPuertaDerecha(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("PuertaDerecha", root);
     }
 
-    public com.codename1.ui.CheckBox findPFII() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("PFII", Display.getInstance().getCurrent());
+    public com.codename1.ui.CheckBox findPuertaDerecha() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("PuertaDerecha", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("PFII", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.CheckBox)findByName("PuertaDerecha", aboutToShowThisContainer);
         }
         return cmp;
     }
 
-    public com.codename1.ui.CheckBox findPD(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("PD", root);
+    public com.codename1.ui.CheckBox findLadosExternosDerecha(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("LadosExternosDerecha", root);
     }
 
-    public com.codename1.ui.CheckBox findPD() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("PD", Display.getInstance().getCurrent());
+    public com.codename1.ui.CheckBox findLadosExternosDerecha() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("LadosExternosDerecha", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("PD", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.CheckBox)findByName("LadosExternosDerecha", aboutToShowThisContainer);
         }
         return cmp;
     }
 
-    public com.codename1.ui.CheckBox findPFID(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("PFID", root);
+    public com.codename1.ui.CheckBox findChasisCheck(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("ChasisCheck", root);
     }
 
-    public com.codename1.ui.CheckBox findPFID() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("PFID", Display.getInstance().getCurrent());
+    public com.codename1.ui.CheckBox findChasisCheck() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("ChasisCheck", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("PFID", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.CheckBox)findByName("ChasisCheck", aboutToShowThisContainer);
         }
         return cmp;
     }
 
-    public com.codename1.ui.Button findDatos(Component root) {
-        return (com.codename1.ui.Button)findByName("Datos", root);
+    public com.codename1.ui.CheckBox findLadosInternosDerecha(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("LadosInternosDerecha", root);
     }
 
-    public com.codename1.ui.Button findDatos() {
-        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("Datos", Display.getInstance().getCurrent());
+    public com.codename1.ui.CheckBox findLadosInternosDerecha() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("LadosInternosDerecha", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Button)findByName("Datos", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.CheckBox findPI(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("PI", root);
-    }
-
-    public com.codename1.ui.CheckBox findPI() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("PI", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("PI", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.TextArea findObservaciones(Component root) {
-        return (com.codename1.ui.TextArea)findByName("Observaciones", root);
-    }
-
-    public com.codename1.ui.TextArea findObservaciones() {
-        com.codename1.ui.TextArea cmp = (com.codename1.ui.TextArea)findByName("Observaciones", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextArea)findByName("Observaciones", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.Tabs findTabs(Component root) {
-        return (com.codename1.ui.Tabs)findByName("Tabs", root);
-    }
-
-    public com.codename1.ui.Tabs findTabs() {
-        com.codename1.ui.Tabs cmp = (com.codename1.ui.Tabs)findByName("Tabs", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Tabs)findByName("Tabs", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.CheckBox)findByName("LadosInternosDerecha", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -662,14 +676,14 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.CheckBox findEINF(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("EINF", root);
+    public com.codename1.ui.CheckBox findEstructuraInferior(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("EstructuraInferior", root);
     }
 
-    public com.codename1.ui.CheckBox findEINF() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("EINF", Display.getInstance().getCurrent());
+    public com.codename1.ui.CheckBox findEstructuraInferior() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("EstructuraInferior", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("EINF", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.CheckBox)findByName("EstructuraInferior", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -941,20 +955,20 @@ public abstract class StateMachineBase extends UIBuilder {
                 onInspeccion_FacturaAction(c, event);
                 return;
             }
-            if("PI".equals(c.getName())) {
-                onInspeccion_PIAction(c, event);
+            if("PuertaIzquierda".equals(c.getName())) {
+                onInspeccion_PuertaIzquierdaAction(c, event);
                 return;
             }
-            if("PD".equals(c.getName())) {
-                onInspeccion_PDAction(c, event);
+            if("PuertaDerecha".equals(c.getName())) {
+                onInspeccion_PuertaDerechaAction(c, event);
                 return;
             }
-            if("PFII".equals(c.getName())) {
-                onInspeccion_PFIIAction(c, event);
+            if("ParedFrontalInternaIzquierda".equals(c.getName())) {
+                onInspeccion_ParedFrontalInternaIzquierdaAction(c, event);
                 return;
             }
-            if("PFID".equals(c.getName())) {
-                onInspeccion_PFIDAction(c, event);
+            if("ParedFrontalInternaDerecha".equals(c.getName())) {
+                onInspeccion_ParedFrontalInternaDerechaAction(c, event);
                 return;
             }
             if("Cables".equals(c.getName())) {
@@ -965,40 +979,40 @@ public abstract class StateMachineBase extends UIBuilder {
                 onInspeccion_FlucsAction(c, event);
                 return;
             }
-            if("LEI".equals(c.getName())) {
-                onInspeccion_LEIAction(c, event);
+            if("LadosExternosIzquierda".equals(c.getName())) {
+                onInspeccion_LadosExternosIzquierdaAction(c, event);
                 return;
             }
-            if("LED".equals(c.getName())) {
-                onInspeccion_LEDAction(c, event);
+            if("LadosExternosDerecha".equals(c.getName())) {
+                onInspeccion_LadosExternosDerechaAction(c, event);
                 return;
             }
-            if("LII".equals(c.getName())) {
-                onInspeccion_LIIAction(c, event);
+            if("LadosInternosIzquierda".equals(c.getName())) {
+                onInspeccion_LadosInternosIzquierdaAction(c, event);
                 return;
             }
-            if("LID".equals(c.getName())) {
-                onInspeccion_LIDAction(c, event);
+            if("LadosInternosDerecha".equals(c.getName())) {
+                onInspeccion_LadosInternosDerechaAction(c, event);
                 return;
             }
-            if("T".equals(c.getName())) {
-                onInspeccion_TAction(c, event);
+            if("Techo".equals(c.getName())) {
+                onInspeccion_TechoAction(c, event);
                 return;
             }
-            if("P".equals(c.getName())) {
-                onInspeccion_PAction(c, event);
+            if("Piso".equals(c.getName())) {
+                onInspeccion_PisoAction(c, event);
                 return;
             }
-            if("EINF".equals(c.getName())) {
-                onInspeccion_EINFAction(c, event);
+            if("EstructuraInferior".equals(c.getName())) {
+                onInspeccion_EstructuraInferiorAction(c, event);
                 return;
             }
-            if("EINT".equals(c.getName())) {
-                onInspeccion_EINTAction(c, event);
+            if("EstructuraInterna".equals(c.getName())) {
+                onInspeccion_EstructuraInternaAction(c, event);
                 return;
             }
-            if("C".equals(c.getName())) {
-                onInspeccion_CAction(c, event);
+            if("ChasisCheck".equals(c.getName())) {
+                onInspeccion_ChasisCheckAction(c, event);
                 return;
             }
             if("Observaciones".equals(c.getName())) {
@@ -1011,20 +1025,20 @@ public abstract class StateMachineBase extends UIBuilder {
             }
         }
         if(rootContainerName.equals("Main")) {
-            if("Inpeccion".equals(c.getName())) {
-                onMain_InpeccionAction(c, event);
+            if("BotonInspeccion".equals(c.getName())) {
+                onMain_BotonInspeccionAction(c, event);
                 return;
             }
-            if("Datos".equals(c.getName())) {
-                onMain_DatosAction(c, event);
+            if("BotonDatos".equals(c.getName())) {
+                onMain_BotonDatosAction(c, event);
                 return;
             }
-            if("ControlEmbarque".equals(c.getName())) {
-                onMain_ControlEmbarqueAction(c, event);
+            if("BotonControlEmbarque".equals(c.getName())) {
+                onMain_BotonControlEmbarqueAction(c, event);
                 return;
             }
-            if("Configuracion".equals(c.getName())) {
-                onMain_ConfiguracionAction(c, event);
+            if("BotonConfiguracion".equals(c.getName())) {
+                onMain_BotonConfiguracionAction(c, event);
                 return;
             }
         }
@@ -1060,16 +1074,16 @@ public abstract class StateMachineBase extends UIBuilder {
       protected void onInspeccion_FacturaAction(Component c, ActionEvent event) {
       }
 
-      protected void onInspeccion_PIAction(Component c, ActionEvent event) {
+      protected void onInspeccion_PuertaIzquierdaAction(Component c, ActionEvent event) {
       }
 
-      protected void onInspeccion_PDAction(Component c, ActionEvent event) {
+      protected void onInspeccion_PuertaDerechaAction(Component c, ActionEvent event) {
       }
 
-      protected void onInspeccion_PFIIAction(Component c, ActionEvent event) {
+      protected void onInspeccion_ParedFrontalInternaIzquierdaAction(Component c, ActionEvent event) {
       }
 
-      protected void onInspeccion_PFIDAction(Component c, ActionEvent event) {
+      protected void onInspeccion_ParedFrontalInternaDerechaAction(Component c, ActionEvent event) {
       }
 
       protected void onInspeccion_CablesAction(Component c, ActionEvent event) {
@@ -1078,31 +1092,31 @@ public abstract class StateMachineBase extends UIBuilder {
       protected void onInspeccion_FlucsAction(Component c, ActionEvent event) {
       }
 
-      protected void onInspeccion_LEIAction(Component c, ActionEvent event) {
+      protected void onInspeccion_LadosExternosIzquierdaAction(Component c, ActionEvent event) {
       }
 
-      protected void onInspeccion_LEDAction(Component c, ActionEvent event) {
+      protected void onInspeccion_LadosExternosDerechaAction(Component c, ActionEvent event) {
       }
 
-      protected void onInspeccion_LIIAction(Component c, ActionEvent event) {
+      protected void onInspeccion_LadosInternosIzquierdaAction(Component c, ActionEvent event) {
       }
 
-      protected void onInspeccion_LIDAction(Component c, ActionEvent event) {
+      protected void onInspeccion_LadosInternosDerechaAction(Component c, ActionEvent event) {
       }
 
-      protected void onInspeccion_TAction(Component c, ActionEvent event) {
+      protected void onInspeccion_TechoAction(Component c, ActionEvent event) {
       }
 
-      protected void onInspeccion_PAction(Component c, ActionEvent event) {
+      protected void onInspeccion_PisoAction(Component c, ActionEvent event) {
       }
 
-      protected void onInspeccion_EINFAction(Component c, ActionEvent event) {
+      protected void onInspeccion_EstructuraInferiorAction(Component c, ActionEvent event) {
       }
 
-      protected void onInspeccion_EINTAction(Component c, ActionEvent event) {
+      protected void onInspeccion_EstructuraInternaAction(Component c, ActionEvent event) {
       }
 
-      protected void onInspeccion_CAction(Component c, ActionEvent event) {
+      protected void onInspeccion_ChasisCheckAction(Component c, ActionEvent event) {
       }
 
       protected void onInspeccion_ObservacionesAction(Component c, ActionEvent event) {
@@ -1111,16 +1125,16 @@ public abstract class StateMachineBase extends UIBuilder {
       protected void onInspeccion_GrabarAction(Component c, ActionEvent event) {
       }
 
-      protected void onMain_InpeccionAction(Component c, ActionEvent event) {
+      protected void onMain_BotonInspeccionAction(Component c, ActionEvent event) {
       }
 
-      protected void onMain_DatosAction(Component c, ActionEvent event) {
+      protected void onMain_BotonDatosAction(Component c, ActionEvent event) {
       }
 
-      protected void onMain_ControlEmbarqueAction(Component c, ActionEvent event) {
+      protected void onMain_BotonControlEmbarqueAction(Component c, ActionEvent event) {
       }
 
-      protected void onMain_ConfiguracionAction(Component c, ActionEvent event) {
+      protected void onMain_BotonConfiguracionAction(Component c, ActionEvent event) {
       }
 
 }
