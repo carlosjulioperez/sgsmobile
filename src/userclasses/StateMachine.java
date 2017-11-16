@@ -11,12 +11,15 @@ import com.codename1.components.InfiniteProgress;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkManager;
+import com.codename1.io.Storage;
+import com.codename1.l10n.L10NManager;
 import com.codename1.processing.Result;
 import com.codename1.ui.*; 
 import com.codename1.ui.events.*;
 import com.codename1.ui.util.Resources;
 import com.codename1.ui.validation.LengthConstraint;
 import com.codename1.ui.validation.Validator;
+import ec.sgs.mobile.cn1.Configuracion;
 import generated.StateMachineBase;
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,6 +33,10 @@ import java.util.Map;
  * @author Your name here
  */
 public class StateMachine extends StateMachineBase {
+    
+    private final L10NManager lnm = L10NManager.getInstance();
+    private Storage storage;
+    private String inspeccionService;
     
     TextField ContenedorNum;
     TextField Tamano;
@@ -71,6 +78,22 @@ public class StateMachine extends StateMachineBase {
      * the constructor/class scope to avoid race conditions
      */
     protected void initVars(Resources res) {
+    }
+
+    @Override
+    protected void postMain(Form f) {
+        storage = Storage.getInstance();
+        
+        //Lee la configuración del móvil
+        Configuracion obj = (Configuracion)storage.readObject("configuracion");
+        if (obj!=null){
+            inspeccionService = "http://" + obj.getIp() +":" + obj.getPuerto() +"/server/rest/inspeccion/"  ;
+            System.out.println(inspeccionService);
+        }else{
+            Dialog.show ("Configuración", "Defina los datos de configuración del equipo", "OK", null);
+            showForm("Configuracion", null);
+        }
+
     }
 
     @Override
@@ -188,5 +211,6 @@ public class StateMachine extends StateMachineBase {
         System.out.println(request.getResponseCode());
         
     }
+
 
 }

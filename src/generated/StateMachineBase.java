@@ -37,12 +37,12 @@ public abstract class StateMachineBase extends UIBuilder {
         UIBuilder.registerCustomComponent("Container", com.codename1.ui.Container.class);
         UIBuilder.registerCustomComponent("ComponentGroup", com.codename1.ui.ComponentGroup.class);
         UIBuilder.registerCustomComponent("Form", com.codename1.ui.Form.class);
-        UIBuilder.registerCustomComponent("TextArea", com.codename1.ui.TextArea.class);
         UIBuilder.registerCustomComponent("Button", com.codename1.ui.Button.class);
+        UIBuilder.registerCustomComponent("TextArea", com.codename1.ui.TextArea.class);
         UIBuilder.registerCustomComponent("CheckBox", com.codename1.ui.CheckBox.class);
         UIBuilder.registerCustomComponent("Label", com.codename1.ui.Label.class);
-        UIBuilder.registerCustomComponent("Tabs", com.codename1.ui.Tabs.class);
         UIBuilder.registerCustomComponent("TextField", com.codename1.ui.TextField.class);
+        UIBuilder.registerCustomComponent("Tabs", com.codename1.ui.Tabs.class);
         if(loadTheme) {
             if(res == null) {
                 try {
@@ -81,12 +81,12 @@ public abstract class StateMachineBase extends UIBuilder {
         UIBuilder.registerCustomComponent("Container", com.codename1.ui.Container.class);
         UIBuilder.registerCustomComponent("ComponentGroup", com.codename1.ui.ComponentGroup.class);
         UIBuilder.registerCustomComponent("Form", com.codename1.ui.Form.class);
-        UIBuilder.registerCustomComponent("TextArea", com.codename1.ui.TextArea.class);
         UIBuilder.registerCustomComponent("Button", com.codename1.ui.Button.class);
+        UIBuilder.registerCustomComponent("TextArea", com.codename1.ui.TextArea.class);
         UIBuilder.registerCustomComponent("CheckBox", com.codename1.ui.CheckBox.class);
         UIBuilder.registerCustomComponent("Label", com.codename1.ui.Label.class);
-        UIBuilder.registerCustomComponent("Tabs", com.codename1.ui.Tabs.class);
         UIBuilder.registerCustomComponent("TextField", com.codename1.ui.TextField.class);
+        UIBuilder.registerCustomComponent("Tabs", com.codename1.ui.Tabs.class);
         if(loadTheme) {
             if(res == null) {
                 try {
@@ -352,6 +352,18 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
+    public com.codename1.ui.TextField findPuerto(Component root) {
+        return (com.codename1.ui.TextField)findByName("Puerto", root);
+    }
+
+    public com.codename1.ui.TextField findPuerto() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("Puerto", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextField)findByName("Puerto", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
     public com.codename1.ui.CheckBox findParedFrontalInternaIzquierda(Component root) {
         return (com.codename1.ui.CheckBox)findByName("ParedFrontalInternaIzquierda", root);
     }
@@ -480,6 +492,18 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("Fecha", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.TextField)findByName("Fecha", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.TextField findInspector(Component root) {
+        return (com.codename1.ui.TextField)findByName("Inspector", root);
+    }
+
+    public com.codename1.ui.TextField findInspector() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("Inspector", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextField)findByName("Inspector", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -664,6 +688,18 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
+    public com.codename1.ui.TextField findServidor(Component root) {
+        return (com.codename1.ui.TextField)findByName("Servidor", root);
+    }
+
+    public com.codename1.ui.TextField findServidor() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("Servidor", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextField)findByName("Servidor", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
     public com.codename1.ui.TextField findFactura(Component root) {
         return (com.codename1.ui.TextField)findByName("Factura", root);
     }
@@ -688,7 +724,12 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
+    public static final int COMMAND_MainConfiguraciN = 2;
     public static final int COMMAND_MainInspecciNDeContenedores = 1;
+
+    protected boolean onMainConfiguraciN() {
+        return false;
+    }
 
     protected boolean onMainInspecciNDeContenedores() {
         return false;
@@ -696,6 +737,13 @@ public abstract class StateMachineBase extends UIBuilder {
 
     protected void processCommand(ActionEvent ev, Command cmd) {
         switch(cmd.getId()) {
+            case COMMAND_MainConfiguraciN:
+                if(onMainConfiguraciN()) {
+                    ev.consume();
+                    return;
+                }
+                break;
+
             case COMMAND_MainInspecciNDeContenedores:
                 if(onMainInspecciNDeContenedores()) {
                     ev.consume();
@@ -710,6 +758,12 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
     protected void exitForm(Form f) {
+        if("Configuracion".equals(f.getName())) {
+            exitConfiguracion(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("Inspeccion".equals(f.getName())) {
             exitInspeccion(f);
             aboutToShowThisContainer = null;
@@ -726,6 +780,10 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void exitConfiguracion(Form f) {
+    }
+
+
     protected void exitInspeccion(Form f) {
     }
 
@@ -735,6 +793,12 @@ public abstract class StateMachineBase extends UIBuilder {
 
     protected void beforeShow(Form f) {
     aboutToShowThisContainer = f;
+        if("Configuracion".equals(f.getName())) {
+            beforeConfiguracion(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("Inspeccion".equals(f.getName())) {
             beforeInspeccion(f);
             aboutToShowThisContainer = null;
@@ -751,6 +815,10 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void beforeConfiguracion(Form f) {
+    }
+
+
     protected void beforeInspeccion(Form f) {
     }
 
@@ -760,6 +828,12 @@ public abstract class StateMachineBase extends UIBuilder {
 
     protected void beforeShowContainer(Container c) {
         aboutToShowThisContainer = c;
+        if("Configuracion".equals(c.getName())) {
+            beforeContainerConfiguracion(c);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("Inspeccion".equals(c.getName())) {
             beforeContainerInspeccion(c);
             aboutToShowThisContainer = null;
@@ -776,6 +850,10 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void beforeContainerConfiguracion(Container c) {
+    }
+
+
     protected void beforeContainerInspeccion(Container c) {
     }
 
@@ -784,6 +862,12 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
     protected void postShow(Form f) {
+        if("Configuracion".equals(f.getName())) {
+            postConfiguracion(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("Inspeccion".equals(f.getName())) {
             postInspeccion(f);
             aboutToShowThisContainer = null;
@@ -800,6 +884,10 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void postConfiguracion(Form f) {
+    }
+
+
     protected void postInspeccion(Form f) {
     }
 
@@ -808,6 +896,12 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
     protected void postShowContainer(Container c) {
+        if("Configuracion".equals(c.getName())) {
+            postContainerConfiguracion(c);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("Inspeccion".equals(c.getName())) {
             postContainerInspeccion(c);
             aboutToShowThisContainer = null;
@@ -824,6 +918,10 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void postContainerConfiguracion(Container c) {
+    }
+
+
     protected void postContainerInspeccion(Container c) {
     }
 
@@ -832,6 +930,12 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
     protected void onCreateRoot(String rootName) {
+        if("Configuracion".equals(rootName)) {
+            onCreateConfiguracion();
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("Inspeccion".equals(rootName)) {
             onCreateInspeccion();
             aboutToShowThisContainer = null;
@@ -848,6 +952,10 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void onCreateConfiguracion() {
+    }
+
+
     protected void onCreateInspeccion() {
     }
 
@@ -857,6 +965,12 @@ public abstract class StateMachineBase extends UIBuilder {
 
     protected Hashtable getFormState(Form f) {
         Hashtable h = super.getFormState(f);
+        if("Configuracion".equals(f.getName())) {
+            getStateConfiguracion(f, h);
+            aboutToShowThisContainer = null;
+            return h;
+        }
+
         if("Inspeccion".equals(f.getName())) {
             getStateInspeccion(f, h);
             aboutToShowThisContainer = null;
@@ -873,6 +987,10 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void getStateConfiguracion(Form f, Hashtable h) {
+    }
+
+
     protected void getStateInspeccion(Form f, Hashtable h) {
     }
 
@@ -882,6 +1000,12 @@ public abstract class StateMachineBase extends UIBuilder {
 
     protected void setFormState(Form f, Hashtable state) {
         super.setFormState(f, state);
+        if("Configuracion".equals(f.getName())) {
+            setStateConfiguracion(f, state);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("Inspeccion".equals(f.getName())) {
             setStateInspeccion(f, state);
             aboutToShowThisContainer = null;
@@ -895,6 +1019,10 @@ public abstract class StateMachineBase extends UIBuilder {
         }
 
             return;
+    }
+
+
+    protected void setStateConfiguracion(Form f, Hashtable state) {
     }
 
 
@@ -914,6 +1042,24 @@ public abstract class StateMachineBase extends UIBuilder {
             c = c.getParent().getLeadParent();
         }
         if(rootContainerName == null) return;
+        if(rootContainerName.equals("Configuracion")) {
+            if("Servidor".equals(c.getName())) {
+                onConfiguracion_ServidorAction(c, event);
+                return;
+            }
+            if("Puerto".equals(c.getName())) {
+                onConfiguracion_PuertoAction(c, event);
+                return;
+            }
+            if("Inspector".equals(c.getName())) {
+                onConfiguracion_InspectorAction(c, event);
+                return;
+            }
+            if("Grabar".equals(c.getName())) {
+                onConfiguracion_GrabarAction(c, event);
+                return;
+            }
+        }
         if(rootContainerName.equals("Inspeccion")) {
             if("ContenedorNum".equals(c.getName())) {
                 onInspeccion_ContenedorNumAction(c, event);
@@ -1043,6 +1189,18 @@ public abstract class StateMachineBase extends UIBuilder {
             }
         }
     }
+
+      protected void onConfiguracion_ServidorAction(Component c, ActionEvent event) {
+      }
+
+      protected void onConfiguracion_PuertoAction(Component c, ActionEvent event) {
+      }
+
+      protected void onConfiguracion_InspectorAction(Component c, ActionEvent event) {
+      }
+
+      protected void onConfiguracion_GrabarAction(Component c, ActionEvent event) {
+      }
 
       protected void onInspeccion_ContenedorNumAction(Component c, ActionEvent event) {
       }

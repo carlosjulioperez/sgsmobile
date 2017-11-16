@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="Configuracion" cloudDestinationProperty="Configuracion" layout="BoxLayout" boxLayoutAxis="Y" title="Configuraci&#xf3;n" >
+  <component type="TextField" name="Servidor" cloudBoundProperty="text" cloudDestinationProperty="Servidor" text="" hint="Direcci&#xf3;n IP del servidor" >
+  </component>
+  <component type="TextField" name="Puerto" cloudBoundProperty="text" cloudDestinationProperty="Puerto" text="" hint="Puerto" >
+  </component>
+  <component type="TextField" name="Inspector" cloudBoundProperty="text" cloudDestinationProperty="Inspector" text="" hint="Inspector" >
+  </component>
+  <component type="Button" name="Grabar" cloudDestinationProperty="Grabar" text="Grabar" >
+  </component>
+</component>
