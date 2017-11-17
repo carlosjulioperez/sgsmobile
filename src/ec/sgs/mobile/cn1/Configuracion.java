@@ -13,19 +13,19 @@ import java.io.IOException;
 /**
  * Clase Configuracion para persistir en el dispositivo
  * @author carper
- * 2017-11-14
+ * 2017-11-14, 16
  */
 public class Configuracion implements Externalizable{
-    private String ip;
+    private String servidor;
     private String puerto;
     private String inspector;
 
-    public String getIp() {
-        return ip;
+    public String getServidor() {
+        return servidor;
     }
 
-    public void setIp(String ip) {
-        this.ip = ip;
+    public void setServidor(String servidor) {
+        this.servidor = servidor;
     }
 
     public String getPuerto() {
@@ -53,13 +53,13 @@ public class Configuracion implements Externalizable{
     }
 
     public void externalize(DataOutputStream out) throws IOException {
-        out.writeUTF( getIp() );
+        out.writeUTF( getServidor() );
         out.writeUTF( getPuerto() );
         out.writeUTF( getInspector() );
     }
 
     public void internalize(int version, DataInputStream in) throws IOException {
-        setIp( in.readUTF() );
+        setServidor( in.readUTF() );
         setPuerto( in.readUTF() );
         setInspector( in.readUTF() );
     }

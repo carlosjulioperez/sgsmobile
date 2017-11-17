@@ -38,6 +38,12 @@ public class StateMachine extends StateMachineBase {
     private Storage storage;
     private String inspeccionService;
     
+    //Controles de Configuracion
+    TextField servidor;
+    TextField puerto;
+    TextField inspector;
+    
+    // Controles de Inspeccion
     TextField ContenedorNum;
     TextField Tamano;
     TextField Chasis;
@@ -87,13 +93,37 @@ public class StateMachine extends StateMachineBase {
         //Lee la configuración del móvil
         Configuracion obj = (Configuracion)storage.readObject("configuracion");
         if (obj!=null){
-            inspeccionService = "http://" + obj.getIp() +":" + obj.getPuerto() +"/server/rest/inspeccion/"  ;
+            inspeccionService = "http://" + obj.getServidor() +":" + obj.getPuerto() +"/server/rest/inspeccion/"  ;
             System.out.println(inspeccionService);
         }else{
             Dialog.show ("Configuración", "Defina los datos de configuración del equipo", "OK", null);
             showForm("Configuracion", null);
         }
 
+    }
+    
+        @Override
+    protected void beforeConfiguracion(Form f) {
+        //Si ya existe el registro, llenar los controles con su dato
+        Configuracion obj = (Configuracion)storage.readObject("configuracion");
+        if (obj!=null){
+            servidor  = findServidor();
+            puerto    = findPuerto();
+            inspector = findInspector();       
+            
+            servidor  . setText ( obj.getServidor  ());
+            puerto    . setText ( obj.getPuerto    ());
+            inspector . setText ( obj.getInspector ());
+        }
+    }
+
+    @Override
+    protected void onConfiguracion_GrabarAction(Component c, ActionEvent event) {
+        Configuracion obj = new Configuracion();
+            obj.setServidor  ( servidor  . getText() );
+            obj.setPuerto    ( puerto    . getText() );
+            obj.setInspector ( inspector . getText() );
+        
     }
 
     @Override
@@ -142,10 +172,6 @@ public class StateMachine extends StateMachineBase {
 
     @Override
     protected void onInspeccion_GrabarAction(Component c, ActionEvent event) {
-        grabar();
-    }
-    
-    private void grabar(){
         //https://groups.google.com/forum/#!topic/codenameone-discussions/tGPeQrNRO58
         //https://stackoverflow.com/questions/39063909/how-to-post-json-to-a-rest-webservice-in-codenameone
         
@@ -211,6 +237,5 @@ public class StateMachine extends StateMachineBase {
         System.out.println(request.getResponseCode());
         
     }
-
 
 }
