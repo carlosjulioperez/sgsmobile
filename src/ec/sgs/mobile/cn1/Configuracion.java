@@ -59,8 +59,8 @@ public class Configuracion implements Externalizable{
     }
 
     public void internalize(int version, DataInputStream in) throws IOException {
-        setServidor( in.readUTF() );
-        setPuerto( in.readUTF() );
+        setServidor ( in.readUTF() );
+        setPuerto   ( in.readUTF() );
         setInspector( in.readUTF() );
     }
 

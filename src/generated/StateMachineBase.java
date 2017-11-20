@@ -124,18 +124,6 @@ public abstract class StateMachineBase extends UIBuilder {
         this(res, null, loadTheme);
     }
 
-    public com.codename1.ui.TextField findTamano(Component root) {
-        return (com.codename1.ui.TextField)findByName("Tamano", root);
-    }
-
-    public com.codename1.ui.TextField findTamano() {
-        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("Tamano", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextField)findByName("Tamano", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.ComponentGroup findComponentGroup(Component root) {
         return (com.codename1.ui.ComponentGroup)findByName("ComponentGroup", root);
     }
@@ -208,6 +196,18 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
+    public com.codename1.ui.CheckBox findTecho(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("techo", root);
+    }
+
+    public com.codename1.ui.CheckBox findTecho() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("techo", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.CheckBox)findByName("techo", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
     public com.codename1.ui.Button findBotonDatos(Component root) {
         return (com.codename1.ui.Button)findByName("BotonDatos", root);
     }
@@ -232,26 +232,14 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.CheckBox findLadosInternosIzquierda(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("LadosInternosIzquierda", root);
+    public com.codename1.ui.CheckBox findPuertaIzquierda(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("puertaIzquierda", root);
     }
 
-    public com.codename1.ui.CheckBox findLadosInternosIzquierda() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("LadosInternosIzquierda", Display.getInstance().getCurrent());
+    public com.codename1.ui.CheckBox findPuertaIzquierda() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("puertaIzquierda", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("LadosInternosIzquierda", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.CheckBox findPiso(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("Piso", root);
-    }
-
-    public com.codename1.ui.CheckBox findPiso() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("Piso", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("Piso", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.CheckBox)findByName("puertaIzquierda", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -280,14 +268,26 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.TextField findAgencia(Component root) {
-        return (com.codename1.ui.TextField)findByName("Agencia", root);
+    public com.codename1.ui.TextField findFactura(Component root) {
+        return (com.codename1.ui.TextField)findByName("factura", root);
     }
 
-    public com.codename1.ui.TextField findAgencia() {
-        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("Agencia", Display.getInstance().getCurrent());
+    public com.codename1.ui.TextField findFactura() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("factura", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextField)findByName("Agencia", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.TextField)findByName("factura", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.TextField findChasis(Component root) {
+        return (com.codename1.ui.TextField)findByName("chasis", root);
+    }
+
+    public com.codename1.ui.TextField findChasis() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("chasis", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextField)findByName("chasis", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -304,14 +304,14 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.CheckBox findEstructuraInterna(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("EstructuraInterna", root);
+    public com.codename1.ui.CheckBox findEstructuraInferior(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("estructuraInferior", root);
     }
 
-    public com.codename1.ui.CheckBox findEstructuraInterna() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("EstructuraInterna", Display.getInstance().getCurrent());
+    public com.codename1.ui.CheckBox findEstructuraInferior() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("estructuraInferior", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("EstructuraInterna", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.CheckBox)findByName("estructuraInferior", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -328,38 +328,98 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.CheckBox findLadosExternosIzquierda(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("LadosExternosIzquierda", root);
+    public com.codename1.ui.CheckBox findLadosInternosDerecha(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("ladosInternosDerecha", root);
     }
 
-    public com.codename1.ui.CheckBox findLadosExternosIzquierda() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("LadosExternosIzquierda", Display.getInstance().getCurrent());
+    public com.codename1.ui.CheckBox findLadosInternosDerecha() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("ladosInternosDerecha", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("LadosExternosIzquierda", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.CheckBox)findByName("ladosInternosDerecha", aboutToShowThisContainer);
         }
         return cmp;
     }
 
-    public com.codename1.ui.CheckBox findParedFrontalInternaIzquierda(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("ParedFrontalInternaIzquierda", root);
+    public com.codename1.ui.CheckBox findPiso(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("piso", root);
     }
 
-    public com.codename1.ui.CheckBox findParedFrontalInternaIzquierda() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("ParedFrontalInternaIzquierda", Display.getInstance().getCurrent());
+    public com.codename1.ui.CheckBox findPiso() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("piso", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("ParedFrontalInternaIzquierda", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.CheckBox)findByName("piso", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.TextField findTrailerPlaca(Component root) {
+        return (com.codename1.ui.TextField)findByName("trailerPlaca", root);
+    }
+
+    public com.codename1.ui.TextField findTrailerPlaca() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("trailerPlaca", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextField)findByName("trailerPlaca", aboutToShowThisContainer);
         }
         return cmp;
     }
 
     public com.codename1.ui.CheckBox findCables(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("Cables", root);
+        return (com.codename1.ui.CheckBox)findByName("cables", root);
     }
 
     public com.codename1.ui.CheckBox findCables() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("Cables", Display.getInstance().getCurrent());
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("cables", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("Cables", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.CheckBox)findByName("cables", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.CheckBox findChasisCheck(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("chasisCheck", root);
+    }
+
+    public com.codename1.ui.CheckBox findChasisCheck() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("chasisCheck", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.CheckBox)findByName("chasisCheck", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.TextField findCliente(Component root) {
+        return (com.codename1.ui.TextField)findByName("cliente", root);
+    }
+
+    public com.codename1.ui.TextField findCliente() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("cliente", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextField)findByName("cliente", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.TextField findFecha(Component root) {
+        return (com.codename1.ui.TextField)findByName("fecha", root);
+    }
+
+    public com.codename1.ui.TextField findFecha() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("fecha", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextField)findByName("fecha", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.CheckBox findParedFrontalInternaIzquierda(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("paredFrontalInternaIzquierda", root);
+    }
+
+    public com.codename1.ui.CheckBox findParedFrontalInternaIzquierda() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("paredFrontalInternaIzquierda", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.CheckBox)findByName("paredFrontalInternaIzquierda", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -376,26 +436,14 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.CheckBox findTecho(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("Techo", root);
-    }
-
-    public com.codename1.ui.CheckBox findTecho() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("Techo", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("Techo", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.TextArea findObservaciones(Component root) {
-        return (com.codename1.ui.TextArea)findByName("Observaciones", root);
+        return (com.codename1.ui.TextArea)findByName("observaciones", root);
     }
 
     public com.codename1.ui.TextArea findObservaciones() {
-        com.codename1.ui.TextArea cmp = (com.codename1.ui.TextArea)findByName("Observaciones", Display.getInstance().getCurrent());
+        com.codename1.ui.TextArea cmp = (com.codename1.ui.TextArea)findByName("observaciones", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextArea)findByName("Observaciones", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.TextArea)findByName("observaciones", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -412,26 +460,38 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.spinner.DateSpinner findDateSpinner(Component root) {
-        return (com.codename1.ui.spinner.DateSpinner)findByName("DateSpinner", root);
+    public com.codename1.ui.CheckBox findLadosExternosIzquierda(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("ladosExternosIzquierda", root);
     }
 
-    public com.codename1.ui.spinner.DateSpinner findDateSpinner() {
-        com.codename1.ui.spinner.DateSpinner cmp = (com.codename1.ui.spinner.DateSpinner)findByName("DateSpinner", Display.getInstance().getCurrent());
+    public com.codename1.ui.CheckBox findLadosExternosIzquierda() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("ladosExternosIzquierda", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.spinner.DateSpinner)findByName("DateSpinner", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.CheckBox)findByName("ladosExternosIzquierda", aboutToShowThisContainer);
         }
         return cmp;
     }
 
-    public com.codename1.ui.TextField findVapor(Component root) {
-        return (com.codename1.ui.TextField)findByName("Vapor", root);
+    public com.codename1.ui.TextField findTamano(Component root) {
+        return (com.codename1.ui.TextField)findByName("tamano", root);
     }
 
-    public com.codename1.ui.TextField findVapor() {
-        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("Vapor", Display.getInstance().getCurrent());
+    public com.codename1.ui.TextField findTamano() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("tamano", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextField)findByName("Vapor", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.TextField)findByName("tamano", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.CheckBox findEstructuraInterna(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("estructuraInterna", root);
+    }
+
+    public com.codename1.ui.CheckBox findEstructuraInterna() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("estructuraInterna", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.CheckBox)findByName("estructuraInterna", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -460,14 +520,38 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.TextField findTrailerPlaca(Component root) {
-        return (com.codename1.ui.TextField)findByName("TrailerPlaca", root);
+    public com.codename1.ui.spinner.DateSpinner findDateSpinner(Component root) {
+        return (com.codename1.ui.spinner.DateSpinner)findByName("dateSpinner", root);
     }
 
-    public com.codename1.ui.TextField findTrailerPlaca() {
-        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("TrailerPlaca", Display.getInstance().getCurrent());
+    public com.codename1.ui.spinner.DateSpinner findDateSpinner() {
+        com.codename1.ui.spinner.DateSpinner cmp = (com.codename1.ui.spinner.DateSpinner)findByName("dateSpinner", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextField)findByName("TrailerPlaca", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.spinner.DateSpinner)findByName("dateSpinner", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.TextField findAgencia(Component root) {
+        return (com.codename1.ui.TextField)findByName("agencia", root);
+    }
+
+    public com.codename1.ui.TextField findAgencia() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("agencia", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextField)findByName("agencia", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.CheckBox findFlucs(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("flucs", root);
+    }
+
+    public com.codename1.ui.CheckBox findFlucs() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("flucs", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.CheckBox)findByName("flucs", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -484,62 +568,14 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.TextField findFecha(Component root) {
-        return (com.codename1.ui.TextField)findByName("Fecha", root);
+    public com.codename1.ui.TextField findDestino(Component root) {
+        return (com.codename1.ui.TextField)findByName("destino", root);
     }
 
-    public com.codename1.ui.TextField findFecha() {
-        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("Fecha", Display.getInstance().getCurrent());
+    public com.codename1.ui.TextField findDestino() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("destino", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextField)findByName("Fecha", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.TextField findChasis(Component root) {
-        return (com.codename1.ui.TextField)findByName("Chasis", root);
-    }
-
-    public com.codename1.ui.TextField findChasis() {
-        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("Chasis", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextField)findByName("Chasis", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.TextField findCliente(Component root) {
-        return (com.codename1.ui.TextField)findByName("Cliente", root);
-    }
-
-    public com.codename1.ui.TextField findCliente() {
-        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("Cliente", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextField)findByName("Cliente", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.CheckBox findPuertaIzquierda(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("PuertaIzquierda", root);
-    }
-
-    public com.codename1.ui.CheckBox findPuertaIzquierda() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("PuertaIzquierda", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("PuertaIzquierda", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.TextField findContenedorNum(Component root) {
-        return (com.codename1.ui.TextField)findByName("ContenedorNum", root);
-    }
-
-    public com.codename1.ui.TextField findContenedorNum() {
-        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("ContenedorNum", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextField)findByName("ContenedorNum", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.TextField)findByName("destino", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -556,14 +592,50 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.TextField findDestino(Component root) {
-        return (com.codename1.ui.TextField)findByName("Destino", root);
+    public com.codename1.ui.TextField findContenedorNum(Component root) {
+        return (com.codename1.ui.TextField)findByName("contenedorNum", root);
     }
 
-    public com.codename1.ui.TextField findDestino() {
-        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("Destino", Display.getInstance().getCurrent());
+    public com.codename1.ui.TextField findContenedorNum() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("contenedorNum", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextField)findByName("Destino", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.TextField)findByName("contenedorNum", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.CheckBox findParedFrontalInternaDerecha(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("paredFrontalInternaDerecha", root);
+    }
+
+    public com.codename1.ui.CheckBox findParedFrontalInternaDerecha() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("paredFrontalInternaDerecha", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.CheckBox)findByName("paredFrontalInternaDerecha", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.TextField findVapor(Component root) {
+        return (com.codename1.ui.TextField)findByName("vapor", root);
+    }
+
+    public com.codename1.ui.TextField findVapor() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("vapor", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextField)findByName("vapor", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.CheckBox findLadosInternosIzquierda(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("ladosInternosIzquierda", root);
+    }
+
+    public com.codename1.ui.CheckBox findLadosInternosIzquierda() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("ladosInternosIzquierda", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.CheckBox)findByName("ladosInternosIzquierda", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -628,98 +700,26 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.CheckBox findParedFrontalInternaDerecha(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("ParedFrontalInternaDerecha", root);
+    public com.codename1.ui.CheckBox findLadosExternosDerecha(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("ladosExternosDerecha", root);
     }
 
-    public com.codename1.ui.CheckBox findParedFrontalInternaDerecha() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("ParedFrontalInternaDerecha", Display.getInstance().getCurrent());
+    public com.codename1.ui.CheckBox findLadosExternosDerecha() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("ladosExternosDerecha", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("ParedFrontalInternaDerecha", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.CheckBox findFlucs(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("Flucs", root);
-    }
-
-    public com.codename1.ui.CheckBox findFlucs() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("Flucs", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("Flucs", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.CheckBox)findByName("ladosExternosDerecha", aboutToShowThisContainer);
         }
         return cmp;
     }
 
     public com.codename1.ui.CheckBox findPuertaDerecha(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("PuertaDerecha", root);
+        return (com.codename1.ui.CheckBox)findByName("puertaDerecha", root);
     }
 
     public com.codename1.ui.CheckBox findPuertaDerecha() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("PuertaDerecha", Display.getInstance().getCurrent());
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("puertaDerecha", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("PuertaDerecha", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.CheckBox findLadosExternosDerecha(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("LadosExternosDerecha", root);
-    }
-
-    public com.codename1.ui.CheckBox findLadosExternosDerecha() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("LadosExternosDerecha", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("LadosExternosDerecha", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.CheckBox findChasisCheck(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("ChasisCheck", root);
-    }
-
-    public com.codename1.ui.CheckBox findChasisCheck() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("ChasisCheck", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("ChasisCheck", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.CheckBox findLadosInternosDerecha(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("LadosInternosDerecha", root);
-    }
-
-    public com.codename1.ui.CheckBox findLadosInternosDerecha() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("LadosInternosDerecha", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("LadosInternosDerecha", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.TextField findFactura(Component root) {
-        return (com.codename1.ui.TextField)findByName("Factura", root);
-    }
-
-    public com.codename1.ui.TextField findFactura() {
-        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("Factura", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextField)findByName("Factura", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.CheckBox findEstructuraInferior(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("EstructuraInferior", root);
-    }
-
-    public com.codename1.ui.CheckBox findEstructuraInferior() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("EstructuraInferior", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("EstructuraInferior", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.CheckBox)findByName("puertaDerecha", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -1061,111 +1061,111 @@ public abstract class StateMachineBase extends UIBuilder {
             }
         }
         if(rootContainerName.equals("Inspeccion")) {
-            if("ContenedorNum".equals(c.getName())) {
+            if("contenedorNum".equals(c.getName())) {
                 onInspeccion_ContenedorNumAction(c, event);
                 return;
             }
-            if("Tamano".equals(c.getName())) {
+            if("tamano".equals(c.getName())) {
                 onInspeccion_TamanoAction(c, event);
                 return;
             }
-            if("Chasis".equals(c.getName())) {
+            if("chasis".equals(c.getName())) {
                 onInspeccion_ChasisAction(c, event);
                 return;
             }
-            if("TrailerPlaca".equals(c.getName())) {
+            if("trailerPlaca".equals(c.getName())) {
                 onInspeccion_TrailerPlacaAction(c, event);
                 return;
             }
-            if("Cliente".equals(c.getName())) {
+            if("cliente".equals(c.getName())) {
                 onInspeccion_ClienteAction(c, event);
                 return;
             }
-            if("Fecha".equals(c.getName())) {
+            if("fecha".equals(c.getName())) {
                 onInspeccion_FechaAction(c, event);
                 return;
             }
-            if("Agencia".equals(c.getName())) {
+            if("agencia".equals(c.getName())) {
                 onInspeccion_AgenciaAction(c, event);
                 return;
             }
-            if("Vapor".equals(c.getName())) {
+            if("vapor".equals(c.getName())) {
                 onInspeccion_VaporAction(c, event);
                 return;
             }
-            if("Destino".equals(c.getName())) {
+            if("destino".equals(c.getName())) {
                 onInspeccion_DestinoAction(c, event);
                 return;
             }
-            if("Factura".equals(c.getName())) {
+            if("factura".equals(c.getName())) {
                 onInspeccion_FacturaAction(c, event);
                 return;
             }
-            if("PuertaIzquierda".equals(c.getName())) {
+            if("puertaIzquierda".equals(c.getName())) {
                 onInspeccion_PuertaIzquierdaAction(c, event);
                 return;
             }
-            if("PuertaDerecha".equals(c.getName())) {
+            if("puertaDerecha".equals(c.getName())) {
                 onInspeccion_PuertaDerechaAction(c, event);
                 return;
             }
-            if("ParedFrontalInternaIzquierda".equals(c.getName())) {
+            if("paredFrontalInternaIzquierda".equals(c.getName())) {
                 onInspeccion_ParedFrontalInternaIzquierdaAction(c, event);
                 return;
             }
-            if("ParedFrontalInternaDerecha".equals(c.getName())) {
+            if("paredFrontalInternaDerecha".equals(c.getName())) {
                 onInspeccion_ParedFrontalInternaDerechaAction(c, event);
                 return;
             }
-            if("Cables".equals(c.getName())) {
+            if("cables".equals(c.getName())) {
                 onInspeccion_CablesAction(c, event);
                 return;
             }
-            if("Flucs".equals(c.getName())) {
+            if("flucs".equals(c.getName())) {
                 onInspeccion_FlucsAction(c, event);
                 return;
             }
-            if("LadosExternosIzquierda".equals(c.getName())) {
+            if("ladosExternosIzquierda".equals(c.getName())) {
                 onInspeccion_LadosExternosIzquierdaAction(c, event);
                 return;
             }
-            if("LadosExternosDerecha".equals(c.getName())) {
+            if("ladosExternosDerecha".equals(c.getName())) {
                 onInspeccion_LadosExternosDerechaAction(c, event);
                 return;
             }
-            if("LadosInternosIzquierda".equals(c.getName())) {
+            if("ladosInternosIzquierda".equals(c.getName())) {
                 onInspeccion_LadosInternosIzquierdaAction(c, event);
                 return;
             }
-            if("LadosInternosDerecha".equals(c.getName())) {
+            if("ladosInternosDerecha".equals(c.getName())) {
                 onInspeccion_LadosInternosDerechaAction(c, event);
                 return;
             }
-            if("Techo".equals(c.getName())) {
+            if("techo".equals(c.getName())) {
                 onInspeccion_TechoAction(c, event);
                 return;
             }
-            if("Piso".equals(c.getName())) {
+            if("piso".equals(c.getName())) {
                 onInspeccion_PisoAction(c, event);
                 return;
             }
-            if("EstructuraInferior".equals(c.getName())) {
+            if("estructuraInferior".equals(c.getName())) {
                 onInspeccion_EstructuraInferiorAction(c, event);
                 return;
             }
-            if("EstructuraInterna".equals(c.getName())) {
+            if("estructuraInterna".equals(c.getName())) {
                 onInspeccion_EstructuraInternaAction(c, event);
                 return;
             }
-            if("ChasisCheck".equals(c.getName())) {
+            if("chasisCheck".equals(c.getName())) {
                 onInspeccion_ChasisCheckAction(c, event);
                 return;
             }
-            if("Observaciones".equals(c.getName())) {
+            if("observaciones".equals(c.getName())) {
                 onInspeccion_ObservacionesAction(c, event);
                 return;
             }
-            if("Grabar".equals(c.getName())) {
+            if("grabar".equals(c.getName())) {
                 onInspeccion_GrabarAction(c, event);
                 return;
             }

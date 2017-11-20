@@ -12,6 +12,7 @@ import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkManager;
 import com.codename1.io.Storage;
+import com.codename1.io.Util;
 import com.codename1.l10n.L10NManager;
 import com.codename1.processing.Result;
 import com.codename1.ui.*; 
@@ -44,34 +45,34 @@ public class StateMachine extends StateMachineBase {
     TextField inspector;
     
     // Controles de Inspeccion
-    TextField ContenedorNum;
-    TextField Tamano;
-    TextField Chasis;
-    TextField TrailerPlaca;
-    TextField Cliente;
-    TextField Fecha;
-    TextField Agencia;
-    TextField Vapor;
-    TextField Destino;
-    TextField Factura;
+    TextField contenedorNum;
+    TextField tamano;
+    TextField chasis;
+    TextField trailerPlaca;
+    TextField cliente;
+    TextField fecha;
+    TextField agencia;
+    TextField vapor;
+    TextField destino;
+    TextField factura;
 
-    CheckBox PuertaIzquierda;
-    CheckBox PuertaDerecha;
-    CheckBox ParedFrontalInternaIzquierda;
-    CheckBox ParedFrontalInternaDerecha;
-    CheckBox Cables;
-    CheckBox Flucs;
-    CheckBox LadosExternosIzquierda;
-    CheckBox LadosExternosDerecha;
-    CheckBox LadosInternosIzquierda;
-    CheckBox LadosInternosDerecha;
-    CheckBox Techo;
-    CheckBox Piso;
-    CheckBox EstructuraInferior;
-    CheckBox EstructuraInterna;
-    CheckBox ChasisCheck;
+    CheckBox puertaIzquierda;
+    CheckBox puertaDerecha;
+    CheckBox paredFrontalInternaIzquierda;
+    CheckBox paredFrontalInternaDerecha;
+    CheckBox cables;
+    CheckBox flucs;
+    CheckBox ladosExternosIzquierda;
+    CheckBox ladosExternosDerecha;
+    CheckBox ladosInternosIzquierda;
+    CheckBox ladosInternosDerecha;
+    CheckBox techo;
+    CheckBox piso;
+    CheckBox estructuraInferior;
+    CheckBox estructuraInterna;
+    CheckBox chasisCheck;
 
-    TextArea Observaciones;
+    TextArea observaciones;
     
     public StateMachine(String resFile) {
         super(resFile);
@@ -84,6 +85,7 @@ public class StateMachine extends StateMachineBase {
      * the constructor/class scope to avoid race conditions
      */
     protected void initVars(Resources res) {
+        Util.register("Configuracion", Configuracion.class);
     }
 
     @Override
@@ -120,10 +122,12 @@ public class StateMachine extends StateMachineBase {
     @Override
     protected void onConfiguracion_GrabarAction(Component c, ActionEvent event) {
         Configuracion obj = new Configuracion();
-            obj.setServidor  ( servidor  . getText() );
-            obj.setPuerto    ( puerto    . getText() );
-            obj.setInspector ( inspector . getText() );
+        obj.setServidor  ( servidor  . getText() );
+        obj.setPuerto    ( puerto    . getText() );
+        obj.setInspector ( inspector . getText() );
         
+        storage.writeObject("configuracion", obj);
+    	showForm("Main", null);
     }
 
     @Override
@@ -133,41 +137,40 @@ public class StateMachine extends StateMachineBase {
     @Override
     protected void beforeInspeccion(Form f) {
         //Constraints
-        ContenedorNum                = findContenedorNum();
-        Tamano                       = findTamano();
-        Chasis                       = findChasis();       
-        TrailerPlaca                 = findTrailerPlaca();
-        Cliente                      = findCliente();
-        Fecha                        = findFecha();
-        Agencia                      = findAgencia();
-        Vapor                        = findVapor();
-        Destino                      = findDestino();
-        Factura                      = findFactura();
+        contenedorNum                = findContenedorNum();
+        tamano                       = findTamano();
+        chasis                       = findChasis();       
+        trailerPlaca                 = findTrailerPlaca();
+        cliente                      = findCliente();
+        fecha                        = findFecha();
+        agencia                      = findAgencia();
+        vapor                        = findVapor();
+        destino                      = findDestino();
+        factura                      = findFactura();
 
-	PuertaIzquierda              = findPuertaIzquierda();
-	PuertaDerecha                = findPuertaDerecha();
-	ParedFrontalInternaIzquierda = findParedFrontalInternaIzquierda();
-	ParedFrontalInternaDerecha   = findParedFrontalInternaDerecha();
-	Cables                       = findCables();
-	Flucs                        = findFlucs();
-	LadosExternosIzquierda       = findLadosExternosIzquierda();
-	LadosExternosDerecha         = findLadosExternosDerecha();
-	LadosInternosIzquierda       = findLadosInternosIzquierda();
-	LadosInternosDerecha         = findLadosInternosDerecha();
-	Techo                        = findTecho();
-	Piso                         = findPiso();
-	EstructuraInferior           = findEstructuraInferior();
-	EstructuraInterna            = findEstructuraInterna();
-	ChasisCheck                  = findChasisCheck();
+	puertaIzquierda              = findPuertaIzquierda();
+	puertaDerecha                = findPuertaDerecha();
+	paredFrontalInternaIzquierda = findParedFrontalInternaIzquierda();
+	paredFrontalInternaDerecha   = findParedFrontalInternaDerecha();
+	cables                       = findCables();
+	flucs                        = findFlucs();
+	ladosExternosIzquierda       = findLadosExternosIzquierda();
+	ladosExternosDerecha         = findLadosExternosDerecha();
+	ladosInternosIzquierda       = findLadosInternosIzquierda();
+	ladosInternosDerecha         = findLadosInternosDerecha();
+	techo                        = findTecho();
+	piso                         = findPiso();
+	estructuraInferior           = findEstructuraInferior();
+	estructuraInterna            = findEstructuraInterna();
+	chasisCheck                  = findChasisCheck();
 
-        Button Grabar = findGrabar();
+        Button grabar = findGrabar();
         Validator v = new Validator();
         v.
-            addConstraint(ContenedorNum, new LengthConstraint(11)).
-            addConstraint(Tamano, new LengthConstraint(2)
+            addConstraint(contenedorNum, new LengthConstraint(11)).
+            addConstraint(tamano, new LengthConstraint(2)
         );
-        
-        v.addSubmitButtons(Grabar);
+        //v.addSubmitButtons(grabar);
     }
 
     @Override
@@ -178,32 +181,32 @@ public class StateMachine extends StateMachineBase {
         Hashtable h = new Hashtable();
         // (populate the requestuest object here)
         h.put("id"           , "");
-        h.put("contenedor"   , ContenedorNum                . getText() );
-        h.put("tamano"       , Tamano                       . getText() );
-        h.put("chasis"       , Chasis                       . getText() );
-        h.put("placa"        , TrailerPlaca                 . getText() );
-        h.put("cliente"      , Cliente                      . getText() );
-        h.put("fecha"        , Fecha                        . getText() );
-        h.put("agencia"      , Agencia                      . getText() );
-        h.put("vapor"        , Vapor                        . getText() );
-        h.put("destino"      , Destino                      . getText() );
-        h.put("factura"      , Factura                      . getText() );
-        h.put("pta_izq"      , PuertaIzquierda              . isSelected() );
-        h.put("pta_der"      , PuertaDerecha                . isSelected() );
-        h.put("pfi_izq"      , ParedFrontalInternaIzquierda . isSelected() );
-        h.put("pfi_der"      , ParedFrontalInternaDerecha   . isSelected() );
-        h.put("ur_izq"       , Cables                       . isSelected() );
-        h.put("ur_der"       , Flucs                        . isSelected() );
-        h.put("le_izq"       , LadosExternosIzquierda       . isSelected() );
-        h.put("le_der"       , LadosExternosDerecha         . isSelected() );
-        h.put("li_izq"       , LadosInternosIzquierda       . isSelected() );
-        h.put("li_der"       , LadosInternosDerecha         . isSelected() );
-        h.put("techo"        , Techo                        . isSelected() );
-        h.put("piso"         , Piso                         . isSelected() );
-        h.put("est_inf"      , EstructuraInferior           . isSelected() );
-        h.put("est_int"      , EstructuraInterna            . isSelected() );
-        h.put("chasis_estado", ChasisCheck                  . isSelected() );
-        h.put("observaciones", Observaciones                . getText() );
+        h.put("contenedor"   , contenedorNum                . getText() );
+        h.put("tamano"       , tamano                       . getText() );
+        h.put("chasis"       , chasis                       . getText() );
+        h.put("placa"        , trailerPlaca                 . getText() );
+        h.put("cliente"      , cliente                      . getText() );
+        h.put("fecha"        , fecha                        . getText() );
+        h.put("agencia"      , agencia                      . getText() );
+        h.put("vapor"        , vapor                        . getText() );
+        h.put("destino"      , destino                      . getText() );
+        h.put("factura"      , factura                      . getText() );
+        h.put("pta_izq"      , puertaIzquierda              . isSelected() );
+        h.put("pta_der"      , puertaDerecha                . isSelected() );
+        h.put("pfi_izq"      , paredFrontalInternaIzquierda . isSelected() );
+        h.put("pfi_der"      , paredFrontalInternaDerecha   . isSelected() );
+        h.put("ur_izq"       , cables                       . isSelected() );
+        h.put("ur_der"       , flucs                        . isSelected() );
+        h.put("le_izq"       , ladosExternosIzquierda       . isSelected() );
+        h.put("le_der"       , ladosExternosDerecha         . isSelected() );
+        h.put("li_izq"       , ladosInternosIzquierda       . isSelected() );
+        h.put("li_der"       , ladosInternosDerecha         . isSelected() );
+        h.put("techo"        , techo                        . isSelected() );
+        h.put("piso"         , piso                         . isSelected() );
+        h.put("est_inf"      , estructuraInferior           . isSelected() );
+        h.put("est_int"      , estructuraInterna            . isSelected() );
+        h.put("chasis_estado", chasisCheck                  . isSelected() );
+        h.put("observaciones", observaciones                . getText() );
         h.put("inspector"    , "carper" );
 
         // convert the object to a JSON document
