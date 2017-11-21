@@ -184,10 +184,15 @@ public class StateMachine extends StateMachineBase {
         
         Hashtable h = new Hashtable();
         // (populate the requestuest object here)
+        String mes = "" + fecha.getCurrentMonth();
+        String dia = "" + fecha.getCurrentDay();
+        
+        String strMes = "00".substring(mes.length()) + mes;
+        String strDia = "00".substring(dia.length()) + dia;
         
         //TODO: Verificar aplicación de fecha
-        String fechaSeleccionada = fecha.getCurrentYear()+"-"+
-        fecha.getCurrentMonth()+"-"+fecha.getCurrentDay();
+        String fechaSeleccionada = fecha.getCurrentYear() +"-"+
+        strMes +"-"+strDia;
         
         h.put("id"           , "");
         h.put("contenedor"   , contenedorNum                . getText() );
