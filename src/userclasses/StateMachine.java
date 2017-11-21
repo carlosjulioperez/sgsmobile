@@ -27,7 +27,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.util.Date;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -96,6 +95,7 @@ public class StateMachine extends StateMachineBase {
         
         //Lee la configuración del móvil
         Configuracion obj = (Configuracion)storage.readObject("configuracion");
+        
         if (obj!=null){
             inspeccionService = "http://" + obj.getServidor() +":" + obj.getPuerto() +"/server/rest/inspeccion/"  ;
             System.out.println(inspeccionService);
@@ -110,15 +110,20 @@ public class StateMachine extends StateMachineBase {
     protected void beforeConfiguracion(Form f) {
         //Si ya existe el registro, llenar los controles con su dato
         Configuracion obj = (Configuracion)storage.readObject("configuracion");
-        if (obj!=null){
-            servidor  = findServidor();
-            puerto    = findPuerto();
-            inspector = findInspector();       
-            
-            servidor  . setText ( obj.getServidor  ());
-            puerto    . setText ( obj.getPuerto    ());
-            inspector . setText ( obj.getInspector ());
+        if (obj==null){
+            obj = new Configuracion();
+            obj.setServidor("localhost");
+            obj.setPuerto("8080");
+            obj.setInspector("carper");
+            storage.writeObject("configuracion", obj);
         }
+        servidor  = findServidor();
+        puerto    = findPuerto();
+        inspector = findInspector();       
+
+        servidor  . setText ( obj.getServidor  ());
+        puerto    . setText ( obj.getPuerto    ());
+        inspector . setText ( obj.getInspector ());
     }
 
     @Override
