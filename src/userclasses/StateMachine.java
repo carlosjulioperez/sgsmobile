@@ -17,6 +17,7 @@ import com.codename1.l10n.L10NManager;
 import com.codename1.processing.Result;
 import com.codename1.ui.*; 
 import com.codename1.ui.events.*;
+import com.codename1.ui.spinner.DateSpinner;
 import com.codename1.ui.util.Resources;
 import com.codename1.ui.validation.LengthConstraint;
 import com.codename1.ui.validation.Validator;
@@ -26,6 +27,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.util.Date;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -50,7 +52,7 @@ public class StateMachine extends StateMachineBase {
     TextField chasis;
     TextField trailerPlaca;
     TextField cliente;
-    TextField fecha;
+    DateSpinner fecha;
     TextField agencia;
     TextField vapor;
     TextField destino;
@@ -70,7 +72,7 @@ public class StateMachine extends StateMachineBase {
     CheckBox piso;
     CheckBox estructuraInferior;
     CheckBox estructuraInterna;
-    CheckBox chasisCheck;
+    CheckBox chasisEstado;
 
     TextArea observaciones;
     
@@ -162,7 +164,9 @@ public class StateMachine extends StateMachineBase {
 	piso                         = findPiso();
 	estructuraInferior           = findEstructuraInferior();
 	estructuraInterna            = findEstructuraInterna();
-	chasisCheck                  = findChasisCheck();
+	chasisEstado                 = findChasisEstado();
+        
+        observaciones                = findObservaciones();
 
         Button grabar = findGrabar();
         Validator v = new Validator();
@@ -180,13 +184,18 @@ public class StateMachine extends StateMachineBase {
         
         Hashtable h = new Hashtable();
         // (populate the requestuest object here)
+        
+        //TODO: Verificar aplicación de fecha
+        String fechaSeleccionada = fecha.getCurrentYear()+"-"+
+        fecha.getCurrentMonth()+"-"+fecha.getCurrentDay();
+        
         h.put("id"           , "");
         h.put("contenedor"   , contenedorNum                . getText() );
         h.put("tamano"       , tamano                       . getText() );
         h.put("chasis"       , chasis                       . getText() );
         h.put("placa"        , trailerPlaca                 . getText() );
         h.put("cliente"      , cliente                      . getText() );
-        h.put("fecha"        , fecha                        . getText() );
+        h.put("fecha"        , fechaSeleccionada            . toString() );
         h.put("agencia"      , agencia                      . getText() );
         h.put("vapor"        , vapor                        . getText() );
         h.put("destino"      , destino                      . getText() );
@@ -205,7 +214,7 @@ public class StateMachine extends StateMachineBase {
         h.put("piso"         , piso                         . isSelected() );
         h.put("est_inf"      , estructuraInferior           . isSelected() );
         h.put("est_int"      , estructuraInterna            . isSelected() );
-        h.put("chasis_estado", chasisCheck                  . isSelected() );
+        h.put("chasis_estado", chasisEstado                  . isSelected() );
         h.put("observaciones", observaciones                . getText() );
         h.put("inspector"    , "carper" );
 
@@ -224,7 +233,10 @@ public class StateMachine extends StateMachineBase {
                 System.out.println(result);
             }
             protected void postResponse() {
-               // response completed, this is called on the EDT do the application logic here...
+               // response completed, this is called on the EDT do the application logic here...S
+//                if (request.getResponseCode()==202)
+//                {
+//                };
             }
         };
         request.setUrl("http://localhost:8080/server/rest/inspeccion/add");
@@ -237,7 +249,11 @@ public class StateMachine extends StateMachineBase {
         
         //NetworkManager.getInstance().addToQueue(request);
         NetworkManager.getInstance().addToQueueAndWait(request);
-        System.out.println(request.getResponseCode());
+        
+        if (request.getResponseCode()==200){
+            Dialog.show ("Inspecciones", "Datos grabados correctamente.", "OK", null);
+        }
+        showForm("Main", null);
         
     }
 

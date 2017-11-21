@@ -20,9 +20,7 @@
         </component>
         <component type="TextField" name="cliente" cloudBoundProperty="text" cloudDestinationProperty="Cliente" text="" maxSize="100" hint="Cliente" >
         </component>
-        <component type="DateSpinner" name="dateSpinner" cloudDestinationProperty="DateSpinner" focusable="false" >
-        </component>
-        <component type="TextField" name="fecha" cloudBoundProperty="text" cloudDestinationProperty="Fecha" focusable="true" enabled="true" text="" hint="Fecha" >
+        <component type="DateSpinner" name="fecha" cloudDestinationProperty="DateSpinner" focusable="false" >
         </component>
         <component type="TextField" name="agencia" cloudBoundProperty="text" cloudDestinationProperty="Agencia" text="" maxSize="30" hint="Agencia naviera" >
         </component>
@@ -114,7 +112,7 @@
       <component type="Container" name="Container5" cloudDestinationProperty="Container1" layout="BoxLayout" boxLayoutAxis="Y" >
         <component type="Label" name="Label" cloudDestinationProperty="Label" text="Chasis" icon="chasis.png" >
         </component>
-        <component type="CheckBox" name="chasisCheck" cloudDestinationProperty="PI" text="OK" selected="true" >
+        <component type="CheckBox" name="chasisEstado" cloudDestinationProperty="PI" text="OK" selected="true" >
         </component>
       </component>
     </component>

@@ -376,18 +376,6 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.CheckBox findChasisCheck(Component root) {
-        return (com.codename1.ui.CheckBox)findByName("chasisCheck", root);
-    }
-
-    public com.codename1.ui.CheckBox findChasisCheck() {
-        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("chasisCheck", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.CheckBox)findByName("chasisCheck", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.TextField findCliente(Component root) {
         return (com.codename1.ui.TextField)findByName("cliente", root);
     }
@@ -400,14 +388,14 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.TextField findFecha(Component root) {
-        return (com.codename1.ui.TextField)findByName("fecha", root);
+    public com.codename1.ui.spinner.DateSpinner findFecha(Component root) {
+        return (com.codename1.ui.spinner.DateSpinner)findByName("fecha", root);
     }
 
-    public com.codename1.ui.TextField findFecha() {
-        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("fecha", Display.getInstance().getCurrent());
+    public com.codename1.ui.spinner.DateSpinner findFecha() {
+        com.codename1.ui.spinner.DateSpinner cmp = (com.codename1.ui.spinner.DateSpinner)findByName("fecha", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextField)findByName("fecha", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.spinner.DateSpinner)findByName("fecha", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -444,6 +432,18 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.TextArea cmp = (com.codename1.ui.TextArea)findByName("observaciones", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.TextArea)findByName("observaciones", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.CheckBox findChasisEstado(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("chasisEstado", root);
+    }
+
+    public com.codename1.ui.CheckBox findChasisEstado() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("chasisEstado", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.CheckBox)findByName("chasisEstado", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -516,18 +516,6 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("grabar", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.Button)findByName("grabar", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.spinner.DateSpinner findDateSpinner(Component root) {
-        return (com.codename1.ui.spinner.DateSpinner)findByName("dateSpinner", root);
-    }
-
-    public com.codename1.ui.spinner.DateSpinner findDateSpinner() {
-        com.codename1.ui.spinner.DateSpinner cmp = (com.codename1.ui.spinner.DateSpinner)findByName("dateSpinner", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.spinner.DateSpinner)findByName("dateSpinner", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -1081,10 +1069,6 @@ public abstract class StateMachineBase extends UIBuilder {
                 onInspeccion_ClienteAction(c, event);
                 return;
             }
-            if("fecha".equals(c.getName())) {
-                onInspeccion_FechaAction(c, event);
-                return;
-            }
             if("agencia".equals(c.getName())) {
                 onInspeccion_AgenciaAction(c, event);
                 return;
@@ -1157,8 +1141,8 @@ public abstract class StateMachineBase extends UIBuilder {
                 onInspeccion_EstructuraInternaAction(c, event);
                 return;
             }
-            if("chasisCheck".equals(c.getName())) {
-                onInspeccion_ChasisCheckAction(c, event);
+            if("chasisEstado".equals(c.getName())) {
+                onInspeccion_ChasisEstadoAction(c, event);
                 return;
             }
             if("observaciones".equals(c.getName())) {
@@ -1217,9 +1201,6 @@ public abstract class StateMachineBase extends UIBuilder {
       protected void onInspeccion_ClienteAction(Component c, ActionEvent event) {
       }
 
-      protected void onInspeccion_FechaAction(Component c, ActionEvent event) {
-      }
-
       protected void onInspeccion_AgenciaAction(Component c, ActionEvent event) {
       }
 
@@ -1274,7 +1255,7 @@ public abstract class StateMachineBase extends UIBuilder {
       protected void onInspeccion_EstructuraInternaAction(Component c, ActionEvent event) {
       }
 
-      protected void onInspeccion_ChasisCheckAction(Component c, ActionEvent event) {
+      protected void onInspeccion_ChasisEstadoAction(Component c, ActionEvent event) {
       }
 
       protected void onInspeccion_ObservacionesAction(Component c, ActionEvent event) {
