@@ -7,6 +7,7 @@
 
 package userclasses;
 
+import com.codename1.components.InfiniteProgress;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkManager;
@@ -36,6 +37,7 @@ public class StateMachine extends StateMachineBase {
     private final L10NManager lnm = L10NManager.getInstance();
     private Storage storage;
     private String inspeccionService;
+    private String secuencial;
     
     //Controles de Configuracion
     TextField servidor;
@@ -84,16 +86,6 @@ public class StateMachine extends StateMachineBase {
      */
     protected void initVars(Resources res) {
         Util.register("Configuracion", Configuracion.class);
-        
-        //https://stackoverflow.com/questions/11598241/catching-unknown-host-exception-in-codename-one
-        //https://stackoverflow.com/questions/38987976/codenameone-how-to-handle-exception-java-net-connectionexception-explicitly
-        NetworkManager.getInstance().addErrorListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                //handle your error here consume the event
-                //System.out.println(evt.toString());
-                evt.consume();
-            }
-        });
     }
 
     @Override
@@ -102,7 +94,6 @@ public class StateMachine extends StateMachineBase {
         
         //Lee la configuración del móvil
         Configuracion obj = (Configuracion)storage.readObject("configuracion");
-        
         if (obj!=null){
             inspeccionService = "http://" + obj.getServidor() +":" + obj.getPuerto() +"/server/rest/inspeccion/"  ;
             System.out.println(inspeccionService);
@@ -117,20 +108,15 @@ public class StateMachine extends StateMachineBase {
     protected void beforeConfiguracion(Form f) {
         //Si ya existe el registro, llenar los controles con su dato
         Configuracion obj = (Configuracion)storage.readObject("configuracion");
-        if (obj==null){
-            obj = new Configuracion();
-            obj.setServidor("localhost");
-            obj.setPuerto("8080");
-            obj.setInspector("carper");
-            storage.writeObject("configuracion", obj);
+        if (obj!=null){
+            servidor  = findServidor();
+            puerto    = findPuerto();
+            inspector = findInspector();       
+            
+            servidor  . setText ( obj.getServidor  ());
+            puerto    . setText ( obj.getPuerto    ());
+            inspector . setText ( obj.getInspector ());
         }
-        servidor  = findServidor();
-        puerto    = findPuerto();
-        inspector = findInspector();       
-
-        servidor  . setText ( obj.getServidor  ());
-        puerto    . setText ( obj.getPuerto    ());
-        inspector . setText ( obj.getInspector ());
     }
 
     @Override
@@ -184,11 +170,11 @@ public class StateMachine extends StateMachineBase {
         Button grabar = findGrabar();
         Validator v = new Validator();
         v.
-        addConstraint(contenedorNum, new LengthConstraint(11)).
-        addConstraint(tamano, new LengthConstraint(2)
+            addConstraint(contenedorNum, new LengthConstraint(11)).
+            addConstraint(tamano, new LengthConstraint(2)
         );
         v.addSubmitButtons(grabar);
-        */    
+        */
     }
 
     @Override
@@ -205,8 +191,8 @@ public class StateMachine extends StateMachineBase {
         String strDia = "00".substring(dia.length()) + dia;
         
         //TODO: Verificar aplicación de fecha
-        String fechaSeleccionada = fecha.getCurrentYear() +"-"+
-        strMes +"-"+strDia;
+        String fechaSeleccionada = fecha.getCurrentYear() +"/"+
+        strMes +"/"+strDia;
         
         h.put("id"           , "");
         h.put("contenedor"   , contenedorNum                . getText() );
@@ -243,38 +229,38 @@ public class StateMachine extends StateMachineBase {
         JSONParser parser = new JSONParser();
 
         // override, by default this method writes NVPs.
-        ConnectionRequest request = new ConnectionRequest() {
+        ConnectionRequest request;
+        request = new ConnectionRequest() {
+            
+            Map result;
             protected void buildRequestBody(OutputStream os) throws IOException {
                 os.write(inspeccion.getBytes("UTF-8"));
             }
             protected void readResponse(InputStream inputStream) throws IOException  {
-                Map result = parser.parseJSON(new InputStreamReader(inputStream, "UTF-8"));
+                result = parser.parseJSON(new InputStreamReader(inputStream, "UTF-8"));
                 //System.out.println(result);
             }
             protected void postResponse() {
-               // response completed, this is called on the EDT do the application logic here...S
-//                if (request.getResponseCode()==202)
-//                {
-//                };
+                // response completed, this is called on the EDT do the application logic here...S
+                secuencial = (String) result.get("id");
             }
         };
         request.setUrl("http://localhost:8080/server/rest/inspeccion/add");
         request.setPost(true);
         request.setContentType("application/json");
-
-        /*InfiniteProgress infiniteProgress = new InfiniteProgress();
+        
+        InfiniteProgress infiniteProgress = new InfiniteProgress();
         Dialog dialog = infiniteProgress.showInifiniteBlocking();
         request.setDisposeOnCompletion(dialog);
-        NetworkManager.getInstance().addToQueueAndWait(request);*/            
-
-        NetworkManager.getInstance().addToQueue(request);
-
-        if (request.getResponseCode() == 200) {
-            Dialog.show("Inspecciones", "Datos grabados correctamente.", "OK", null);
-        }else{
-            Dialog.show("Inspecciones", "No puedo conectarme con el servidor", "OK", null);
+        
+        //NetworkManager.getInstance().addToQueue(request);
+        NetworkManager.getInstance().addToQueueAndWait(request);
+        
+        if (request.getResponseCode()==200 && secuencial.length() > 0){
+            Dialog.show ("Inspecciones", "Secuencial generado: " + secuencial, "OK", null);
         }
         showForm("Main", null);
+        
     }
 
 }
