@@ -19,15 +19,12 @@ import com.codename1.ui.*;
 import com.codename1.ui.events.*;
 import com.codename1.ui.spinner.DateSpinner;
 import com.codename1.ui.util.Resources;
-import com.codename1.ui.validation.LengthConstraint;
-import com.codename1.ui.validation.Validator;
 import ec.sgs.mobile.cn1.Configuracion;
 import generated.StateMachineBase;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.util.Date;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -40,6 +37,7 @@ public class StateMachine extends StateMachineBase {
     private final L10NManager lnm = L10NManager.getInstance();
     private Storage storage;
     private String inspeccionService;
+    private String secuencial;
     
     //Controles de Configuracion
     TextField servidor;
@@ -168,13 +166,15 @@ public class StateMachine extends StateMachineBase {
         
         observaciones                = findObservaciones();
 
+        /*
         Button grabar = findGrabar();
         Validator v = new Validator();
         v.
             addConstraint(contenedorNum, new LengthConstraint(11)).
             addConstraint(tamano, new LengthConstraint(2)
         );
-        //v.addSubmitButtons(grabar);
+        v.addSubmitButtons(grabar);
+        */
     }
 
     @Override
@@ -191,8 +191,8 @@ public class StateMachine extends StateMachineBase {
         String strDia = "00".substring(dia.length()) + dia;
         
         //TODO: Verificar aplicación de fecha
-        String fechaSeleccionada = fecha.getCurrentYear() +"-"+
-        strMes +"-"+strDia;
+        String fechaSeleccionada = fecha.getCurrentYear() +"/"+
+        strMes +"/"+strDia;
         
         h.put("id"           , "");
         h.put("contenedor"   , contenedorNum                . getText() );
@@ -229,19 +229,20 @@ public class StateMachine extends StateMachineBase {
         JSONParser parser = new JSONParser();
 
         // override, by default this method writes NVPs.
-        ConnectionRequest request = new ConnectionRequest() {
+        ConnectionRequest request;
+        request = new ConnectionRequest() {
+            
+            Map result;
             protected void buildRequestBody(OutputStream os) throws IOException {
                 os.write(inspeccion.getBytes("UTF-8"));
             }
             protected void readResponse(InputStream inputStream) throws IOException  {
-                Map result = parser.parseJSON(new InputStreamReader(inputStream, "UTF-8"));
-                System.out.println(result);
+                result = parser.parseJSON(new InputStreamReader(inputStream, "UTF-8"));
+                //System.out.println(result);
             }
             protected void postResponse() {
-               // response completed, this is called on the EDT do the application logic here...S
-//                if (request.getResponseCode()==202)
-//                {
-//                };
+                // response completed, this is called on the EDT do the application logic here...S
+                secuencial = (String) result.get("id");
             }
         };
         request.setUrl("http://localhost:8080/server/rest/inspeccion/add");
@@ -255,8 +256,8 @@ public class StateMachine extends StateMachineBase {
         //NetworkManager.getInstance().addToQueue(request);
         NetworkManager.getInstance().addToQueueAndWait(request);
         
-        if (request.getResponseCode()==200){
-            Dialog.show ("Inspecciones", "Datos grabados correctamente.", "OK", null);
+        if (request.getResponseCode()==200 && secuencial.length() > 0){
+            Dialog.show ("Inspecciones", "Secuencial generado: " + secuencial, "OK", null);
         }
         showForm("Main", null);
         
