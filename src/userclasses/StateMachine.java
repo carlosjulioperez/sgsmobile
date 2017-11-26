@@ -96,7 +96,7 @@ public class StateMachine extends StateMachineBase {
         Configuracion obj = (Configuracion)storage.readObject("configuracion");
         if (obj!=null){
             inspeccionService = "http://" + obj.getServidor() +":" + obj.getPuerto() +"/server/rest/inspeccion/"  ;
-            System.out.println(inspeccionService);
+            //System.out.println(inspeccionService);
         }else{
             Dialog.show ("Configuración", "Defina los datos de configuración del equipo", "OK", null);
             showForm("Configuracion", null);
@@ -245,7 +245,7 @@ public class StateMachine extends StateMachineBase {
                 secuencial = (String) result.get("id");
             }
         };
-        request.setUrl("http://localhost:8080/server/rest/inspeccion/add");
+        request.setUrl(inspeccionService + "add");
         request.setPost(true);
         request.setContentType("application/json");
         
