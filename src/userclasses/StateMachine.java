@@ -38,6 +38,7 @@ public class StateMachine extends StateMachineBase {
     private Storage storage;
     private String inspeccionService;
     private String secuencial;
+    private String codigoInspector="";
     
     //Controles de Configuracion
     TextField servidor;
@@ -101,6 +102,7 @@ public class StateMachine extends StateMachineBase {
         Configuracion obj = (Configuracion)storage.readObject("configuracion");
         if (obj!=null){
             inspeccionService = "http://" + obj.getServidor() +":" + obj.getPuerto() +"/server/rest/inspeccion/"  ;
+            codigoInspector = obj.getInspector();
             //System.out.println(inspeccionService);
         }else{
             definirConfiguracion();
@@ -223,9 +225,9 @@ public class StateMachine extends StateMachineBase {
         h.put("piso"         , piso                         . isSelected() );
         h.put("est_inf"      , estructuraInferior           . isSelected() );
         h.put("est_int"      , estructuraInterna            . isSelected() );
-        h.put("chasis_estado", chasisEstado                  . isSelected() );
+        h.put("chasis_estado", chasisEstado                 . isSelected() );
         h.put("observaciones", observaciones                . getText() );
-        h.put("inspector"    , "carper" );
+        h.put("inspector"    , codigoInspector );
 
         // convert the object to a JSON document
         final String inspeccion = Result.fromContent(h).toString();
