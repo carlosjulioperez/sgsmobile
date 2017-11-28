@@ -88,6 +88,11 @@ public class StateMachine extends StateMachineBase {
         Util.register("Configuracion", Configuracion.class);
     }
 
+    private void definirConfiguracion(){
+        Dialog.show ("Configuración", "Defina los datos de configuración del equipo", "OK", null);
+        showForm("Configuracion", null);
+    }
+    
     @Override
     protected void postMain(Form f) {
         storage = Storage.getInstance();
@@ -98,21 +103,20 @@ public class StateMachine extends StateMachineBase {
             inspeccionService = "http://" + obj.getServidor() +":" + obj.getPuerto() +"/server/rest/inspeccion/"  ;
             //System.out.println(inspeccionService);
         }else{
-            Dialog.show ("Configuración", "Defina los datos de configuración del equipo", "OK", null);
-            showForm("Configuracion", null);
+            definirConfiguracion();
         }
 
     }
     
-        @Override
+    @Override
     protected void beforeConfiguracion(Form f) {
+        servidor  = findServidor();
+        puerto    = findPuerto();
+        inspector = findInspector();       
+
         //Si ya existe el registro, llenar los controles con su dato
         Configuracion obj = (Configuracion)storage.readObject("configuracion");
         if (obj!=null){
-            servidor  = findServidor();
-            puerto    = findPuerto();
-            inspector = findInspector();       
-            
             servidor  . setText ( obj.getServidor  ());
             puerto    . setText ( obj.getPuerto    ());
             inspector . setText ( obj.getInspector ());
@@ -122,12 +126,12 @@ public class StateMachine extends StateMachineBase {
     @Override
     protected void onConfiguracion_GrabarAction(Component c, ActionEvent event) {
         Configuracion obj = new Configuracion();
-        obj.setServidor  ( servidor  . getText() );
-        obj.setPuerto    ( puerto    . getText() );
-        obj.setInspector ( inspector . getText() );
-        
+        obj.setServidor(servidor.getText());
+        obj.setPuerto(puerto.getText());
+        obj.setInspector(inspector.getText());
+
         storage.writeObject("configuracion", obj);
-    	showForm("Main", null);
+        showForm("Main", null);
     }
 
     @Override
