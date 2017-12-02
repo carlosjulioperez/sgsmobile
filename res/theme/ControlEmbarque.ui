@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="ControlEmbarque" cloudDestinationProperty="ControlEmbarque" layout="BoxLayout" boxLayoutAxis="Y" title="Control de Embarque Granel" >
+  <component type="Tabs" name="Tabs" cloudDestinationProperty="Tabs" >
+    <custom name="titles" type="java.lang.String" array="true" dimensions="1" >
+      <str>Buscar</str>
+      <str>Datos1</str>
+      <str>Tab</str>
+      <str>Tab</str>
+    </custom>
+    <component type="Container" name="Container" tabTitle="Buscar" cloudDestinationProperty="Container" layout="BoxLayout" boxLayoutAxis="Y" >
+      <component type="Container" name="ContainerBusqueda" cloudDestinationProperty="ContainerBusqueda" flatten="true" >
+        <component type="TextField" name="contenedorNum" cloudBoundProperty="text" cloudDestinationProperty="TextField" text="" hint="N&#xfa;mero de contenedor" >
+        </component>
+        <component type="Button" name="buscar" cloudDestinationProperty="buscar" text="Buscar" >
+        </component>
+      </component>
+    </component>
+    <component type="Container" name="Container1" tabTitle="Datos1" cloudDestinationProperty="Container1" layout="BoxLayout" boxLayoutAxis="Y" >
+    </component>
+    <component type="Container" name="Container2" tabTitle="Tab" cloudDestinationProperty="Container2" layout="BoxLayout" boxLayoutAxis="Y" >
+    </component>
+    <component type="Container" name="Container3" tabTitle="Tab" cloudDestinationProperty="Container3" layout="BoxLayout" boxLayoutAxis="Y" >
+    </component>
+  </component>
+</component>

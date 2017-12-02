@@ -3,9 +3,9 @@
 <component type="Form" name="Main" cloudDestinationProperty="Main" layout="BoxLayout" boxLayoutAxis="Y" title="SGS - Men&#xfa;" >
   <component type="Button" name="BotonInspeccion" cloudDestinationProperty="Inpeccion" commandName="Inspecci&#xf3;n de contenedores" commandId="1" commandAction="Inspeccion" commandBack="false" text="Inspecci&#xf3;n de contenedores" >
   </component>
-  <component type="Button" name="BotonDatos" cloudDestinationProperty="Datos" text="Datos del Contenedor" >
+  <component type="Button" name="BotonControlEmbarque" cloudDestinationProperty="ControlEmbarque" commandName="Control de Embarque Granel" commandId="3" commandAction="ControlEmbarque1" commandBack="false" text="Control de Embarque Granel" >
   </component>
-  <component type="Button" name="BotonControlEmbarque" cloudDestinationProperty="ControlEmbarque" text="Control de Embarque Granel" >
+  <component type="Button" name="BotonDatos" cloudDestinationProperty="Datos" text="Datos del Contenedor" >
   </component>
   <component type="Button" name="BotonConfiguracion" cloudDestinationProperty="Configuracion" commandName="Configuraci&#xf3;n" commandId="2" commandAction="Configuracion" commandBack="false" text="Configuraci&#xf3;n" >
   </component>

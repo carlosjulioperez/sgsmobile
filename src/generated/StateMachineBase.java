@@ -43,6 +43,7 @@ public abstract class StateMachineBase extends UIBuilder {
         UIBuilder.registerCustomComponent("Label", com.codename1.ui.Label.class);
         UIBuilder.registerCustomComponent("TextField", com.codename1.ui.TextField.class);
         UIBuilder.registerCustomComponent("Tabs", com.codename1.ui.Tabs.class);
+        UIBuilder.registerCustomComponent("MultiButton", com.codename1.components.MultiButton.class);
         if(loadTheme) {
             if(res == null) {
                 try {
@@ -87,6 +88,7 @@ public abstract class StateMachineBase extends UIBuilder {
         UIBuilder.registerCustomComponent("Label", com.codename1.ui.Label.class);
         UIBuilder.registerCustomComponent("TextField", com.codename1.ui.TextField.class);
         UIBuilder.registerCustomComponent("Tabs", com.codename1.ui.Tabs.class);
+        UIBuilder.registerCustomComponent("MultiButton", com.codename1.components.MultiButton.class);
         if(loadTheme) {
             if(res == null) {
                 try {
@@ -424,6 +426,18 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
+    public com.codename1.ui.Button findBuscar(Component root) {
+        return (com.codename1.ui.Button)findByName("buscar", root);
+    }
+
+    public com.codename1.ui.Button findBuscar() {
+        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("buscar", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Button)findByName("buscar", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
     public com.codename1.ui.TextArea findObservaciones(Component root) {
         return (com.codename1.ui.TextArea)findByName("observaciones", root);
     }
@@ -556,6 +570,18 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
+    public com.codename1.ui.Container findContainerBusqueda(Component root) {
+        return (com.codename1.ui.Container)findByName("ContainerBusqueda", root);
+    }
+
+    public com.codename1.ui.Container findContainerBusqueda() {
+        com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("ContainerBusqueda", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Container)findByName("ContainerBusqueda", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
     public com.codename1.ui.TextField findDestino(Component root) {
         return (com.codename1.ui.TextField)findByName("destino", root);
     }
@@ -564,6 +590,18 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("destino", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.TextField)findByName("destino", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.components.MultiButton findMultiButton(Component root) {
+        return (com.codename1.components.MultiButton)findByName("MultiButton", root);
+    }
+
+    public com.codename1.components.MultiButton findMultiButton() {
+        com.codename1.components.MultiButton cmp = (com.codename1.components.MultiButton)findByName("MultiButton", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.components.MultiButton)findByName("MultiButton", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -714,12 +752,17 @@ public abstract class StateMachineBase extends UIBuilder {
 
     public static final int COMMAND_MainConfiguraciN = 2;
     public static final int COMMAND_MainInspecciNDeContenedores = 1;
+    public static final int COMMAND_MainControlDeEmbarqueGranel = 3;
 
     protected boolean onMainConfiguraciN() {
         return false;
     }
 
     protected boolean onMainInspecciNDeContenedores() {
+        return false;
+    }
+
+    protected boolean onMainControlDeEmbarqueGranel() {
         return false;
     }
 
@@ -739,6 +782,13 @@ public abstract class StateMachineBase extends UIBuilder {
                 }
                 break;
 
+            case COMMAND_MainControlDeEmbarqueGranel:
+                if(onMainControlDeEmbarqueGranel()) {
+                    ev.consume();
+                    return;
+                }
+                break;
+
         }
         if(ev.getComponent() != null) {
             handleComponentAction(ev.getComponent(), ev);
@@ -746,6 +796,12 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
     protected void exitForm(Form f) {
+        if("ControlEmbarque1".equals(f.getName())) {
+            exitControlEmbarque1(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("Configuracion".equals(f.getName())) {
             exitConfiguracion(f);
             aboutToShowThisContainer = null;
@@ -768,6 +824,10 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void exitControlEmbarque1(Form f) {
+    }
+
+
     protected void exitConfiguracion(Form f) {
     }
 
@@ -781,6 +841,12 @@ public abstract class StateMachineBase extends UIBuilder {
 
     protected void beforeShow(Form f) {
     aboutToShowThisContainer = f;
+        if("ControlEmbarque1".equals(f.getName())) {
+            beforeControlEmbarque1(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("Configuracion".equals(f.getName())) {
             beforeConfiguracion(f);
             aboutToShowThisContainer = null;
@@ -803,6 +869,10 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void beforeControlEmbarque1(Form f) {
+    }
+
+
     protected void beforeConfiguracion(Form f) {
     }
 
@@ -816,6 +886,12 @@ public abstract class StateMachineBase extends UIBuilder {
 
     protected void beforeShowContainer(Container c) {
         aboutToShowThisContainer = c;
+        if("ControlEmbarque1".equals(c.getName())) {
+            beforeContainerControlEmbarque1(c);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("Configuracion".equals(c.getName())) {
             beforeContainerConfiguracion(c);
             aboutToShowThisContainer = null;
@@ -838,6 +914,10 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void beforeContainerControlEmbarque1(Container c) {
+    }
+
+
     protected void beforeContainerConfiguracion(Container c) {
     }
 
@@ -850,6 +930,12 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
     protected void postShow(Form f) {
+        if("ControlEmbarque1".equals(f.getName())) {
+            postControlEmbarque1(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("Configuracion".equals(f.getName())) {
             postConfiguracion(f);
             aboutToShowThisContainer = null;
@@ -872,6 +958,10 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void postControlEmbarque1(Form f) {
+    }
+
+
     protected void postConfiguracion(Form f) {
     }
 
@@ -884,6 +974,12 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
     protected void postShowContainer(Container c) {
+        if("ControlEmbarque1".equals(c.getName())) {
+            postContainerControlEmbarque1(c);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("Configuracion".equals(c.getName())) {
             postContainerConfiguracion(c);
             aboutToShowThisContainer = null;
@@ -906,6 +1002,10 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void postContainerControlEmbarque1(Container c) {
+    }
+
+
     protected void postContainerConfiguracion(Container c) {
     }
 
@@ -918,6 +1018,12 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
     protected void onCreateRoot(String rootName) {
+        if("ControlEmbarque1".equals(rootName)) {
+            onCreateControlEmbarque1();
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("Configuracion".equals(rootName)) {
             onCreateConfiguracion();
             aboutToShowThisContainer = null;
@@ -940,6 +1046,10 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void onCreateControlEmbarque1() {
+    }
+
+
     protected void onCreateConfiguracion() {
     }
 
@@ -953,6 +1063,12 @@ public abstract class StateMachineBase extends UIBuilder {
 
     protected Hashtable getFormState(Form f) {
         Hashtable h = super.getFormState(f);
+        if("ControlEmbarque1".equals(f.getName())) {
+            getStateControlEmbarque1(f, h);
+            aboutToShowThisContainer = null;
+            return h;
+        }
+
         if("Configuracion".equals(f.getName())) {
             getStateConfiguracion(f, h);
             aboutToShowThisContainer = null;
@@ -975,6 +1091,10 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void getStateControlEmbarque1(Form f, Hashtable h) {
+    }
+
+
     protected void getStateConfiguracion(Form f, Hashtable h) {
     }
 
@@ -988,6 +1108,12 @@ public abstract class StateMachineBase extends UIBuilder {
 
     protected void setFormState(Form f, Hashtable state) {
         super.setFormState(f, state);
+        if("ControlEmbarque1".equals(f.getName())) {
+            setStateControlEmbarque1(f, state);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("Configuracion".equals(f.getName())) {
             setStateConfiguracion(f, state);
             aboutToShowThisContainer = null;
@@ -1007,6 +1133,10 @@ public abstract class StateMachineBase extends UIBuilder {
         }
 
             return;
+    }
+
+
+    protected void setStateControlEmbarque1(Form f, Hashtable state) {
     }
 
 
@@ -1030,6 +1160,20 @@ public abstract class StateMachineBase extends UIBuilder {
             c = c.getParent().getLeadParent();
         }
         if(rootContainerName == null) return;
+        if(rootContainerName.equals("ControlEmbarque1")) {
+            if("contenedorNum".equals(c.getName())) {
+                onControlEmbarque1_ContenedorNumAction(c, event);
+                return;
+            }
+            if("buscar".equals(c.getName())) {
+                onControlEmbarque1_BuscarAction(c, event);
+                return;
+            }
+            if("MultiButton".equals(c.getName())) {
+                onControlEmbarque1_MultiButtonAction(c, event);
+                return;
+            }
+        }
         if(rootContainerName.equals("Configuracion")) {
             if("servidor".equals(c.getName())) {
                 onConfiguracion_ServidorAction(c, event);
@@ -1159,12 +1303,12 @@ public abstract class StateMachineBase extends UIBuilder {
                 onMain_BotonInspeccionAction(c, event);
                 return;
             }
-            if("BotonDatos".equals(c.getName())) {
-                onMain_BotonDatosAction(c, event);
-                return;
-            }
             if("BotonControlEmbarque".equals(c.getName())) {
                 onMain_BotonControlEmbarqueAction(c, event);
+                return;
+            }
+            if("BotonDatos".equals(c.getName())) {
+                onMain_BotonDatosAction(c, event);
                 return;
             }
             if("BotonConfiguracion".equals(c.getName())) {
@@ -1173,6 +1317,15 @@ public abstract class StateMachineBase extends UIBuilder {
             }
         }
     }
+
+      protected void onControlEmbarque1_ContenedorNumAction(Component c, ActionEvent event) {
+      }
+
+      protected void onControlEmbarque1_BuscarAction(Component c, ActionEvent event) {
+      }
+
+      protected void onControlEmbarque1_MultiButtonAction(Component c, ActionEvent event) {
+      }
 
       protected void onConfiguracion_ServidorAction(Component c, ActionEvent event) {
       }
@@ -1267,10 +1420,10 @@ public abstract class StateMachineBase extends UIBuilder {
       protected void onMain_BotonInspeccionAction(Component c, ActionEvent event) {
       }
 
-      protected void onMain_BotonDatosAction(Component c, ActionEvent event) {
+      protected void onMain_BotonControlEmbarqueAction(Component c, ActionEvent event) {
       }
 
-      protected void onMain_BotonControlEmbarqueAction(Component c, ActionEvent event) {
+      protected void onMain_BotonDatosAction(Component c, ActionEvent event) {
       }
 
       protected void onMain_BotonConfiguracionAction(Component c, ActionEvent event) {

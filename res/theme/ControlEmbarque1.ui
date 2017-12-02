@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="ControlEmbarque1" cloudDestinationProperty="ControlEmbarque1" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="Control de Embarque Granel" >
+  <component type="Container" name="ContainerBusqueda" cloudDestinationProperty="ContainerBusqueda" flatten="true" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
+    <layoutConstraint value="North" />
+    <component type="TextField" name="contenedorNum" cloudBoundProperty="text" cloudDestinationProperty="TextField" text="" hint="N&#xfa;mero de contenedor" >
+      <layoutConstraint value="Center" />
+    </component>
+    <component type="Button" name="buscar" cloudDestinationProperty="buscar" text="Buscar" >
+      <layoutConstraint value="East" />
+    </component>
+  </component>
+  <component type="Container" name="Container" cloudDestinationProperty="Container" scrollableY="true" layout="BoxLayout" boxLayoutAxis="Y" >
+    <layoutConstraint value="Center" />
+    <component type="MultiButton" name="MultiButton" cloudDestinationProperty="MultiButton" >
+      <custom name="line1" type="java.lang.String" value="MNBU3435016" />
+      <custom name="line2" type="java.lang.String" value="2016-08-24 ESTAR ESPA&#xd1;A" />
+      <custom name="line3" type="java.lang.String" value="" />
+      <custom name="line4" type="java.lang.String" value="" />
+      <custom name="name3" type="java.lang.String" value="" />
+      <custom name="name4" type="java.lang.String" value="" />
+    </component>
+  </component>
+</component>
