@@ -3,7 +3,14 @@
 <component type="Form" name="ControlEmbarque1" cloudDestinationProperty="ControlEmbarque1" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="Control de Embarque Granel" >
   <component type="Container" name="ContainerBusqueda" cloudDestinationProperty="ContainerBusqueda" flatten="true" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
     <layoutConstraint value="North" />
-    <component type="TextField" name="contenedorNum" cloudBoundProperty="text" cloudDestinationProperty="TextField" text="" hint="N&#xfa;mero de contenedor" >
+    <component type="Container" name="Container1" cloudDestinationProperty="Container1" layout="BoxLayout" boxLayoutAxis="X" >
+      <layoutConstraint value="North" />
+      <component type="RadioButton" name="contenedorRad" cloudDestinationProperty="contenedor" text="Conenedor" group="campo" selected="true" >
+      </component>
+      <component type="RadioButton" name="clienteRad" cloudDestinationProperty="cliente" text="Cliente" group="campo" >
+      </component>
+    </component>
+    <component type="TextField" name="valor" cloudBoundProperty="text" cloudDestinationProperty="TextField" text="" hint="Ingrese un valor a buscar..." >
       <layoutConstraint value="Center" />
     </component>
     <component type="Button" name="buscar" cloudDestinationProperty="buscar" text="Buscar" >

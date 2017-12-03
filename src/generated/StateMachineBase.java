@@ -43,6 +43,7 @@ public abstract class StateMachineBase extends UIBuilder {
         UIBuilder.registerCustomComponent("Label", com.codename1.ui.Label.class);
         UIBuilder.registerCustomComponent("TextField", com.codename1.ui.TextField.class);
         UIBuilder.registerCustomComponent("Tabs", com.codename1.ui.Tabs.class);
+        UIBuilder.registerCustomComponent("RadioButton", com.codename1.ui.RadioButton.class);
         UIBuilder.registerCustomComponent("MultiButton", com.codename1.components.MultiButton.class);
         if(loadTheme) {
             if(res == null) {
@@ -88,6 +89,7 @@ public abstract class StateMachineBase extends UIBuilder {
         UIBuilder.registerCustomComponent("Label", com.codename1.ui.Label.class);
         UIBuilder.registerCustomComponent("TextField", com.codename1.ui.TextField.class);
         UIBuilder.registerCustomComponent("Tabs", com.codename1.ui.Tabs.class);
+        UIBuilder.registerCustomComponent("RadioButton", com.codename1.ui.RadioButton.class);
         UIBuilder.registerCustomComponent("MultiButton", com.codename1.components.MultiButton.class);
         if(loadTheme) {
             if(res == null) {
@@ -134,6 +136,18 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.ComponentGroup cmp = (com.codename1.ui.ComponentGroup)findByName("ComponentGroup", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.ComponentGroup)findByName("ComponentGroup", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.RadioButton findClienteRad(Component root) {
+        return (com.codename1.ui.RadioButton)findByName("clienteRad", root);
+    }
+
+    public com.codename1.ui.RadioButton findClienteRad() {
+        com.codename1.ui.RadioButton cmp = (com.codename1.ui.RadioButton)findByName("clienteRad", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.RadioButton)findByName("clienteRad", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -702,6 +716,18 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
+    public com.codename1.ui.TextField findValor(Component root) {
+        return (com.codename1.ui.TextField)findByName("valor", root);
+    }
+
+    public com.codename1.ui.TextField findValor() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("valor", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextField)findByName("valor", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
     public com.codename1.ui.Label findLabel1(Component root) {
         return (com.codename1.ui.Label)findByName("Label1", root);
     }
@@ -734,6 +760,18 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("ladosExternosDerecha", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.CheckBox)findByName("ladosExternosDerecha", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.RadioButton findContenedorRad(Component root) {
+        return (com.codename1.ui.RadioButton)findByName("contenedorRad", root);
+    }
+
+    public com.codename1.ui.RadioButton findContenedorRad() {
+        com.codename1.ui.RadioButton cmp = (com.codename1.ui.RadioButton)findByName("contenedorRad", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.RadioButton)findByName("contenedorRad", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -1161,8 +1199,16 @@ public abstract class StateMachineBase extends UIBuilder {
         }
         if(rootContainerName == null) return;
         if(rootContainerName.equals("ControlEmbarque1")) {
-            if("contenedorNum".equals(c.getName())) {
-                onControlEmbarque1_ContenedorNumAction(c, event);
+            if("contenedorRad".equals(c.getName())) {
+                onControlEmbarque1_ContenedorRadAction(c, event);
+                return;
+            }
+            if("clienteRad".equals(c.getName())) {
+                onControlEmbarque1_ClienteRadAction(c, event);
+                return;
+            }
+            if("valor".equals(c.getName())) {
+                onControlEmbarque1_ValorAction(c, event);
                 return;
             }
             if("buscar".equals(c.getName())) {
@@ -1318,7 +1364,13 @@ public abstract class StateMachineBase extends UIBuilder {
         }
     }
 
-      protected void onControlEmbarque1_ContenedorNumAction(Component c, ActionEvent event) {
+      protected void onControlEmbarque1_ContenedorRadAction(Component c, ActionEvent event) {
+      }
+
+      protected void onControlEmbarque1_ClienteRadAction(Component c, ActionEvent event) {
+      }
+
+      protected void onControlEmbarque1_ValorAction(Component c, ActionEvent event) {
       }
 
       protected void onControlEmbarque1_BuscarAction(Component c, ActionEvent event) {

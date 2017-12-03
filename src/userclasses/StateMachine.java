@@ -36,7 +36,9 @@ public class StateMachine extends StateMachineBase {
     
     private final L10NManager lnm = L10NManager.getInstance();
     private Storage storage;
+    
     private String inspeccionService;
+
     private String secuencial;
     private String codigoInspector="";
     
@@ -74,6 +76,11 @@ public class StateMachine extends StateMachineBase {
     CheckBox chasisEstado;
 
     TextArea observaciones;
+    
+    //Controles de ControlEmbarque1
+    RadioButton contenedorRad;
+    RadioButton clienteRad;
+    TextField   valor;
     
     public StateMachine(String resFile) {
         super(resFile);
@@ -267,6 +274,60 @@ public class StateMachine extends StateMachineBase {
         }
         showForm("Main", null);
         
+    }
+
+    @Override
+    protected void beforeControlEmbarque1(Form f) {
+        contenedorRad = findContenedorRad();
+        clienteRad = findClienteRad();
+        valor = findValor();
+    }
+
+    @Override
+    protected void onControlEmbarque1_BuscarAction(Component c, ActionEvent event) {
+        String campo = contenedorRad.isSelected() ? "contenedor": "cliente";
+        //System.out.println(campo);
+        
+        JSONParser parser = new JSONParser();
+
+        // override, by default this method writes NVPs.
+        ConnectionRequest request;
+        request = new ConnectionRequest() {
+            
+            //Map result;
+            Map<String,Object> result;
+            protected void readResponse(InputStream inputStream) throws IOException  {
+                result = parser.parseJSON(new InputStreamReader(inputStream, "UTF-8"));
+                 
+                java.util.List<Map<String, Object>> content = (java.util.List<Map<String, Object>>)result.get("root");
+                for ( Map<String, Object> obj : content) {
+                    String id = (String) obj.get("id");
+                    String contenedor = (String) obj.get("contenedor");
+                    String cliente = (String) obj.get("cliente");
+                    String fecha = (String) obj.get("fecha");
+                    
+                }
+            }
+            protected void postResponse() {
+                // response completed, this is called on the EDT do the application logic here...S
+            }
+        };
+        request.setUrl(inspeccionService + "list/"+campo+"/"+valor.getText());
+        request.setPost(true);
+        request.setContentType("application/json");
+        
+        InfiniteProgress infiniteProgress = new InfiniteProgress();
+        Dialog dialog = infiniteProgress.showInifiniteBlocking();
+        request.setDisposeOnCompletion(dialog);
+        
+        //NetworkManager.getInstance().addToQueue(request);
+        NetworkManager.getInstance().addToQueueAndWait(request);
+        
+        if (request.getResponseCode()==200 ){
+            //Dialog.show ("Inspecciones", "Secuencial generado: " + secuencial, "OK", null);
+        }
+        showForm("Main", null);
+
     }
 
 }
