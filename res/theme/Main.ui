@@ -5,7 +5,7 @@
   </component>
   <component type="Button" name="BotonControlEmbarque" cloudDestinationProperty="ControlEmbarque" commandName="Control de Embarque Granel" commandId="3" commandAction="ControlEmbarque1" commandBack="false" text="Control de Embarque Granel" >
   </component>
-  <component type="Button" name="BotonDatos" cloudDestinationProperty="Datos" text="Datos del Contenedor" >
+  <component type="Button" name="BotonDatos" cloudDestinationProperty="Datos" commandName="Datos del Contenedor" commandId="4" commandAction="" commandBack="false" text="Datos del Contenedor" >
   </component>
   <component type="Button" name="BotonConfiguracion" cloudDestinationProperty="Configuracion" commandName="Configuraci&#xf3;n" commandId="2" commandAction="Configuracion" commandBack="false" text="Configuraci&#xf3;n" >
   </component>

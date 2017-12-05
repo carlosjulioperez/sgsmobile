@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="ControlEmbarque2" cloudDestinationProperty="ControlEmbarque2" layout="BoxLayout" boxLayoutAxis="Y" title="Control del Embarque Granel" >
+  <component type="Tabs" name="Tabs" cloudDestinationProperty="Tabs" >
+    <custom name="titles" type="java.lang.String" array="true" dimensions="1" >
+      <str>Inspecci&#xf3;n</str>
+      <str>Datos</str>
+      <str>Productos</str>
+    </custom>
+    <component type="Container" name="Container" tabTitle="Inspecci&#xf3;n" cloudDestinationProperty="Container" layout="BoxLayout" boxLayoutAxis="Y" >
+      <component type="Table" name="infoCE" cloudDestinationProperty="infoCE" >
+      </component>
+    </component>
+    <component type="Container" name="Container1" tabTitle="Datos" cloudDestinationProperty="Container1" layout="BoxLayout" boxLayoutAxis="Y" >
+      <component type="ComponentGroup" name="ComponentGroup" cloudDestinationProperty="ComponentGroup" >
+        <component type="TextField" name="oinCE" cloudBoundProperty="text" cloudDestinationProperty="oinCE" text="" hint="O.I. N&#xfa;mero" columns="50" >
+        </component>
+        <component type="TextField" name="consignatarioCE" cloudBoundProperty="text" cloudDestinationProperty="consignatarioCE" text="" hint="Consignatario" columns="50" >
+        </component>
+        <component type="TextField" name="cantidadCajasCE" cloudBoundProperty="text" cloudDestinationProperty="cantidadCajasCE" text="" hint="Cantidad Cajas" >
+        </component>
+        <component type="TextField" name="selloSGSCE" cloudBoundProperty="text" cloudDestinationProperty="selloSGSCE" text="" hint="Sello SGS" >
+        </component>
+        <component type="TextField" name="selloAgenciaCE" cloudBoundProperty="text" cloudDestinationProperty="selloAgenciaCE" text="" hint="Sello Agencia" >
+        </component>
+        <component type="TextField" name="selloExportadorCE" cloudBoundProperty="text" cloudDestinationProperty="selloExportadorCE" text="" hint="Sello Exportador" >
+        </component>
+        <component type="TextField" name="selloOtrosCE" cloudBoundProperty="text" cloudDestinationProperty="selloOtrosCE" text="" hint="Otros Sellos" >
+        </component>
+        <component type="TextField" name="numeoRyanCE" cloudBoundProperty="text" cloudDestinationProperty="numeoRyanCE" text="" hint="N&#xfa;mero Ryan" >
+        </component>
+        <component type="TextField" name="numeroSelloRyanCE" cloudBoundProperty="text" cloudDestinationProperty="numeroSelloRyanCE" text="" hint="N&#xfa;mero Sello Ryan" >
+        </component>
+        <component type="TextField" name="embalajeCE" cloudBoundProperty="text" cloudDestinationProperty="embalajeCE" text="" hint="Embalaje" >
+        </component>
+      </component>
+    </component>
+    <component type="Container" name="Container2" tabTitle="Productos" cloudDestinationProperty="Container2" snapToGrid="false" flatten="true" layout="BoxLayout" boxLayoutAxis="Y" >
+      <component type="Button" name="Button" cloudDestinationProperty="Button" text="Nuevo Producto" >
+      </component>
+      <component type="Container" name="Container3" cloudDestinationProperty="Container3" layout="BoxLayout" boxLayoutAxis="Y" >
+      </component>
+    </component>
+  </component>
+</component>

@@ -37,6 +37,7 @@
     <image name="ComboBox.sel#borderTopR_1.png" type="multi"  />
     <ui name="Configuracion" />
     <ui name="ControlEmbarque1" />
+    <ui name="ControlEmbarque2" />
     <image name="Dialog.borderBottom_1.png" type="multi"  />
     <image name="Dialog.borderBottomL_1.png" type="multi"  />
     <image name="Dialog.borderBottomR_1.png" type="multi"  />
@@ -71,6 +72,7 @@
     <image name="OKGR.borderTopR_1.png" type="multi"  />
     <image name="paredFrontalInterna.png"  />
     <image name="piso.png"  />
+    <ui name="Producto1" />
     <image name="puertas.png"  />
     <image name="round.png" type="multi"  />
     <image name="sliderBlueCenter.png" type="multi"  />

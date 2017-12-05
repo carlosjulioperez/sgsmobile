@@ -8,6 +8,7 @@
 package userclasses;
 
 import com.codename1.components.InfiniteProgress;
+import com.codename1.components.MultiButton;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkManager;
@@ -18,6 +19,9 @@ import com.codename1.processing.Result;
 import com.codename1.ui.*; 
 import com.codename1.ui.events.*;
 import com.codename1.ui.spinner.DateSpinner;
+import com.codename1.ui.table.DefaultTableModel;
+import com.codename1.ui.table.Table;
+import com.codename1.ui.table.TableModel;
 import com.codename1.ui.util.Resources;
 import ec.sgs.mobile.cn1.Configuracion;
 import generated.StateMachineBase;
@@ -26,6 +30,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.Hashtable;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -81,6 +86,12 @@ public class StateMachine extends StateMachineBase {
     RadioButton contenedorRad;
     RadioButton clienteRad;
     TextField   valor;
+    Container   listaContenedoresCnt;
+    
+    //Controles de ControlEmbarque2
+    Table       infoCE;
+    String      inspeccionItemId;
+    Map         inspeccionItem;
     
     public StateMachine(String resFile) {
         super(resFile);
@@ -273,7 +284,6 @@ public class StateMachine extends StateMachineBase {
             Dialog.show ("Inspecciones", "Secuencial generado: " + secuencial, "OK", null);
         }
         showForm("Main", null);
-        
     }
 
     @Override
@@ -281,6 +291,8 @@ public class StateMachine extends StateMachineBase {
         contenedorRad = findContenedorRad();
         clienteRad = findClienteRad();
         valor = findValor();
+        listaContenedoresCnt = findListaContenedoresCnt();
+        inspeccionItemId = "";
     }
 
     @Override
@@ -298,14 +310,29 @@ public class StateMachine extends StateMachineBase {
             Map<String,Object> result;
             protected void readResponse(InputStream inputStream) throws IOException  {
                 result = parser.parseJSON(new InputStreamReader(inputStream, "UTF-8"));
-                 
+                
+                listaContenedoresCnt.removeAll();
+                //Limpiamos el container
                 java.util.List<Map<String, Object>> content = (java.util.List<Map<String, Object>>)result.get("root");
                 for ( Map<String, Object> obj : content) {
+
                     String id = (String) obj.get("id");
                     String contenedor = (String) obj.get("contenedor");
                     String cliente = (String) obj.get("cliente");
                     String fecha = (String) obj.get("fecha");
                     
+                    MultiButton mb = new MultiButton(contenedor);
+                    mb.setTextLine2(id+" "+fecha+" "+cliente);
+                    mb.setUIID(id);
+                    mb.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent ev) {
+                            //System.out.println( mb.getUIID() );
+                            inspeccionItemId = mb.getUIID();
+                            showForm("ControlEmbarque2", null);
+                        }
+                    });
+                    
+                    listaContenedoresCnt.add(mb);
                 }
             }
             protected void postResponse() {
@@ -320,14 +347,55 @@ public class StateMachine extends StateMachineBase {
         Dialog dialog = infiniteProgress.showInifiniteBlocking();
         request.setDisposeOnCompletion(dialog);
         
-        //NetworkManager.getInstance().addToQueue(request);
         NetworkManager.getInstance().addToQueueAndWait(request);
         
-        if (request.getResponseCode()==200 ){
-            //Dialog.show ("Inspecciones", "Secuencial generado: " + secuencial, "OK", null);
-        }
-        showForm("Main", null);
-
     }
 
+    private void leerDatosInspeccion(){
+        JSONParser parser = new JSONParser();
+
+        ConnectionRequest request;
+        request = new ConnectionRequest() {
+            
+            Map result;
+            protected void readResponse(InputStream inputStream) throws IOException  {
+                result = parser.parseJSON(new InputStreamReader(inputStream, "UTF-8"));
+            }
+            protected void postResponse() {
+                //Almacener el mapa para mostrar la tabla.
+                inspeccionItem = result;
+            }
+        };
+        request.setUrl(inspeccionService + "get/"+inspeccionItemId);
+        request.setPost(true);
+        request.setContentType("application/json");
+        
+        InfiniteProgress infiniteProgress = new InfiniteProgress();
+        Dialog dialog = infiniteProgress.showInifiniteBlocking();
+        request.setDisposeOnCompletion(dialog);
+        
+        NetworkManager.getInstance().addToQueueAndWait(request);    
+    }
+    
+    @Override
+    protected void beforeControlEmbarque2(Form f) {
+        
+        leerDatosInspeccion();
+        infoCE = findInfoCE();
+        
+        String[][] valores = new String[][] {
+            {"ID"         , (String)inspeccionItem.get("id")},
+            {"CONTENEDOR" , (String)inspeccionItem.get("contenedor")},
+            {"CLIENTE"    , (String)inspeccionItem.get("cliente")},
+            {"FECHA"      , (String)inspeccionItem.get("fecha")},
+            {"AGENCIA"    , (String)inspeccionItem.get("agencia")},
+            {"VAPOR"      , (String)inspeccionItem.get("vapor")},
+            {"DESTINO"    , (String)inspeccionItem.get("destino")},
+            {"FACTURA"    , (String)inspeccionItem.get("factura")}
+        };
+   
+        TableModel model = new DefaultTableModel(new String[]{"Campo", "Valor"}, valores);
+        infoCE.setModel(model);
+
+    }
 }
