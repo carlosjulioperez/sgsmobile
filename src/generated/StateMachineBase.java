@@ -1831,16 +1831,16 @@ public abstract class StateMachineBase extends UIBuilder {
                 onProducto1_TipoProductoP1Action(c, event);
                 return;
             }
+            if("agregarP1".equals(c.getName())) {
+                onProducto1_AgregarP1Action(c, event);
+                return;
+            }
             if("agregarClasificacion".equals(c.getName())) {
                 onProducto1_AgregarClasificacionAction(c, event);
                 return;
             }
             if("CheckBox".equals(c.getName())) {
                 onProducto1_CheckBoxAction(c, event);
-                return;
-            }
-            if("agregarP1".equals(c.getName())) {
-                onProducto1_AgregarP1Action(c, event);
                 return;
             }
         }
@@ -2014,13 +2014,13 @@ public abstract class StateMachineBase extends UIBuilder {
       protected void onProducto1_TipoProductoP1Action(Component c, ActionEvent event) {
       }
 
+      protected void onProducto1_AgregarP1Action(Component c, ActionEvent event) {
+      }
+
       protected void onProducto1_AgregarClasificacionAction(Component c, ActionEvent event) {
       }
 
       protected void onProducto1_CheckBoxAction(Component c, ActionEvent event) {
-      }
-
-      protected void onProducto1_AgregarP1Action(Component c, ActionEvent event) {
       }
 
       protected void onMain_BotonInspeccionAction(Component c, ActionEvent event) {
