@@ -38,7 +38,7 @@
     <component type="Container" name="Container2" tabTitle="Productos" cloudDestinationProperty="Container2" snapToGrid="false" flatten="true" layout="BoxLayout" boxLayoutAxis="Y" >
       <component type="Button" name="Button" cloudDestinationProperty="Button" text="Nuevo Producto" >
       </component>
-      <component type="Container" name="Container3" cloudDestinationProperty="Container3" layout="BoxLayout" boxLayoutAxis="Y" >
+      <component type="Container" name="productosContainerCE" cloudDestinationProperty="Container3" layout="BoxLayout" boxLayoutAxis="Y" >
       </component>
     </component>
   </component>

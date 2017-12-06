@@ -30,7 +30,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.Hashtable;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -92,6 +91,14 @@ public class StateMachine extends StateMachineBase {
     Table       infoCE;
     String      inspeccionItemId;
     Map         inspeccionItem;
+    Container   productosContainerCE;
+    
+    //Controles de Produucto1
+    TextField   marcaP1;
+    TextField   descripcionPesosP1;
+    TextField   presentacionP1;
+    TextField   empaqueP1;
+    TextField   tipoProductoP1;
     
     public StateMachine(String resFile) {
         super(resFile);
@@ -381,7 +388,8 @@ public class StateMachine extends StateMachineBase {
     protected void beforeControlEmbarque2(Form f) {
         
         leerDatosInspeccion();
-        infoCE = findInfoCE();
+        infoCE                  = findInfoCE();
+        productosContainerCE    = findProductosContainerCE();
         
         String[][] valores = new String[][] {
             {"ID"         , (String)inspeccionItem.get("id")},
@@ -398,4 +406,25 @@ public class StateMachine extends StateMachineBase {
         infoCE.setModel(model);
 
     }
+
+    @Override
+    protected void onControlEmbarque2_ButtonAction(Component c, ActionEvent event) {
+        showForm("Producto1", null);
+    }
+
+    @Override
+    protected void beforeProducto1(Form f) {
+        marcaP1             = new TextField();
+        descripcionPesosP1  = new TextField();
+        presentacionP1      = new TextField();
+        empaqueP1           = new TextField();
+        tipoProductoP1      = new TextField();
+    }
+
+    @Override
+    protected void onProducto1_AgregarP1Action(Component c, ActionEvent event) {
+
+    
+    }
+
 }

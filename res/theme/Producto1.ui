@@ -1,16 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<component type="Form" name="Producto1" cloudDestinationProperty="Producto1" layout="BoxLayout" boxLayoutAxis="Y" title="Nuevo Producto" >
+<component type="Form" name="Producto1" cloudDestinationProperty="Producto1" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="Nuevo Producto" >
   <component type="ComponentGroup" name="ComponentGroup" cloudDestinationProperty="ComponentGroup" >
-    <component type="TextField" name="marca" cloudBoundProperty="text" cloudDestinationProperty="marca" text="" hint="Marca" columns="50" >
+    <layoutConstraint value="North" />
+    <component type="TextField" name="marcaP1" cloudBoundProperty="text" cloudDestinationProperty="marca" text="" hint="Marca" columns="50" >
     </component>
-    <component type="TextField" name="descripcionPesos" cloudBoundProperty="text" cloudDestinationProperty="descripcionPesos" text="" hint="Descripci&#xf3;n Pesos" columns="50" >
+    <component type="TextField" name="descripcionPesosP1" cloudBoundProperty="text" cloudDestinationProperty="descripcionPesos" text="" hint="Descripci&#xf3;n Pesos" columns="50" >
     </component>
-    <component type="TextField" name="presentacion" cloudBoundProperty="text" cloudDestinationProperty="presentacion" text="" hint="Presentaci&#xf3;n" columns="50" >
+    <component type="TextField" name="presentacionP1" cloudBoundProperty="text" cloudDestinationProperty="presentacion" text="" hint="Presentaci&#xf3;n" columns="50" >
     </component>
-    <component type="TextField" name="empaque" cloudBoundProperty="text" cloudDestinationProperty="empaque" text="" hint="Empaque" columns="50" >
+    <component type="TextField" name="empaqueP1" cloudBoundProperty="text" cloudDestinationProperty="empaque" text="" hint="Empaque" columns="50" >
     </component>
-    <component type="TextField" name="tipoProducto" cloudBoundProperty="text" cloudDestinationProperty="tipoProducto" text="" hint="Tipo Producto" columns="50" >
+    <component type="TextField" name="tipoProductoP1" cloudBoundProperty="text" cloudDestinationProperty="tipoProducto" text="" hint="Tipo Producto" columns="50" >
     </component>
+  </component>
+  <component type="Container" name="Container" cloudDestinationProperty="Container" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
+    <layoutConstraint value="Center" />
+    <component type="Container" name="Container1" cloudDestinationProperty="Container1" layout="TableLayout" tableLayoutRows="1" tableLayoutColumns="2" >
+      <layoutConstraint value="North" />
+      <component type="Button" name="agregarClasificacion" cloudDestinationProperty="agregarClasificaci&#xf3;n" text="Agregar Clasificaci&#xf2;n" >
+      </component>
+      <component type="CheckBox" name="CheckBox" cloudDestinationProperty="CheckBox" text="CheckBox" >
+      </component>
+    </component>
+    <component type="Container" name="Container2" cloudDestinationProperty="Container2" layout="BoxLayout" boxLayoutAxis="Y" >
+      <layoutConstraint value="Center" />
+    </component>
+  </component>
+  <component type="Button" name="agregarP1" cloudDestinationProperty="agregarP1" text="Agregar producto" >
+    <layoutConstraint value="South" />
   </component>
 </component>

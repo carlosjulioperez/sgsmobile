@@ -128,18 +128,6 @@ public abstract class StateMachineBase extends UIBuilder {
         this(res, null, loadTheme);
     }
 
-    public com.codename1.ui.TextField findDescripcionPesos(Component root) {
-        return (com.codename1.ui.TextField)findByName("descripcionPesos", root);
-    }
-
-    public com.codename1.ui.TextField findDescripcionPesos() {
-        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("descripcionPesos", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextField)findByName("descripcionPesos", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.TextField findNumeoRyanCE(Component root) {
         return (com.codename1.ui.TextField)findByName("numeoRyanCE", root);
     }
@@ -188,18 +176,6 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.Container findContainer3(Component root) {
-        return (com.codename1.ui.Container)findByName("Container3", root);
-    }
-
-    public com.codename1.ui.Container findContainer3() {
-        com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("Container3", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Container)findByName("Container3", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.Label findLabel(Component root) {
         return (com.codename1.ui.Label)findByName("Label", root);
     }
@@ -208,6 +184,18 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.Label cmp = (com.codename1.ui.Label)findByName("Label", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.Label)findByName("Label", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.Container findContainer3(Component root) {
+        return (com.codename1.ui.Container)findByName("Container3", root);
+    }
+
+    public com.codename1.ui.Container findContainer3() {
+        com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("Container3", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Container)findByName("Container3", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -308,18 +296,6 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.TextField findMarca(Component root) {
-        return (com.codename1.ui.TextField)findByName("marca", root);
-    }
-
-    public com.codename1.ui.TextField findMarca() {
-        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("marca", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextField)findByName("marca", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.Container findContainer(Component root) {
         return (com.codename1.ui.Container)findByName("Container", root);
     }
@@ -340,18 +316,6 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("factura", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.TextField)findByName("factura", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.TextField findTipoProducto(Component root) {
-        return (com.codename1.ui.TextField)findByName("tipoProducto", root);
-    }
-
-    public com.codename1.ui.TextField findTipoProducto() {
-        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("tipoProducto", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextField)findByName("tipoProducto", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -404,6 +368,18 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
+    public com.codename1.ui.TextField findDescripcionPesosP1(Component root) {
+        return (com.codename1.ui.TextField)findByName("descripcionPesosP1", root);
+    }
+
+    public com.codename1.ui.TextField findDescripcionPesosP1() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("descripcionPesosP1", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextField)findByName("descripcionPesosP1", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
     public com.codename1.ui.TextField findEmbalajeCE(Component root) {
         return (com.codename1.ui.TextField)findByName("embalajeCE", root);
     }
@@ -452,6 +428,18 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
+    public com.codename1.ui.TextField findMarcaP1(Component root) {
+        return (com.codename1.ui.TextField)findByName("marcaP1", root);
+    }
+
+    public com.codename1.ui.TextField findMarcaP1() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("marcaP1", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextField)findByName("marcaP1", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
     public com.codename1.ui.CheckBox findPiso(Component root) {
         return (com.codename1.ui.CheckBox)findByName("piso", root);
     }
@@ -488,14 +476,26 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.TextField findEmpaque(Component root) {
-        return (com.codename1.ui.TextField)findByName("empaque", root);
+    public com.codename1.ui.Container findProductosContainerCE(Component root) {
+        return (com.codename1.ui.Container)findByName("productosContainerCE", root);
     }
 
-    public com.codename1.ui.TextField findEmpaque() {
-        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("empaque", Display.getInstance().getCurrent());
+    public com.codename1.ui.Container findProductosContainerCE() {
+        com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("productosContainerCE", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextField)findByName("empaque", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.Container)findByName("productosContainerCE", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.TextField findPresentacionP1(Component root) {
+        return (com.codename1.ui.TextField)findByName("presentacionP1", root);
+    }
+
+    public com.codename1.ui.TextField findPresentacionP1() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("presentacionP1", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextField)findByName("presentacionP1", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -572,6 +572,18 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
+    public com.codename1.ui.CheckBox findCheckBox(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("CheckBox", root);
+    }
+
+    public com.codename1.ui.CheckBox findCheckBox() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("CheckBox", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.CheckBox)findByName("CheckBox", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
     public com.codename1.ui.TextArea findObservaciones(Component root) {
         return (com.codename1.ui.TextArea)findByName("observaciones", root);
     }
@@ -644,6 +656,18 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
+    public com.codename1.ui.Button findAgregarP1(Component root) {
+        return (com.codename1.ui.Button)findByName("agregarP1", root);
+    }
+
+    public com.codename1.ui.Button findAgregarP1() {
+        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("agregarP1", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Button)findByName("agregarP1", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
     public com.codename1.ui.ComponentGroup findComponentGroup1(Component root) {
         return (com.codename1.ui.ComponentGroup)findByName("ComponentGroup1", root);
     }
@@ -652,18 +676,6 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.ComponentGroup cmp = (com.codename1.ui.ComponentGroup)findByName("ComponentGroup1", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.ComponentGroup)findByName("ComponentGroup1", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.TextField findPresentacion(Component root) {
-        return (com.codename1.ui.TextField)findByName("presentacion", root);
-    }
-
-    public com.codename1.ui.TextField findPresentacion() {
-        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("presentacion", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextField)findByName("presentacion", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -872,6 +884,18 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
+    public com.codename1.ui.TextField findEmpaqueP1(Component root) {
+        return (com.codename1.ui.TextField)findByName("empaqueP1", root);
+    }
+
+    public com.codename1.ui.TextField findEmpaqueP1() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("empaqueP1", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextField)findByName("empaqueP1", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
     public com.codename1.ui.TextField findValor(Component root) {
         return (com.codename1.ui.TextField)findByName("valor", root);
     }
@@ -964,6 +988,30 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("puertaDerecha", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.CheckBox)findByName("puertaDerecha", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.Button findAgregarClasificacion(Component root) {
+        return (com.codename1.ui.Button)findByName("agregarClasificacion", root);
+    }
+
+    public com.codename1.ui.Button findAgregarClasificacion() {
+        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("agregarClasificacion", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Button)findByName("agregarClasificacion", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.TextField findTipoProductoP1(Component root) {
+        return (com.codename1.ui.TextField)findByName("tipoProductoP1", root);
+    }
+
+    public com.codename1.ui.TextField findTipoProductoP1() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("tipoProductoP1", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextField)findByName("tipoProductoP1", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -1763,24 +1811,36 @@ public abstract class StateMachineBase extends UIBuilder {
             }
         }
         if(rootContainerName.equals("Producto1")) {
-            if("marca".equals(c.getName())) {
-                onProducto1_MarcaAction(c, event);
+            if("marcaP1".equals(c.getName())) {
+                onProducto1_MarcaP1Action(c, event);
                 return;
             }
-            if("descripcionPesos".equals(c.getName())) {
-                onProducto1_DescripcionPesosAction(c, event);
+            if("descripcionPesosP1".equals(c.getName())) {
+                onProducto1_DescripcionPesosP1Action(c, event);
                 return;
             }
-            if("presentacion".equals(c.getName())) {
-                onProducto1_PresentacionAction(c, event);
+            if("presentacionP1".equals(c.getName())) {
+                onProducto1_PresentacionP1Action(c, event);
                 return;
             }
-            if("empaque".equals(c.getName())) {
-                onProducto1_EmpaqueAction(c, event);
+            if("empaqueP1".equals(c.getName())) {
+                onProducto1_EmpaqueP1Action(c, event);
                 return;
             }
-            if("tipoProducto".equals(c.getName())) {
-                onProducto1_TipoProductoAction(c, event);
+            if("tipoProductoP1".equals(c.getName())) {
+                onProducto1_TipoProductoP1Action(c, event);
+                return;
+            }
+            if("agregarClasificacion".equals(c.getName())) {
+                onProducto1_AgregarClasificacionAction(c, event);
+                return;
+            }
+            if("CheckBox".equals(c.getName())) {
+                onProducto1_CheckBoxAction(c, event);
+                return;
+            }
+            if("agregarP1".equals(c.getName())) {
+                onProducto1_AgregarP1Action(c, event);
                 return;
             }
         }
@@ -1939,19 +1999,28 @@ public abstract class StateMachineBase extends UIBuilder {
       protected void onInspeccion_GrabarAction(Component c, ActionEvent event) {
       }
 
-      protected void onProducto1_MarcaAction(Component c, ActionEvent event) {
+      protected void onProducto1_MarcaP1Action(Component c, ActionEvent event) {
       }
 
-      protected void onProducto1_DescripcionPesosAction(Component c, ActionEvent event) {
+      protected void onProducto1_DescripcionPesosP1Action(Component c, ActionEvent event) {
       }
 
-      protected void onProducto1_PresentacionAction(Component c, ActionEvent event) {
+      protected void onProducto1_PresentacionP1Action(Component c, ActionEvent event) {
       }
 
-      protected void onProducto1_EmpaqueAction(Component c, ActionEvent event) {
+      protected void onProducto1_EmpaqueP1Action(Component c, ActionEvent event) {
       }
 
-      protected void onProducto1_TipoProductoAction(Component c, ActionEvent event) {
+      protected void onProducto1_TipoProductoP1Action(Component c, ActionEvent event) {
+      }
+
+      protected void onProducto1_AgregarClasificacionAction(Component c, ActionEvent event) {
+      }
+
+      protected void onProducto1_CheckBoxAction(Component c, ActionEvent event) {
+      }
+
+      protected void onProducto1_AgregarP1Action(Component c, ActionEvent event) {
       }
 
       protected void onMain_BotonInspeccionAction(Component c, ActionEvent event) {
