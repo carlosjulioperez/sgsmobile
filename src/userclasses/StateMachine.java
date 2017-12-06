@@ -422,7 +422,7 @@ public class StateMachine extends StateMachineBase {
     }
 
     @Override
-    protected void onProducto1_AgregarP1Action(Component c, ActionEvent event) {
+    protected void onProducto1_AgregarProductoAction(Component c, ActionEvent event) {
 
     
     }

@@ -21,7 +21,7 @@
         <component type="TextField" name="tipoProductoP1" cloudBoundProperty="text" cloudDestinationProperty="tipoProducto" text="" hint="Tipo Producto" columns="50" >
         </component>
       </component>
-      <component type="Button" name="agregarP1" cloudDestinationProperty="agregarP1" text="Agregar producto" >
+      <component type="Button" name="agregarProducto" cloudDestinationProperty="agregarP1" text="Agregar producto" >
         <layoutConstraint value="South" />
       </component>
     </component>

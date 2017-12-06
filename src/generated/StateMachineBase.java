@@ -656,18 +656,6 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.Button findAgregarP1(Component root) {
-        return (com.codename1.ui.Button)findByName("agregarP1", root);
-    }
-
-    public com.codename1.ui.Button findAgregarP1() {
-        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("agregarP1", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Button)findByName("agregarP1", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.ComponentGroup findComponentGroup1(Component root) {
         return (com.codename1.ui.ComponentGroup)findByName("ComponentGroup1", root);
     }
@@ -1024,6 +1012,18 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.table.Table cmp = (com.codename1.ui.table.Table)findByName("infoCE", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.table.Table)findByName("infoCE", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.Button findAgregarProducto(Component root) {
+        return (com.codename1.ui.Button)findByName("agregarProducto", root);
+    }
+
+    public com.codename1.ui.Button findAgregarProducto() {
+        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("agregarProducto", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Button)findByName("agregarProducto", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -1831,8 +1831,8 @@ public abstract class StateMachineBase extends UIBuilder {
                 onProducto1_TipoProductoP1Action(c, event);
                 return;
             }
-            if("agregarP1".equals(c.getName())) {
-                onProducto1_AgregarP1Action(c, event);
+            if("agregarProducto".equals(c.getName())) {
+                onProducto1_AgregarProductoAction(c, event);
                 return;
             }
             if("agregarClasificacion".equals(c.getName())) {
@@ -2014,7 +2014,7 @@ public abstract class StateMachineBase extends UIBuilder {
       protected void onProducto1_TipoProductoP1Action(Component c, ActionEvent event) {
       }
 
-      protected void onProducto1_AgregarP1Action(Component c, ActionEvent event) {
+      protected void onProducto1_AgregarProductoAction(Component c, ActionEvent event) {
       }
 
       protected void onProducto1_AgregarClasificacionAction(Component c, ActionEvent event) {
