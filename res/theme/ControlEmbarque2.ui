@@ -35,10 +35,16 @@
         </component>
       </component>
     </component>
-    <component type="Container" name="Container2" tabTitle="Productos" cloudDestinationProperty="Container2" snapToGrid="false" flatten="true" layout="BoxLayout" boxLayoutAxis="Y" >
-      <component type="Button" name="Button" cloudDestinationProperty="Button" text="Nuevo Producto" >
+    <component type="Container" name="Container2" tabTitle="Productos" cloudDestinationProperty="Container2" snapToGrid="false" flatten="true" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
+      <component type="Container" name="Container3" cloudDestinationProperty="Container" layout="GridLayout" gridLayoutRows="1" gridLayoutColumns="2" >
+        <layoutConstraint value="North" />
+        <component type="Button" name="agregarProductoCE" cloudDestinationProperty="agregarClasificaci&#xf3;n" text="Agregar Producto" >
+        </component>
+        <component type="CheckBox" name="quitarElementoCE" cloudDestinationProperty="CheckBox" text="Quitar elemento" >
+        </component>
       </component>
-      <component type="Container" name="productosContainerCE" cloudDestinationProperty="Container3" layout="BoxLayout" boxLayoutAxis="Y" >
+      <component type="Container" name="listaProductosCE" cloudDestinationProperty="Container3" layout="BoxLayout" boxLayoutAxis="Y" >
+        <layoutConstraint value="South" />
       </component>
     </component>
   </component>

@@ -35,8 +35,8 @@ public abstract class StateMachineBase extends UIBuilder {
         initVars();
         UIBuilder.registerCustomComponent("DateSpinner", com.codename1.ui.spinner.DateSpinner.class);
         UIBuilder.registerCustomComponent("Container", com.codename1.ui.Container.class);
-        UIBuilder.registerCustomComponent("Table", com.codename1.ui.table.Table.class);
         UIBuilder.registerCustomComponent("ComponentGroup", com.codename1.ui.ComponentGroup.class);
+        UIBuilder.registerCustomComponent("Table", com.codename1.ui.table.Table.class);
         UIBuilder.registerCustomComponent("Form", com.codename1.ui.Form.class);
         UIBuilder.registerCustomComponent("Button", com.codename1.ui.Button.class);
         UIBuilder.registerCustomComponent("TextArea", com.codename1.ui.TextArea.class);
@@ -81,8 +81,8 @@ public abstract class StateMachineBase extends UIBuilder {
         initVars();
         UIBuilder.registerCustomComponent("DateSpinner", com.codename1.ui.spinner.DateSpinner.class);
         UIBuilder.registerCustomComponent("Container", com.codename1.ui.Container.class);
-        UIBuilder.registerCustomComponent("Table", com.codename1.ui.table.Table.class);
         UIBuilder.registerCustomComponent("ComponentGroup", com.codename1.ui.ComponentGroup.class);
+        UIBuilder.registerCustomComponent("Table", com.codename1.ui.table.Table.class);
         UIBuilder.registerCustomComponent("Form", com.codename1.ui.Form.class);
         UIBuilder.registerCustomComponent("Button", com.codename1.ui.Button.class);
         UIBuilder.registerCustomComponent("TextArea", com.codename1.ui.TextArea.class);
@@ -128,18 +128,6 @@ public abstract class StateMachineBase extends UIBuilder {
         this(res, null, loadTheme);
     }
 
-    public com.codename1.ui.TextField findNumeoRyanCE(Component root) {
-        return (com.codename1.ui.TextField)findByName("numeoRyanCE", root);
-    }
-
-    public com.codename1.ui.TextField findNumeoRyanCE() {
-        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("numeoRyanCE", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextField)findByName("numeoRyanCE", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.Button findGrabarClasificacionC1(Component root) {
         return (com.codename1.ui.Button)findByName("grabarClasificacionC1", root);
     }
@@ -148,6 +136,18 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("grabarClasificacionC1", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.Button)findByName("grabarClasificacionC1", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.TextField findNumeoRyanCE(Component root) {
+        return (com.codename1.ui.TextField)findByName("numeoRyanCE", root);
+    }
+
+    public com.codename1.ui.TextField findNumeoRyanCE() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("numeoRyanCE", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextField)findByName("numeoRyanCE", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -356,18 +356,6 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.Button findButton(Component root) {
-        return (com.codename1.ui.Button)findByName("Button", root);
-    }
-
-    public com.codename1.ui.Button findButton() {
-        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("Button", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Button)findByName("Button", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.TextField findChasis(Component root) {
         return (com.codename1.ui.TextField)findByName("chasis", root);
     }
@@ -512,18 +500,6 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.Container findProductosContainerCE(Component root) {
-        return (com.codename1.ui.Container)findByName("productosContainerCE", root);
-    }
-
-    public com.codename1.ui.Container findProductosContainerCE() {
-        com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("productosContainerCE", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Container)findByName("productosContainerCE", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.TextField findPresentacionP1(Component root) {
         return (com.codename1.ui.TextField)findByName("presentacionP1", root);
     }
@@ -644,18 +620,6 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.Tabs findTabs(Component root) {
-        return (com.codename1.ui.Tabs)findByName("Tabs", root);
-    }
-
-    public com.codename1.ui.Tabs findTabs() {
-        com.codename1.ui.Tabs cmp = (com.codename1.ui.Tabs)findByName("Tabs", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Tabs)findByName("Tabs", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.CheckBox findChasisEstado(Component root) {
         return (com.codename1.ui.CheckBox)findByName("chasisEstado", root);
     }
@@ -664,6 +628,18 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("chasisEstado", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.CheckBox)findByName("chasisEstado", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.Tabs findTabs(Component root) {
+        return (com.codename1.ui.Tabs)findByName("Tabs", root);
+    }
+
+    public com.codename1.ui.Tabs findTabs() {
+        com.codename1.ui.Tabs cmp = (com.codename1.ui.Tabs)findByName("Tabs", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Tabs)findByName("Tabs", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -688,6 +664,18 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("ladosExternosIzquierda", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.CheckBox)findByName("ladosExternosIzquierda", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.CheckBox findQuitarElementoCE(Component root) {
+        return (com.codename1.ui.CheckBox)findByName("quitarElementoCE", root);
+    }
+
+    public com.codename1.ui.CheckBox findQuitarElementoCE() {
+        com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("quitarElementoCE", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.CheckBox)findByName("quitarElementoCE", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -800,6 +788,18 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
+    public com.codename1.ui.Container findListaClasificacionP1(Component root) {
+        return (com.codename1.ui.Container)findByName("listaClasificacionP1", root);
+    }
+
+    public com.codename1.ui.Container findListaClasificacionP1() {
+        com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("listaClasificacionP1", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Container)findByName("listaClasificacionP1", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
     public com.codename1.ui.TextField findSelloAgenciaCE(Component root) {
         return (com.codename1.ui.TextField)findByName("selloAgenciaCE", root);
     }
@@ -844,6 +844,30 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("ContainerBusqueda", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.Container)findByName("ContainerBusqueda", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.Container findListaProductosCE(Component root) {
+        return (com.codename1.ui.Container)findByName("listaProductosCE", root);
+    }
+
+    public com.codename1.ui.Container findListaProductosCE() {
+        com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("listaProductosCE", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Container)findByName("listaProductosCE", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.Container findListadoInspecciones(Component root) {
+        return (com.codename1.ui.Container)findByName("listadoInspecciones", root);
+    }
+
+    public com.codename1.ui.Container findListadoInspecciones() {
+        com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("listadoInspecciones", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Container)findByName("listadoInspecciones", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -1028,18 +1052,6 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.Container findListaContenedoresCnt(Component root) {
-        return (com.codename1.ui.Container)findByName("listaContenedoresCnt", root);
-    }
-
-    public com.codename1.ui.Container findListaContenedoresCnt() {
-        com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("listaContenedoresCnt", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Container)findByName("listaContenedoresCnt", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.TextField findInspector(Component root) {
         return (com.codename1.ui.TextField)findByName("inspector", root);
     }
@@ -1076,6 +1088,18 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
+    public com.codename1.ui.Button findAgregarProductoCE(Component root) {
+        return (com.codename1.ui.Button)findByName("agregarProductoCE", root);
+    }
+
+    public com.codename1.ui.Button findAgregarProductoCE() {
+        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("agregarProductoCE", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Button)findByName("agregarProductoCE", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
     public com.codename1.ui.RadioButton findContenedorRad(Component root) {
         return (com.codename1.ui.RadioButton)findByName("contenedorRad", root);
     }
@@ -1108,18 +1132,6 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("tipoProductoP1", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.TextField)findByName("tipoProductoP1", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.Container findListadoClasificacionP1(Component root) {
-        return (com.codename1.ui.Container)findByName("listadoClasificacionP1", root);
-    }
-
-    public com.codename1.ui.Container findListadoClasificacionP1() {
-        com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("listadoClasificacionP1", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Container)findByName("listadoClasificacionP1", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -1206,20 +1218,14 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
     protected void exitForm(Form f) {
-        if("ControlEmbarque1".equals(f.getName())) {
-            exitControlEmbarque1(f);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
-        if("ControlEmbarque2".equals(f.getName())) {
-            exitControlEmbarque2(f);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("DetalleCajas".equals(f.getName())) {
             exitDetalleCajas(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("InspeccionBusqueda".equals(f.getName())) {
+            exitInspeccionBusqueda(f);
             aboutToShowThisContainer = null;
             return;
         }
@@ -1248,6 +1254,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("ControlEmbarque".equals(f.getName())) {
+            exitControlEmbarque(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("Main".equals(f.getName())) {
             exitMain(f);
             aboutToShowThisContainer = null;
@@ -1258,15 +1270,11 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void exitControlEmbarque1(Form f) {
-    }
-
-
-    protected void exitControlEmbarque2(Form f) {
-    }
-
-
     protected void exitDetalleCajas(Form f) {
+    }
+
+
+    protected void exitInspeccionBusqueda(Form f) {
     }
 
 
@@ -1286,25 +1294,23 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void exitControlEmbarque(Form f) {
+    }
+
+
     protected void exitMain(Form f) {
     }
 
     protected void beforeShow(Form f) {
     aboutToShowThisContainer = f;
-        if("ControlEmbarque1".equals(f.getName())) {
-            beforeControlEmbarque1(f);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
-        if("ControlEmbarque2".equals(f.getName())) {
-            beforeControlEmbarque2(f);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("DetalleCajas".equals(f.getName())) {
             beforeDetalleCajas(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("InspeccionBusqueda".equals(f.getName())) {
+            beforeInspeccionBusqueda(f);
             aboutToShowThisContainer = null;
             return;
         }
@@ -1333,6 +1339,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("ControlEmbarque".equals(f.getName())) {
+            beforeControlEmbarque(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("Main".equals(f.getName())) {
             beforeMain(f);
             aboutToShowThisContainer = null;
@@ -1343,15 +1355,11 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void beforeControlEmbarque1(Form f) {
-    }
-
-
-    protected void beforeControlEmbarque2(Form f) {
-    }
-
-
     protected void beforeDetalleCajas(Form f) {
+    }
+
+
+    protected void beforeInspeccionBusqueda(Form f) {
     }
 
 
@@ -1371,25 +1379,23 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void beforeControlEmbarque(Form f) {
+    }
+
+
     protected void beforeMain(Form f) {
     }
 
     protected void beforeShowContainer(Container c) {
         aboutToShowThisContainer = c;
-        if("ControlEmbarque1".equals(c.getName())) {
-            beforeContainerControlEmbarque1(c);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
-        if("ControlEmbarque2".equals(c.getName())) {
-            beforeContainerControlEmbarque2(c);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("DetalleCajas".equals(c.getName())) {
             beforeContainerDetalleCajas(c);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("InspeccionBusqueda".equals(c.getName())) {
+            beforeContainerInspeccionBusqueda(c);
             aboutToShowThisContainer = null;
             return;
         }
@@ -1418,6 +1424,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("ControlEmbarque".equals(c.getName())) {
+            beforeContainerControlEmbarque(c);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("Main".equals(c.getName())) {
             beforeContainerMain(c);
             aboutToShowThisContainer = null;
@@ -1428,15 +1440,11 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void beforeContainerControlEmbarque1(Container c) {
-    }
-
-
-    protected void beforeContainerControlEmbarque2(Container c) {
-    }
-
-
     protected void beforeContainerDetalleCajas(Container c) {
+    }
+
+
+    protected void beforeContainerInspeccionBusqueda(Container c) {
     }
 
 
@@ -1456,24 +1464,22 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void beforeContainerControlEmbarque(Container c) {
+    }
+
+
     protected void beforeContainerMain(Container c) {
     }
 
     protected void postShow(Form f) {
-        if("ControlEmbarque1".equals(f.getName())) {
-            postControlEmbarque1(f);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
-        if("ControlEmbarque2".equals(f.getName())) {
-            postControlEmbarque2(f);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("DetalleCajas".equals(f.getName())) {
             postDetalleCajas(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("InspeccionBusqueda".equals(f.getName())) {
+            postInspeccionBusqueda(f);
             aboutToShowThisContainer = null;
             return;
         }
@@ -1502,6 +1508,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("ControlEmbarque".equals(f.getName())) {
+            postControlEmbarque(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("Main".equals(f.getName())) {
             postMain(f);
             aboutToShowThisContainer = null;
@@ -1512,15 +1524,11 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void postControlEmbarque1(Form f) {
-    }
-
-
-    protected void postControlEmbarque2(Form f) {
-    }
-
-
     protected void postDetalleCajas(Form f) {
+    }
+
+
+    protected void postInspeccionBusqueda(Form f) {
     }
 
 
@@ -1540,24 +1548,22 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void postControlEmbarque(Form f) {
+    }
+
+
     protected void postMain(Form f) {
     }
 
     protected void postShowContainer(Container c) {
-        if("ControlEmbarque1".equals(c.getName())) {
-            postContainerControlEmbarque1(c);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
-        if("ControlEmbarque2".equals(c.getName())) {
-            postContainerControlEmbarque2(c);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("DetalleCajas".equals(c.getName())) {
             postContainerDetalleCajas(c);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("InspeccionBusqueda".equals(c.getName())) {
+            postContainerInspeccionBusqueda(c);
             aboutToShowThisContainer = null;
             return;
         }
@@ -1586,6 +1592,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("ControlEmbarque".equals(c.getName())) {
+            postContainerControlEmbarque(c);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("Main".equals(c.getName())) {
             postContainerMain(c);
             aboutToShowThisContainer = null;
@@ -1596,15 +1608,11 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void postContainerControlEmbarque1(Container c) {
-    }
-
-
-    protected void postContainerControlEmbarque2(Container c) {
-    }
-
-
     protected void postContainerDetalleCajas(Container c) {
+    }
+
+
+    protected void postContainerInspeccionBusqueda(Container c) {
     }
 
 
@@ -1624,24 +1632,22 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void postContainerControlEmbarque(Container c) {
+    }
+
+
     protected void postContainerMain(Container c) {
     }
 
     protected void onCreateRoot(String rootName) {
-        if("ControlEmbarque1".equals(rootName)) {
-            onCreateControlEmbarque1();
-            aboutToShowThisContainer = null;
-            return;
-        }
-
-        if("ControlEmbarque2".equals(rootName)) {
-            onCreateControlEmbarque2();
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("DetalleCajas".equals(rootName)) {
             onCreateDetalleCajas();
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("InspeccionBusqueda".equals(rootName)) {
+            onCreateInspeccionBusqueda();
             aboutToShowThisContainer = null;
             return;
         }
@@ -1670,6 +1676,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("ControlEmbarque".equals(rootName)) {
+            onCreateControlEmbarque();
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("Main".equals(rootName)) {
             onCreateMain();
             aboutToShowThisContainer = null;
@@ -1680,15 +1692,11 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void onCreateControlEmbarque1() {
-    }
-
-
-    protected void onCreateControlEmbarque2() {
-    }
-
-
     protected void onCreateDetalleCajas() {
+    }
+
+
+    protected void onCreateInspeccionBusqueda() {
     }
 
 
@@ -1708,25 +1716,23 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void onCreateControlEmbarque() {
+    }
+
+
     protected void onCreateMain() {
     }
 
     protected Hashtable getFormState(Form f) {
         Hashtable h = super.getFormState(f);
-        if("ControlEmbarque1".equals(f.getName())) {
-            getStateControlEmbarque1(f, h);
-            aboutToShowThisContainer = null;
-            return h;
-        }
-
-        if("ControlEmbarque2".equals(f.getName())) {
-            getStateControlEmbarque2(f, h);
-            aboutToShowThisContainer = null;
-            return h;
-        }
-
         if("DetalleCajas".equals(f.getName())) {
             getStateDetalleCajas(f, h);
+            aboutToShowThisContainer = null;
+            return h;
+        }
+
+        if("InspeccionBusqueda".equals(f.getName())) {
+            getStateInspeccionBusqueda(f, h);
             aboutToShowThisContainer = null;
             return h;
         }
@@ -1755,6 +1761,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return h;
         }
 
+        if("ControlEmbarque".equals(f.getName())) {
+            getStateControlEmbarque(f, h);
+            aboutToShowThisContainer = null;
+            return h;
+        }
+
         if("Main".equals(f.getName())) {
             getStateMain(f, h);
             aboutToShowThisContainer = null;
@@ -1765,15 +1777,11 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void getStateControlEmbarque1(Form f, Hashtable h) {
-    }
-
-
-    protected void getStateControlEmbarque2(Form f, Hashtable h) {
-    }
-
-
     protected void getStateDetalleCajas(Form f, Hashtable h) {
+    }
+
+
+    protected void getStateInspeccionBusqueda(Form f, Hashtable h) {
     }
 
 
@@ -1793,25 +1801,23 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void getStateControlEmbarque(Form f, Hashtable h) {
+    }
+
+
     protected void getStateMain(Form f, Hashtable h) {
     }
 
     protected void setFormState(Form f, Hashtable state) {
         super.setFormState(f, state);
-        if("ControlEmbarque1".equals(f.getName())) {
-            setStateControlEmbarque1(f, state);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
-        if("ControlEmbarque2".equals(f.getName())) {
-            setStateControlEmbarque2(f, state);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("DetalleCajas".equals(f.getName())) {
             setStateDetalleCajas(f, state);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("InspeccionBusqueda".equals(f.getName())) {
+            setStateInspeccionBusqueda(f, state);
             aboutToShowThisContainer = null;
             return;
         }
@@ -1840,6 +1846,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("ControlEmbarque".equals(f.getName())) {
+            setStateControlEmbarque(f, state);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("Main".equals(f.getName())) {
             setStateMain(f, state);
             aboutToShowThisContainer = null;
@@ -1850,15 +1862,11 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void setStateControlEmbarque1(Form f, Hashtable state) {
-    }
-
-
-    protected void setStateControlEmbarque2(Form f, Hashtable state) {
-    }
-
-
     protected void setStateDetalleCajas(Form f, Hashtable state) {
+    }
+
+
+    protected void setStateInspeccionBusqueda(Form f, Hashtable state) {
     }
 
 
@@ -1878,6 +1886,10 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void setStateControlEmbarque(Form f, Hashtable state) {
+    }
+
+
     protected void setStateMain(Form f, Hashtable state) {
     }
 
@@ -1890,70 +1902,6 @@ public abstract class StateMachineBase extends UIBuilder {
             c = c.getParent().getLeadParent();
         }
         if(rootContainerName == null) return;
-        if(rootContainerName.equals("ControlEmbarque1")) {
-            if("contenedorRad".equals(c.getName())) {
-                onControlEmbarque1_ContenedorRadAction(c, event);
-                return;
-            }
-            if("clienteRad".equals(c.getName())) {
-                onControlEmbarque1_ClienteRadAction(c, event);
-                return;
-            }
-            if("valor".equals(c.getName())) {
-                onControlEmbarque1_ValorAction(c, event);
-                return;
-            }
-            if("buscar".equals(c.getName())) {
-                onControlEmbarque1_BuscarAction(c, event);
-                return;
-            }
-        }
-        if(rootContainerName.equals("ControlEmbarque2")) {
-            if("oinCE".equals(c.getName())) {
-                onControlEmbarque2_OinCEAction(c, event);
-                return;
-            }
-            if("consignatarioCE".equals(c.getName())) {
-                onControlEmbarque2_ConsignatarioCEAction(c, event);
-                return;
-            }
-            if("cantidadCajasCE".equals(c.getName())) {
-                onControlEmbarque2_CantidadCajasCEAction(c, event);
-                return;
-            }
-            if("selloSGSCE".equals(c.getName())) {
-                onControlEmbarque2_SelloSGSCEAction(c, event);
-                return;
-            }
-            if("selloAgenciaCE".equals(c.getName())) {
-                onControlEmbarque2_SelloAgenciaCEAction(c, event);
-                return;
-            }
-            if("selloExportadorCE".equals(c.getName())) {
-                onControlEmbarque2_SelloExportadorCEAction(c, event);
-                return;
-            }
-            if("selloOtrosCE".equals(c.getName())) {
-                onControlEmbarque2_SelloOtrosCEAction(c, event);
-                return;
-            }
-            if("numeoRyanCE".equals(c.getName())) {
-                onControlEmbarque2_NumeoRyanCEAction(c, event);
-                return;
-            }
-            if("numeroSelloRyanCE".equals(c.getName())) {
-                onControlEmbarque2_NumeroSelloRyanCEAction(c, event);
-                return;
-            }
-            if("embalajeCE".equals(c.getName())) {
-                onControlEmbarque2_EmbalajeCEAction(c, event);
-                return;
-            }
-            if("Button".equals(c.getName())) {
-                onControlEmbarque2_ButtonAction(c, event);
-                return;
-            }
-        }
         if(rootContainerName.equals("DetalleCajas")) {
             if("filaD1".equals(c.getName())) {
                 onDetalleCajas_FilaD1Action(c, event);
@@ -1965,6 +1913,24 @@ public abstract class StateMachineBase extends UIBuilder {
             }
             if("grabarDetalleCajasD1".equals(c.getName())) {
                 onDetalleCajas_GrabarDetalleCajasD1Action(c, event);
+                return;
+            }
+        }
+        if(rootContainerName.equals("InspeccionBusqueda")) {
+            if("contenedorRad".equals(c.getName())) {
+                onInspeccionBusqueda_ContenedorRadAction(c, event);
+                return;
+            }
+            if("clienteRad".equals(c.getName())) {
+                onInspeccionBusqueda_ClienteRadAction(c, event);
+                return;
+            }
+            if("valor".equals(c.getName())) {
+                onInspeccionBusqueda_ValorAction(c, event);
+                return;
+            }
+            if("buscar".equals(c.getName())) {
+                onInspeccionBusqueda_BuscarAction(c, event);
                 return;
             }
         }
@@ -2144,6 +2110,56 @@ public abstract class StateMachineBase extends UIBuilder {
                 return;
             }
         }
+        if(rootContainerName.equals("ControlEmbarque")) {
+            if("oinCE".equals(c.getName())) {
+                onControlEmbarque_OinCEAction(c, event);
+                return;
+            }
+            if("consignatarioCE".equals(c.getName())) {
+                onControlEmbarque_ConsignatarioCEAction(c, event);
+                return;
+            }
+            if("cantidadCajasCE".equals(c.getName())) {
+                onControlEmbarque_CantidadCajasCEAction(c, event);
+                return;
+            }
+            if("selloSGSCE".equals(c.getName())) {
+                onControlEmbarque_SelloSGSCEAction(c, event);
+                return;
+            }
+            if("selloAgenciaCE".equals(c.getName())) {
+                onControlEmbarque_SelloAgenciaCEAction(c, event);
+                return;
+            }
+            if("selloExportadorCE".equals(c.getName())) {
+                onControlEmbarque_SelloExportadorCEAction(c, event);
+                return;
+            }
+            if("selloOtrosCE".equals(c.getName())) {
+                onControlEmbarque_SelloOtrosCEAction(c, event);
+                return;
+            }
+            if("numeoRyanCE".equals(c.getName())) {
+                onControlEmbarque_NumeoRyanCEAction(c, event);
+                return;
+            }
+            if("numeroSelloRyanCE".equals(c.getName())) {
+                onControlEmbarque_NumeroSelloRyanCEAction(c, event);
+                return;
+            }
+            if("embalajeCE".equals(c.getName())) {
+                onControlEmbarque_EmbalajeCEAction(c, event);
+                return;
+            }
+            if("agregarProductoCE".equals(c.getName())) {
+                onControlEmbarque_AgregarProductoCEAction(c, event);
+                return;
+            }
+            if("quitarElementoCE".equals(c.getName())) {
+                onControlEmbarque_QuitarElementoCEAction(c, event);
+                return;
+            }
+        }
         if(rootContainerName.equals("Main")) {
             if("BotonInspeccion".equals(c.getName())) {
                 onMain_BotonInspeccionAction(c, event);
@@ -2164,51 +2180,6 @@ public abstract class StateMachineBase extends UIBuilder {
         }
     }
 
-      protected void onControlEmbarque1_ContenedorRadAction(Component c, ActionEvent event) {
-      }
-
-      protected void onControlEmbarque1_ClienteRadAction(Component c, ActionEvent event) {
-      }
-
-      protected void onControlEmbarque1_ValorAction(Component c, ActionEvent event) {
-      }
-
-      protected void onControlEmbarque1_BuscarAction(Component c, ActionEvent event) {
-      }
-
-      protected void onControlEmbarque2_OinCEAction(Component c, ActionEvent event) {
-      }
-
-      protected void onControlEmbarque2_ConsignatarioCEAction(Component c, ActionEvent event) {
-      }
-
-      protected void onControlEmbarque2_CantidadCajasCEAction(Component c, ActionEvent event) {
-      }
-
-      protected void onControlEmbarque2_SelloSGSCEAction(Component c, ActionEvent event) {
-      }
-
-      protected void onControlEmbarque2_SelloAgenciaCEAction(Component c, ActionEvent event) {
-      }
-
-      protected void onControlEmbarque2_SelloExportadorCEAction(Component c, ActionEvent event) {
-      }
-
-      protected void onControlEmbarque2_SelloOtrosCEAction(Component c, ActionEvent event) {
-      }
-
-      protected void onControlEmbarque2_NumeoRyanCEAction(Component c, ActionEvent event) {
-      }
-
-      protected void onControlEmbarque2_NumeroSelloRyanCEAction(Component c, ActionEvent event) {
-      }
-
-      protected void onControlEmbarque2_EmbalajeCEAction(Component c, ActionEvent event) {
-      }
-
-      protected void onControlEmbarque2_ButtonAction(Component c, ActionEvent event) {
-      }
-
       protected void onDetalleCajas_FilaD1Action(Component c, ActionEvent event) {
       }
 
@@ -2216,6 +2187,18 @@ public abstract class StateMachineBase extends UIBuilder {
       }
 
       protected void onDetalleCajas_GrabarDetalleCajasD1Action(Component c, ActionEvent event) {
+      }
+
+      protected void onInspeccionBusqueda_ContenedorRadAction(Component c, ActionEvent event) {
+      }
+
+      protected void onInspeccionBusqueda_ClienteRadAction(Component c, ActionEvent event) {
+      }
+
+      protected void onInspeccionBusqueda_ValorAction(Component c, ActionEvent event) {
+      }
+
+      protected void onInspeccionBusqueda_BuscarAction(Component c, ActionEvent event) {
       }
 
       protected void onConfiguracion_ServidorAction(Component c, ActionEvent event) {
@@ -2342,6 +2325,42 @@ public abstract class StateMachineBase extends UIBuilder {
       }
 
       protected void onProducto_QuitarElementoP1Action(Component c, ActionEvent event) {
+      }
+
+      protected void onControlEmbarque_OinCEAction(Component c, ActionEvent event) {
+      }
+
+      protected void onControlEmbarque_ConsignatarioCEAction(Component c, ActionEvent event) {
+      }
+
+      protected void onControlEmbarque_CantidadCajasCEAction(Component c, ActionEvent event) {
+      }
+
+      protected void onControlEmbarque_SelloSGSCEAction(Component c, ActionEvent event) {
+      }
+
+      protected void onControlEmbarque_SelloAgenciaCEAction(Component c, ActionEvent event) {
+      }
+
+      protected void onControlEmbarque_SelloExportadorCEAction(Component c, ActionEvent event) {
+      }
+
+      protected void onControlEmbarque_SelloOtrosCEAction(Component c, ActionEvent event) {
+      }
+
+      protected void onControlEmbarque_NumeoRyanCEAction(Component c, ActionEvent event) {
+      }
+
+      protected void onControlEmbarque_NumeroSelloRyanCEAction(Component c, ActionEvent event) {
+      }
+
+      protected void onControlEmbarque_EmbalajeCEAction(Component c, ActionEvent event) {
+      }
+
+      protected void onControlEmbarque_AgregarProductoCEAction(Component c, ActionEvent event) {
+      }
+
+      protected void onControlEmbarque_QuitarElementoCEAction(Component c, ActionEvent event) {
       }
 
       protected void onMain_BotonInspeccionAction(Component c, ActionEvent event) {

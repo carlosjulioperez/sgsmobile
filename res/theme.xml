@@ -37,8 +37,7 @@
     <image name="ComboBox.sel#borderTopL_1.png" type="multi"  />
     <image name="ComboBox.sel#borderTopR_1.png" type="multi"  />
     <ui name="Configuracion" />
-    <ui name="ControlEmbarque1" />
-    <ui name="ControlEmbarque2" />
+    <ui name="ControlEmbarque" />
     <ui name="DetalleCajas" />
     <image name="Dialog.borderBottom_1.png" type="multi"  />
     <image name="Dialog.borderBottomL_1.png" type="multi"  />
@@ -52,6 +51,7 @@
     <image name="estructuraInferior.png"  />
     <image name="estructuraInterna.png"  />
     <ui name="Inspeccion" />
+    <ui name="InspeccionBusqueda" />
     <image name="lados.png"  />
     <ui name="Main" />
     <image name="Menu.borderBottom_2.png" type="multi"  />

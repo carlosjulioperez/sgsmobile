@@ -87,13 +87,13 @@ public class StateMachine extends StateMachineBase {
     private RadioButton contenedorRad;
     private RadioButton clienteRad;
     private TextField   valor;
-    private Container   listaContenedoresCnt;
+    private Container   listadoInspecciones;
     
     //Controles de ControlEmbarque2
     private Table       infoCE;
     private String      inspeccionItemId;
     private Map         inspeccionItem;
-    private Container   productosContainerCE;
+    private Container   listaProductosCE;
     
     //Controles de Producto1
     private TextField   marcaP1;
@@ -302,16 +302,16 @@ public class StateMachine extends StateMachineBase {
     }
 
     @Override
-    protected void beforeControlEmbarque1(Form f) {
+    protected void beforeInspeccionBusqueda(Form f) {
         contenedorRad = findContenedorRad();
         clienteRad = findClienteRad();
         valor = findValor();
-        listaContenedoresCnt = findListaContenedoresCnt();
+        listadoInspecciones = findListadoInspecciones();
         inspeccionItemId = "";
     }
 
     @Override
-    protected void onControlEmbarque1_BuscarAction(Component c, ActionEvent event) {
+    protected void onInspeccionBusqueda_BuscarAction(Component c, ActionEvent event) {
         String campo = contenedorRad.isSelected() ? "contenedor": "cliente";
         //System.out.println(campo);
         
@@ -326,7 +326,7 @@ public class StateMachine extends StateMachineBase {
             protected void readResponse(InputStream inputStream) throws IOException  {
                 result = parser.parseJSON(new InputStreamReader(inputStream, "UTF-8"));
                 
-                listaContenedoresCnt.removeAll();
+                listadoInspecciones.removeAll();
                 //Limpiamos el container
                 java.util.List<Map<String, Object>> content = (java.util.List<Map<String, Object>>)result.get("root");
                 for ( Map<String, Object> obj : content) {
@@ -343,11 +343,11 @@ public class StateMachine extends StateMachineBase {
                         public void actionPerformed(ActionEvent ev) {
                             //System.out.println( mb.getUIID() );
                             inspeccionItemId = mb.getUIID();
-                            showForm("ControlEmbarque2", null);
+                            showForm("ControlEmbarque", null);
                         }
                     });
                     
-                    listaContenedoresCnt.add(mb);
+                    listadoInspecciones.add(mb);
                 }
             }
             protected void postResponse() {
@@ -393,11 +393,11 @@ public class StateMachine extends StateMachineBase {
     }
     
     @Override
-    protected void beforeControlEmbarque2(Form f) {
+    protected void beforeControlEmbarque(Form f) {
         
         leerDatosInspeccion();
-        infoCE                  = findInfoCE();
-        productosContainerCE    = findProductosContainerCE();
+        infoCE              = findInfoCE();
+        listaProductosCE    = findListaProductosCE();
         
         String[][] valores = new String[][] {
             {"ID"         , (String)inspeccionItem.get("id")},
@@ -416,7 +416,7 @@ public class StateMachine extends StateMachineBase {
     }
 
     @Override
-    protected void onControlEmbarque2_ButtonAction(Component c, ActionEvent event) {
+    protected void onControlEmbarque_AgregarProductoCEAction(Component c, ActionEvent event) {
         showForm("Producto", null);
     }
 
@@ -446,6 +446,12 @@ public class StateMachine extends StateMachineBase {
 
     @Override
     protected void onClasificacion_GrabarClasificacionC1Action(Component c, ActionEvent event) {
+        agregarClasificacion(clasificacion);
+    }
+    
+    //Agregar detalle de cajas en Clasificacion
+    private void agregarClasificacion(Clasificacion clasificacion){
+        //TODO validaciones
     }
 
     @Override
@@ -467,6 +473,5 @@ public class StateMachine extends StateMachineBase {
     private void agregarDetalleCajas(DetalleCajas detalleCajas){
         //TODO validaciones
     }
-            
     
 }

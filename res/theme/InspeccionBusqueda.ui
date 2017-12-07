@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="InspeccionBusqueda" cloudDestinationProperty="ControlEmbarque1" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="Buscar Inspecci&#xf3;n" >
+  <component type="Container" name="ContainerBusqueda" cloudDestinationProperty="ContainerBusqueda" flatten="true" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
+    <layoutConstraint value="North" />
+    <component type="Container" name="Container1" cloudDestinationProperty="Container1" layout="BoxLayout" boxLayoutAxis="X" >
+      <layoutConstraint value="North" />
+      <component type="RadioButton" name="contenedorRad" cloudDestinationProperty="contenedor" text="Conenedor" group="campo" selected="true" >
+      </component>
+      <component type="RadioButton" name="clienteRad" cloudDestinationProperty="cliente" text="Cliente" group="campo" >
+      </component>
+    </component>
+    <component type="TextField" name="valor" cloudBoundProperty="text" cloudDestinationProperty="TextField" text="" hint="Ingrese un valor a buscar..." >
+      <layoutConstraint value="Center" />
+    </component>
+    <component type="Button" name="buscar" cloudDestinationProperty="buscar" text="Buscar" >
+      <layoutConstraint value="East" />
+    </component>
+  </component>
+  <component type="Container" name="listadoInspecciones" cloudDestinationProperty="Container" scrollableY="true" layout="BoxLayout" boxLayoutAxis="Y" >
+    <layoutConstraint value="Center" />
+  </component>
+</component>
