@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="DetalleCajas" cloudDestinationProperty="DetalleCajas" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="Nuevo Detalle de Cajas" >
+  <component type="ComponentGroup" name="ComponentGroup" cloudDestinationProperty="ComponentGroup" >
+    <layoutConstraint value="North" />
+    <component type="TextField" name="filaD1" cloudBoundProperty="text" cloudDestinationProperty="filaD1" text="" hint="Fila" columns="2" >
+    </component>
+    <component type="TextField" name="cantidadD1" cloudBoundProperty="text" cloudDestinationProperty="cantidadD1" text="" hint="Cantidad" columns="2" >
+    </component>
+  </component>
+  <component type="Button" name="grabarDetalleCajasD1" cloudDestinationProperty="agregarDetalleCajasD1" text="Grabar Detalle de Cajas" >
+    <layoutConstraint value="South" />
+  </component>
+</component>

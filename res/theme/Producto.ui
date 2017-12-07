@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<component type="Form" name="Producto1" cloudDestinationProperty="Producto1" flatten="false" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="Nuevo Producto" >
+<component type="Form" name="Producto" cloudDestinationProperty="Producto1" flatten="false" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="Nuevo Producto" >
   <component type="Tabs" name="Tabs" cloudDestinationProperty="Tabs" flatten="false" >
     <layoutConstraint value="East" />
     <custom name="titles" type="java.lang.String" array="true" dimensions="1" >
@@ -21,19 +21,19 @@
         <component type="TextField" name="tipoProductoP1" cloudBoundProperty="text" cloudDestinationProperty="tipoProducto" text="" hint="Tipo Producto" columns="50" >
         </component>
       </component>
-      <component type="Button" name="agregarProducto" cloudDestinationProperty="agregarP1" text="Agregar producto" >
+      <component type="Button" name="grabarProductoP1" cloudDestinationProperty="agregarP1" text="Grabar producto" >
         <layoutConstraint value="South" />
       </component>
     </component>
     <component type="Container" name="Container1" tabTitle="Clasificaci&#xf3;n" cloudDestinationProperty="Container1" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
       <component type="Container" name="Container" cloudDestinationProperty="Container" layout="GridLayout" gridLayoutRows="1" gridLayoutColumns="2" >
         <layoutConstraint value="North" />
-        <component type="Button" name="agregarClasificacion" cloudDestinationProperty="agregarClasificaci&#xf3;n" text="Agregar Clasificaci&#xf2;n" >
+        <component type="Button" name="agregarClasificacionP1" cloudDestinationProperty="agregarClasificaci&#xf3;n" text="Agregar Clasificaci&#xf3;n" >
         </component>
-        <component type="CheckBox" name="CheckBox" cloudDestinationProperty="CheckBox" text="Quitar elemento" >
+        <component type="CheckBox" name="quitarElementoP1" cloudDestinationProperty="CheckBox" text="Quitar elemento" >
         </component>
       </component>
-      <component type="Container" name="Container2" cloudDestinationProperty="Container2" layout="BoxLayout" boxLayoutAxis="Y" >
+      <component type="Container" name="listadoClasificacionP1" cloudDestinationProperty="Container2" layout="BoxLayout" boxLayoutAxis="Y" >
         <layoutConstraint value="Center" />
       </component>
     </component>

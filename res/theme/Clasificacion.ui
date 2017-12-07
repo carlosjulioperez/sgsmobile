@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="Clasificacion" cloudDestinationProperty="Producto1" flatten="false" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="Nueva Clasificaci&#xf3;n" >
+  <component type="Tabs" name="Tabs" cloudDestinationProperty="Tabs" flatten="false" >
+    <layoutConstraint value="East" />
+    <custom name="titles" type="java.lang.String" array="true" dimensions="1" >
+      <str>Datos</str>
+      <str>Detalle de Cajas</str>
+    </custom>
+    <component type="Container" name="Container3" tabTitle="Datos" cloudDestinationProperty="Container3" flatten="false" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
+      <component type="ComponentGroup" name="ComponentGroup" cloudDestinationProperty="ComponentGroup" >
+        <layoutConstraint value="North" />
+        <component type="TextField" name="modeloC1" cloudBoundProperty="text" cloudDestinationProperty="marca" text="" hint="Modelo" columns="50" >
+        </component>
+      </component>
+      <component type="Button" name="grabarClasificacionC1" cloudDestinationProperty="agregarP1" text="Grabar clasificaci&#xf3;n" >
+        <layoutConstraint value="South" />
+      </component>
+    </component>
+    <component type="Container" name="Container1" tabTitle="Detalle de Cajas" cloudDestinationProperty="Container1" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
+      <component type="Container" name="Container" cloudDestinationProperty="Container" layout="GridLayout" gridLayoutRows="1" gridLayoutColumns="2" >
+        <layoutConstraint value="North" />
+        <component type="Button" name="agregarDetalleCajasC1" cloudDestinationProperty="agregarClasificaci&#xf3;n" text="Agregar Detalle de Cajas" >
+        </component>
+        <component type="CheckBox" name="quitarElementoC1" cloudDestinationProperty="CheckBox" text="Quitar elemento" >
+        </component>
+      </component>
+      <component type="Container" name="listaDetalleCajasC1" cloudDestinationProperty="Container2" layout="BoxLayout" boxLayoutAxis="Y" >
+        <layoutConstraint value="Center" />
+      </component>
+    </component>
+  </component>
+</component>

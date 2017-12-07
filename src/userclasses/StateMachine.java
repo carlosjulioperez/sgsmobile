@@ -23,6 +23,8 @@ import com.codename1.ui.table.DefaultTableModel;
 import com.codename1.ui.table.Table;
 import com.codename1.ui.table.TableModel;
 import com.codename1.ui.util.Resources;
+import ec.sgs.mobile.bean.Clasificacion;
+import ec.sgs.mobile.bean.DetalleCajas;
 import ec.sgs.mobile.cn1.Configuracion;
 import generated.StateMachineBase;
 import java.io.IOException;
@@ -47,58 +49,64 @@ public class StateMachine extends StateMachineBase {
     private String codigoInspector="";
     
     //Controles de Configuracion
-    TextField servidor;
-    TextField puerto;
-    TextField inspector;
+    private TextField servidor;
+    private TextField puerto;
+    private TextField inspector;
     
     // Controles de Inspeccion
-    TextField contenedorNum;
-    TextField tamano;
-    TextField chasis;
-    TextField trailerPlaca;
-    TextField cliente;
-    DateSpinner fecha;
-    TextField agencia;
-    TextField vapor;
-    TextField destino;
-    TextField factura;
+    private TextField contenedorNum;
+    private TextField tamano;
+    private TextField chasis;
+    private TextField trailerPlaca;
+    private TextField cliente;
+    private DateSpinner fecha;
+    private TextField agencia;
+    private TextField vapor;
+    private TextField destino;
+    private TextField factura;
 
-    CheckBox puertaIzquierda;
-    CheckBox puertaDerecha;
-    CheckBox paredFrontalInternaIzquierda;
-    CheckBox paredFrontalInternaDerecha;
-    CheckBox cables;
-    CheckBox flucs;
-    CheckBox ladosExternosIzquierda;
-    CheckBox ladosExternosDerecha;
-    CheckBox ladosInternosIzquierda;
-    CheckBox ladosInternosDerecha;
-    CheckBox techo;
-    CheckBox piso;
-    CheckBox estructuraInferior;
-    CheckBox estructuraInterna;
-    CheckBox chasisEstado;
+    private CheckBox puertaIzquierda;
+    private CheckBox puertaDerecha;
+    private CheckBox paredFrontalInternaIzquierda;
+    private CheckBox paredFrontalInternaDerecha;
+    private CheckBox cables;
+    private CheckBox flucs;
+    private CheckBox ladosExternosIzquierda;
+    private CheckBox ladosExternosDerecha;
+    private CheckBox ladosInternosIzquierda;
+    private CheckBox ladosInternosDerecha;
+    private CheckBox techo;
+    private CheckBox piso;
+    private CheckBox estructuraInferior;
+    private CheckBox estructuraInterna;
+    private CheckBox chasisEstado;
 
-    TextArea observaciones;
+    private TextArea observaciones;
     
     //Controles de ControlEmbarque1
-    RadioButton contenedorRad;
-    RadioButton clienteRad;
-    TextField   valor;
-    Container   listaContenedoresCnt;
+    private RadioButton contenedorRad;
+    private RadioButton clienteRad;
+    private TextField   valor;
+    private Container   listaContenedoresCnt;
     
     //Controles de ControlEmbarque2
-    Table       infoCE;
-    String      inspeccionItemId;
-    Map         inspeccionItem;
-    Container   productosContainerCE;
+    private Table       infoCE;
+    private String      inspeccionItemId;
+    private Map         inspeccionItem;
+    private Container   productosContainerCE;
     
-    //Controles de Produucto1
-    TextField   marcaP1;
-    TextField   descripcionPesosP1;
-    TextField   presentacionP1;
-    TextField   empaqueP1;
-    TextField   tipoProductoP1;
+    //Controles de Producto1
+    private TextField   marcaP1;
+    private TextField   descripcionPesosP1;
+    private TextField   presentacionP1;
+    private TextField   empaqueP1;
+    private TextField   tipoProductoP1;
+    
+    //Controles para Clasificacion
+    private Clasificacion clasificacion;
+    
+    //Controles para Detalle de Cajas
+    private DetalleCajas detalleCajas;
     
     public StateMachine(String resFile) {
         super(resFile);
@@ -409,11 +417,11 @@ public class StateMachine extends StateMachineBase {
 
     @Override
     protected void onControlEmbarque2_ButtonAction(Component c, ActionEvent event) {
-        showForm("Producto1", null);
+        showForm("Producto", null);
     }
 
     @Override
-    protected void beforeProducto1(Form f) {
+    protected void beforeProducto(Form f) {
         marcaP1             = new TextField();
         descripcionPesosP1  = new TextField();
         presentacionP1      = new TextField();
@@ -422,9 +430,43 @@ public class StateMachine extends StateMachineBase {
     }
 
     @Override
-    protected void onProducto1_AgregarProductoAction(Component c, ActionEvent event) {
-
+    protected void onProducto_GrabarProductoP1Action(Component c, ActionEvent event) {
     
     }
 
+    @Override
+    protected void onProducto_AgregarClasificacionP1Action(Component c, ActionEvent event) {
+        showForm("Clasificacion", null);
+    }
+
+    @Override
+    protected void beforeClasificacion(Form f) {
+        clasificacion = new Clasificacion();
+    }
+
+    @Override
+    protected void onClasificacion_GrabarClasificacionC1Action(Component c, ActionEvent event) {
+    }
+
+    @Override
+    protected void onClasificacion_AgregarDetalleCajasC1Action(Component c, ActionEvent event) {
+        showForm("DetalleCajas", null);
+    }
+
+    @Override
+    protected void beforeDetalleCajas(Form f) {
+        detalleCajas = new DetalleCajas();
+    }
+
+    @Override
+    protected void onDetalleCajas_GrabarDetalleCajasD1Action(Component c, ActionEvent event) {
+        agregarDetalleCajas(detalleCajas);
+    }
+    
+    //Agregar detalle de cajas en Clasificacion
+    private void agregarDetalleCajas(DetalleCajas detalleCajas){
+        //TODO validaciones
+    }
+            
+    
 }

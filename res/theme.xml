@@ -17,6 +17,7 @@
     <image name="chasis.png"  />
     <image name="chbox1.png" type="multi"  />
     <image name="chboxv1.png" type="multi"  />
+    <ui name="Clasificacion" />
     <image name="ComboBox.borderBottom_1.png" type="multi"  />
     <image name="ComboBox.borderBottomL_1.png" type="multi"  />
     <image name="ComboBox.borderBottomR_1.png" type="multi"  />
@@ -38,6 +39,7 @@
     <ui name="Configuracion" />
     <ui name="ControlEmbarque1" />
     <ui name="ControlEmbarque2" />
+    <ui name="DetalleCajas" />
     <image name="Dialog.borderBottom_1.png" type="multi"  />
     <image name="Dialog.borderBottomL_1.png" type="multi"  />
     <image name="Dialog.borderBottomR_1.png" type="multi"  />
@@ -72,7 +74,7 @@
     <image name="OKGR.borderTopR_1.png" type="multi"  />
     <image name="paredFrontalInterna.png"  />
     <image name="piso.png"  />
-    <ui name="Producto1" />
+    <ui name="Producto" />
     <image name="puertas.png"  />
     <image name="round.png" type="multi"  />
     <image name="sliderBlueCenter.png" type="multi"  />
