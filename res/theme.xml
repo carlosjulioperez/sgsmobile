@@ -17,6 +17,7 @@
     <image name="chasis.png"  />
     <image name="chbox1.png" type="multi"  />
     <image name="chboxv1.png" type="multi"  />
+    <ui name="ClasificacionesFrm" />
     <ui name="ClasificacionFrm" />
     <image name="ComboBox.borderBottom_1.png" type="multi"  />
     <image name="ComboBox.borderBottomL_1.png" type="multi"  />

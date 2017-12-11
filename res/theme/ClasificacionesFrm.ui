@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="ClasificacionesFrm" cloudDestinationProperty="ClasificacionesFrm" layout="BoxLayout" boxLayoutAxis="Y" title="Clasificaci&#xf3;n" >
+  <component type="TextField" name="TextField" cloudBoundProperty="text" cloudDestinationProperty="TextField" text="TextField" >
+  </component>
+  <component type="Container" name="Container" cloudDestinationProperty="Container" layout="GridLayout" gridLayoutRows="1" gridLayoutColumns="2" >
+    <component type="Table" name="Table" cloudDestinationProperty="Table" >
+      <custom name="data" type="java.lang.String" array="true" dimensions="2" >
+        <arr>          <str>1</str>
+          <str>2</str>
+        </arr>
+        <arr>          <str>3</str>
+          <str>4</str>
+        </arr>
+        <arr>          <str>3</str>
+          <str>3</str>
+        </arr>
+        <arr>          <str>4</str>
+          <str>4</str>
+        </arr>
+        <arr>          <str>5</str>
+          <str>5</str>
+        </arr>
+        <arr>          <str>6</str>
+          <str>6</str>
+        </arr>
+        <arr>          <str>7</str>
+          <str>7</str>
+        </arr>
+        <arr>          <str>8</str>
+          <str>8</str>
+        </arr>
+        <arr>          <str>9</str>
+          <str>9</str>
+        </arr>
+        <arr>          <str>10</str>
+          <str>10</str>
+        </arr>
+        <arr>          <str>11</str>
+          <str>11</str>
+        </arr>
+        <arr>          <str>12</str>
+          <str>12</str>
+        </arr>
+        <arr>          <str>13</str>
+          <str>13</str>
+        </arr>
+        <arr>          <str>14</str>
+          <str>14</str>
+        </arr>
+      </custom>
+    </component>
+    <component type="Table" name="Table1" cloudDestinationProperty="Table" >
+      <custom name="data" type="java.lang.String" array="true" dimensions="2" >
+        <arr>          <str>1</str>
+          <str>2</str>
+        </arr>
+        <arr>          <str>3</str>
+          <str>4</str>
+        </arr>
+        <arr>          <str>3</str>
+          <str>3</str>
+        </arr>
+        <arr>          <str>4</str>
+          <str>4</str>
+        </arr>
+        <arr>          <str>5</str>
+          <str>5</str>
+        </arr>
+        <arr>          <str>6</str>
+          <str>6</str>
+        </arr>
+        <arr>          <str>7</str>
+          <str>7</str>
+        </arr>
+        <arr>          <str>8</str>
+          <str>8</str>
+        </arr>
+        <arr>          <str>9</str>
+          <str>9</str>
+        </arr>
+        <arr>          <str>10</str>
+          <str>10</str>
+        </arr>
+        <arr>          <str>11</str>
+          <str>11</str>
+        </arr>
+        <arr>          <str>12</str>
+          <str>12</str>
+        </arr>
+        <arr>          <str>13</str>
+          <str>13</str>
+        </arr>
+        <arr>          <str>14</str>
+          <str>14</str>
+        </arr>
+      </custom>
+    </component>
+  </component>
+</component>

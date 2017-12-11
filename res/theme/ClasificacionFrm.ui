@@ -6,6 +6,7 @@
     <custom name="titles" type="java.lang.String" array="true" dimensions="1" >
       <str>Datos</str>
       <str>Detalle de Cajas</str>
+      <str>Detalle</str>
     </custom>
     <component type="Container" name="Container3" tabTitle="Datos" cloudDestinationProperty="Container3" flatten="false" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
       <component type="ComponentGroup" name="ComponentGroup" cloudDestinationProperty="ComponentGroup" >
@@ -27,6 +28,10 @@
       </component>
       <component type="MultiList" name="detalleCajasC1" cloudDestinationProperty="detalleCajasC1" >
         <layoutConstraint value="Center" />
+      </component>
+    </component>
+    <component type="Container" name="Container2" tabTitle="Detalle" cloudDestinationProperty="Container2" layout="BoxLayout" boxLayoutAxis="Y" >
+      <component type="Table" name="cajasTable" cloudDestinationProperty="cajasTable" >
       </component>
     </component>
   </component>

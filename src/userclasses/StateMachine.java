@@ -452,6 +452,53 @@ public class StateMachine extends StateMachineBase {
         clasificacion       = new Clasificacion();
         List detalleCajasC1 = findDetalleCajasC1();
         detalleCajasC1.setModel(new DefaultListModel(detalleCajasVector));
+        
+        String[][] valores = new String[][] {
+            {"1", ""},
+            {"2", ""},
+            {"3", ""},
+            {"4", ""},
+            {"5", ""},
+            {"6", ""},
+            {"7", ""},
+            {"8", ""},
+            {"9", ""},
+            {"10", ""},
+            {"11", ""},
+            {"12", ""},
+            {"13", ""},
+            {"14", ""},
+            {"15", ""},
+            {"16", ""},
+            {"17", ""},
+            {"18", ""},
+            {"19", ""},
+            {"20", ""},
+            {"21", ""},
+            {"22", ""},
+            {"23", ""},
+            {"24", ""},
+            {"25", ""},
+            {"26", ""},
+            {"27", ""},
+            {"28", ""},
+            {"29", ""},
+            {"30", ""},
+            {"31", ""},
+            {"32", ""},
+            {"33", ""},
+            {"34", ""},
+        };
+   
+        TableModel model = new DefaultTableModel(new String[]{"Fila", "Cantidad"}, valores){
+            public boolean isCellEditable(int row, int col) {
+                return col != 0;
+            }
+        };
+
+        Table cajasTable = findCajasTable();
+        cajasTable.setModel(model);
+        
     }
 
     @Override
@@ -496,7 +543,6 @@ public class StateMachine extends StateMachineBase {
         table.put("Line2", strFila);
         table.put("Line3", strCantidad);
         detalleCajasVector.addElement(table);
-        //Display.getInstance().getCurrent().revalidate();
 
         /*
         MultiButton mb = new MultiButton("Fila: " + fila);
