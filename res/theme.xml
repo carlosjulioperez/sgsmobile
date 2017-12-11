@@ -17,7 +17,6 @@
     <image name="chasis.png"  />
     <image name="chbox1.png" type="multi"  />
     <image name="chboxv1.png" type="multi"  />
-    <ui name="ClasificacionesFrm" />
     <ui name="ClasificacionFrm" />
     <image name="ComboBox.borderBottom_1.png" type="multi"  />
     <image name="ComboBox.borderBottomL_1.png" type="multi"  />
@@ -39,7 +38,6 @@
     <image name="ComboBox.sel#borderTopR_1.png" type="multi"  />
     <ui name="ConfiguracionFrm" />
     <ui name="ControlEmbarqueFrm" />
-    <ui name="DetalleCajasFrm" />
     <image name="Dialog.borderBottom_1.png" type="multi"  />
     <image name="Dialog.borderBottomL_1.png" type="multi"  />
     <image name="Dialog.borderBottomR_1.png" type="multi"  />

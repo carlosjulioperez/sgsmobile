@@ -109,12 +109,8 @@ public class StateMachine extends StateMachineBase {
     
     //Controles para Clasificacion
     private Clasificacion   clasificacion;
-    
-    //Controles para Detalle de Cajas
-    private DetalleCajas    detalleCajas;
-    private TextField       filaDC;
-    private TextField       cantidadDC;
-    
+    private Table           cajasPorFila;
+        
     public StateMachine(String resFile) {
         super(resFile);
         // do not modify, write code in initVars and initialize class members there,
@@ -447,102 +443,23 @@ public class StateMachine extends StateMachineBase {
         showForm("ClasificacionFrm", null);
     }
 
-    @Override
-    protected void beforeClasificacionFrm(Form f) {
-        clasificacion       = new Clasificacion();
-        List detalleCajasC1 = findDetalleCajasC1();
-        detalleCajasC1.setModel(new DefaultListModel(detalleCajasVector));
-        
-        String[][] valores = new String[][] {
-            {"1", ""},
-            {"2", ""},
-            {"3", ""},
-            {"4", ""},
-            {"5", ""},
-            {"6", ""},
-            {"7", ""},
-            {"8", ""},
-            {"9", ""},
-            {"10", ""},
-            {"11", ""},
-            {"12", ""},
-            {"13", ""},
-            {"14", ""},
-            {"15", ""},
-            {"16", ""},
-            {"17", ""},
-            {"18", ""},
-            {"19", ""},
-            {"20", ""},
-            {"21", ""},
-            {"22", ""},
-            {"23", ""},
-            {"24", ""},
-            {"25", ""},
-            {"26", ""},
-            {"27", ""},
-            {"28", ""},
-            {"29", ""},
-            {"30", ""},
-            {"31", ""},
-            {"32", ""},
-            {"33", ""},
-            {"34", ""},
-        };
-   
-        TableModel model = new DefaultTableModel(new String[]{"Fila", "Cantidad"}, valores){
-            public boolean isCellEditable(int row, int col) {
-                return col != 0;
-            }
-        };
-
-        Table cajasTable = findCajasTable();
-        cajasTable.setModel(model);
-        
-    }
-
-    @Override
-    protected void onClasificacionFrm_GrabarClasificacionC1Action(Component c, ActionEvent event) {
-        agregarClasificacion(clasificacion);
-    }
-    
     //Agregar detalle de cajas en Clasificacion
     private void agregarClasificacion(Clasificacion clasificacion){
         //TODO validaciones
     }
 
-    @Override
-    protected void onClasificacionFrm_AgregarDetalleCajasC1Action(Component c, ActionEvent event) {
-        showForm("DetalleCajasFrm", null);
-    }
-
-    @Override
-    protected void beforeDetalleCajasFrm(Form f) {
-        detalleCajas    = new DetalleCajas();
-        filaDC          = findFilaDC();
-        cantidadDC      = findCantidadDC();
-    }
-
-    @Override
-    protected void onDetalleCajasFrm_GrabarDetalleCajasDCAction(Component c, ActionEvent event) {
-        agregarDetalleCajas();
-    }
-    
     //Agregar detalle de cajas en Clasificacion
     private void agregarDetalleCajas(){
         DetalleCajas obj = new DetalleCajas();
 
-        String strFila     = filaDC.getText();
-        String strCantidad = cantidadDC.getText();
-        
-        obj.setFila     ( Utileria.parseToShort( strFila ));
-        obj.setCantidad ( Utileria.parseToShort( strCantidad ));
-
-        Hashtable table = new Hashtable();
-        table.put("Pojo", obj); //Agrego el POJO
-        table.put("Line2", strFila);
-        table.put("Line3", strCantidad);
-        detalleCajasVector.addElement(table);
+//        obj.setFila     ( Utileria.parseToShort( strFila ));
+//        obj.setCantidad ( Utileria.parseToShort( strCantidad ));
+//
+//        Hashtable table = new Hashtable();
+//        table.put("Pojo", obj); //Agrego el POJO
+//        table.put("Line2", strFila);
+//        table.put("Line3", strCantidad);
+//        detalleCajasVector.addElement(table);
 
         /*
         MultiButton mb = new MultiButton("Fila: " + fila);
@@ -554,5 +471,58 @@ public class StateMachine extends StateMachineBase {
         showForm("ClasificacionFrm", null);
         //Display.getInstance().getCurrent().revalidate();        
     }
+
+    @Override
+    protected void beforeClasificacionFrm(Form f) {
+        Object[][] valores = {
+            {1, 0},
+            {2, 0},
+            {3, 0},
+            {4, 0},
+            {5, 0},
+            {6, 0},
+            {7, 0},
+            {8, 0},
+            {9, 0},
+            {10, 0},
+            {11, 0},
+            {12, 0},
+            {13, 0},
+            {14, 0},
+            {15, 0},
+            {16, 0},
+            {17, 0},
+            {18, 0},
+            {19, 0},
+            {20, 0},
+            {21, 0},
+            {22, 0},
+            {23, 0},
+            {24, 0},
+            {25, 0},
+            {26, 0},
+            {27, 0},
+            {28, 0},
+            {29, 0},
+            {30, 0},
+            {31, 0},
+            {32, 0},
+            {33, 0},
+            {34, 0},
+        };
+   
+        TableModel model = new DefaultTableModel(new String[]{"Fila", "Cantidad de cajas"}, valores){
+            public boolean isCellEditable(int row, int col) {
+                return col != 0;
+            }
+        };
+
+        cajasPorFila = findCajasPorFila();
+        cajasPorFila.setModel(model);
+    }
+
+    @Override
+    protected void onClasificacionFrm_GrabarClasificacionCAction(Component c, ActionEvent event) {
     
+    }
 }
