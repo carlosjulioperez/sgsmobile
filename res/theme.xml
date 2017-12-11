@@ -17,7 +17,7 @@
     <image name="chasis.png"  />
     <image name="chbox1.png" type="multi"  />
     <image name="chboxv1.png" type="multi"  />
-    <ui name="Clasificacion" />
+    <ui name="ClasificacionFrm" />
     <image name="ComboBox.borderBottom_1.png" type="multi"  />
     <image name="ComboBox.borderBottomL_1.png" type="multi"  />
     <image name="ComboBox.borderBottomR_1.png" type="multi"  />
@@ -36,9 +36,9 @@
     <image name="ComboBox.sel#borderTop_1.png" type="multi"  />
     <image name="ComboBox.sel#borderTopL_1.png" type="multi"  />
     <image name="ComboBox.sel#borderTopR_1.png" type="multi"  />
-    <ui name="Configuracion" />
-    <ui name="ControlEmbarque" />
-    <ui name="DetalleCajas" />
+    <ui name="ConfiguracionFrm" />
+    <ui name="ControlEmbarqueFrm" />
+    <ui name="DetalleCajasFrm" />
     <image name="Dialog.borderBottom_1.png" type="multi"  />
     <image name="Dialog.borderBottomL_1.png" type="multi"  />
     <image name="Dialog.borderBottomR_1.png" type="multi"  />
@@ -50,8 +50,8 @@
     <image name="Dialog.borderTopR_1.png" type="multi"  />
     <image name="estructuraInferior.png"  />
     <image name="estructuraInterna.png"  />
-    <ui name="Inspeccion" />
     <ui name="InspeccionBusqueda" />
+    <ui name="InspeccionFrm" />
     <image name="lados.png"  />
     <ui name="Main" />
     <image name="Menu.borderBottom_2.png" type="multi"  />
@@ -74,7 +74,7 @@
     <image name="OKGR.borderTopR_1.png" type="multi"  />
     <image name="paredFrontalInterna.png"  />
     <image name="piso.png"  />
-    <ui name="Producto" />
+    <ui name="ProductoFrm" />
     <image name="puertas.png"  />
     <image name="round.png" type="multi"  />
     <image name="sliderBlueCenter.png" type="multi"  />

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<component type="Form" name="Producto" cloudDestinationProperty="Producto1" flatten="false" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="Nuevo Producto" >
+<component type="Form" name="ProductoFrm" cloudDestinationProperty="Producto1" flatten="false" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="Nuevo Producto" >
   <component type="Tabs" name="Tabs" cloudDestinationProperty="Tabs" flatten="false" >
     <layoutConstraint value="East" />
     <custom name="titles" type="java.lang.String" array="true" dimensions="1" >

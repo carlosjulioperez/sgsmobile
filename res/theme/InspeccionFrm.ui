@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="InspeccionFrm" cloudDestinationProperty="Inspeccion" layout="BoxLayout" boxLayoutAxis="Y" title="Inspecci&#xf3;n de Contenedores" >
+  <component type="Tabs" name="Tabs" cloudDestinationProperty="Tabs" rtl="false" >
+    <custom name="titles" type="java.lang.String" array="true" dimensions="1" >
+      <str>Datos 1</str>
+      <str>Datos 2</str>
+      <str>Datos 3</str>
+      <str>Datos 4</str>
+    </custom>
+    <component type="Container" name="ContainerTab1" tabTitle="Datos 1" cloudDestinationProperty="Container" layout="BoxLayout" boxLayoutAxis="Y" >
+      <component type="ComponentGroup" name="ComponentGroup" cloudDestinationProperty="ComponentGroup" >
+        <component type="TextField" name="contenedorNum" cloudBoundProperty="text" cloudDestinationProperty="ContenedorNum" text="" maxSize="11" hint="N&#xfa;mero de contenedor" >
+        </component>
+        <component type="TextField" name="tamano" cloudBoundProperty="text" cloudDestinationProperty="TextField1" text="" constraint="0" maxSize="2" hint="Tama&#xf1;o" >
+        </component>
+        <component type="TextField" name="chasis" cloudBoundProperty="text" cloudDestinationProperty="TextField3" text="" maxSize="8" hint="Chasis" >
+        </component>
+        <component type="TextField" name="trailerPlaca" cloudBoundProperty="text" cloudDestinationProperty="TextField2" text="" maxSize="8" hint="Placa de trailer" >
+        </component>
+        <component type="TextField" name="cliente" cloudBoundProperty="text" cloudDestinationProperty="Cliente" text="" maxSize="100" hint="Cliente" >
+        </component>
+        <component type="DateSpinner" name="fecha" cloudDestinationProperty="DateSpinner" focusable="false" >
+        </component>
+        <component type="TextField" name="agencia" cloudBoundProperty="text" cloudDestinationProperty="Agencia" text="" maxSize="30" hint="Agencia naviera" >
+        </component>
+        <component type="TextField" name="vapor" cloudBoundProperty="text" cloudDestinationProperty="Vapor" text="" maxSize="30" hint="Vapor" >
+        </component>
+        <component type="TextField" name="destino" cloudBoundProperty="text" cloudDestinationProperty="Destino" text="" maxSize="30" hint="Destino" >
+        </component>
+        <component type="TextField" name="factura" cloudBoundProperty="text" cloudDestinationProperty="Factura" text="" maxSize="30" hint="Factura" >
+        </component>
+      </component>
+    </component>
+    <component type="Container" name="ContainerTab2" tabTitle="Datos 2" cloudDestinationProperty="Container1" layout="BoxLayout" boxLayoutAxis="Y" >
+      <component type="Container" name="Container1" cloudDestinationProperty="Container1" layout="BoxLayout" boxLayoutAxis="Y" >
+        <component type="Label" name="Label" cloudDestinationProperty="Label" text="Puertas" icon="puertas.png" >
+        </component>
+        <component type="Container" name="Container" cloudDestinationProperty="Container" >
+          <component type="CheckBox" name="puertaIzquierda" cloudDestinationProperty="PI" text="Izquierda OK" selected="true" >
+          </component>
+          <component type="CheckBox" name="puertaDerecha" cloudDestinationProperty="PD" text="Derecha OK" selected="true" >
+          </component>
+        </component>
+      </component>
+      <component type="Container" name="Container2" cloudDestinationProperty="Container2" layout="BoxLayout" boxLayoutAxis="Y" >
+        <component type="Label" name="Label1" cloudDestinationProperty="Label1" text="Pared frontal interna" icon="paredFrontalInterna.png" >
+        </component>
+        <component type="Container" name="Container3" cloudDestinationProperty="Container" >
+          <component type="CheckBox" name="paredFrontalInternaIzquierda" cloudDestinationProperty="PI" text="Izquierda OK" selected="true" >
+          </component>
+          <component type="CheckBox" name="paredFrontalInternaDerecha" cloudDestinationProperty="PD" text="Derecha OK" selected="true" >
+          </component>
+        </component>
+      </component>
+      <component type="Container" name="Container3" cloudDestinationProperty="Container2" layout="BoxLayout" boxLayoutAxis="Y" >
+        <component type="Label" name="Label1" cloudDestinationProperty="Label1" text="Unidad de refrigeraci&#xf3;n" icon="uniadRefrigeracion.png" >
+        </component>
+        <component type="Container" name="Container3" cloudDestinationProperty="Container" >
+          <component type="CheckBox" name="cables" cloudDestinationProperty="PI" text="Cables OK" selected="true" >
+          </component>
+          <component type="CheckBox" name="flucs" cloudDestinationProperty="PD" text="Flucs OK" selected="true" >
+          </component>
+        </component>
+      </component>
+      <component type="Container" name="Container4" cloudDestinationProperty="Container1" layout="BoxLayout" boxLayoutAxis="Y" >
+        <component type="Label" name="Label" cloudDestinationProperty="Label" text="Lados externos" icon="lados.png" >
+        </component>
+        <component type="Container" name="Container" cloudDestinationProperty="Container" >
+          <component type="CheckBox" name="ladosExternosIzquierda" cloudDestinationProperty="PI" text="Izquierda OK" selected="true" >
+          </component>
+          <component type="CheckBox" name="ladosExternosDerecha" cloudDestinationProperty="PD" text="Derecha OK" selected="true" >
+          </component>
+        </component>
+      </component>
+      <component type="Container" name="Container5" cloudDestinationProperty="Container1" layout="BoxLayout" boxLayoutAxis="Y" >
+        <component type="Label" name="Label" cloudDestinationProperty="Label" text="Lados internos" icon="lados.png" >
+        </component>
+        <component type="Container" name="Container" cloudDestinationProperty="Container" >
+          <component type="CheckBox" name="ladosInternosIzquierda" cloudDestinationProperty="PI" text="Izquierda OK" selected="true" >
+          </component>
+          <component type="CheckBox" name="ladosInternosDerecha" cloudDestinationProperty="PD" text="Derecha OK" selected="true" >
+          </component>
+        </component>
+      </component>
+    </component>
+    <component type="Container" name="ContainerTab3" tabTitle="Datos 3" cloudDestinationProperty="Container2" layout="BoxLayout" boxLayoutAxis="Y" >
+      <component type="Container" name="Container1" cloudDestinationProperty="Container1" layout="BoxLayout" boxLayoutAxis="Y" >
+        <component type="Label" name="Label" cloudDestinationProperty="Label" text="Techo" icon="techo.png" >
+        </component>
+        <component type="CheckBox" name="techo" cloudDestinationProperty="PI" text="OK" selected="true" >
+        </component>
+      </component>
+      <component type="Container" name="Container2" cloudDestinationProperty="Container1" layout="BoxLayout" boxLayoutAxis="Y" >
+        <component type="Label" name="Label" cloudDestinationProperty="Label" text="Piso" icon="piso.png" >
+        </component>
+        <component type="CheckBox" name="piso" cloudDestinationProperty="PI" text="OK" selected="true" >
+        </component>
+      </component>
+      <component type="Container" name="Container3" cloudDestinationProperty="Container1" layout="BoxLayout" boxLayoutAxis="Y" >
+        <component type="Label" name="Label" cloudDestinationProperty="Label" text="Estructura inferior" icon="estructuraInferior.png" >
+        </component>
+        <component type="CheckBox" name="estructuraInferior" cloudDestinationProperty="PI" text="OK" selected="true" >
+        </component>
+      </component>
+      <component type="Container" name="Container4" cloudDestinationProperty="Container1" layout="BoxLayout" boxLayoutAxis="Y" >
+        <component type="Label" name="Label" cloudDestinationProperty="Label" text="Estructura interna" icon="estructuraInterna.png" >
+        </component>
+        <component type="CheckBox" name="estructuraInterna" cloudDestinationProperty="PI" text="OK" selected="true" >
+        </component>
+      </component>
+      <component type="Container" name="Container5" cloudDestinationProperty="Container1" layout="BoxLayout" boxLayoutAxis="Y" >
+        <component type="Label" name="Label" cloudDestinationProperty="Label" text="Chasis" icon="chasis.png" >
+        </component>
+        <component type="CheckBox" name="chasisEstado" cloudDestinationProperty="PI" text="OK" selected="true" >
+        </component>
+      </component>
+    </component>
+    <component type="Container" name="ContainerTab4" tabTitle="Datos 4" cloudDestinationProperty="Container3" flatten="true" layout="BoxLayout" boxLayoutAxis="Y" >
+      <component type="ComponentGroup" name="ComponentGroup1" cloudDestinationProperty="ComponentGroup1" >
+        <component type="TextArea" name="observaciones" cloudBoundProperty="text" cloudDestinationProperty="Observaciones" text="" maxSize="100" hint="Observaciones" rows="5" >
+        </component>
+      </component>
+      <component type="Button" name="grabar" cloudDestinationProperty="Grabar" flatten="false" text="Grabar datos de formulario" >
+      </component>
+    </component>
+  </component>
+</component>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="DetalleCajasFrm" cloudDestinationProperty="DetalleCajasFrm" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="Detalle de Cajas" >
+  <component type="Container" name="Container1" cloudDestinationProperty="Container1" layout="BoxLayout" boxLayoutAxis="Y" >
+    <layoutConstraint value="Center" />
+    <component type="TextField" name="filaDC" cloudBoundProperty="text" cloudDestinationProperty="filaDC" text="" hint="Fila..." >
+    </component>
+    <component type="TextField" name="cantidadDC" cloudBoundProperty="text" cloudDestinationProperty="cantidadDC" text="" hint="Columna..." >
+    </component>
+  </component>
+  <component type="Button" name="grabarDetalleCajasDC" cloudDestinationProperty="grabarDetalleCajasDC" text="Grabar Detalle" >
+    <layoutConstraint value="South" />
+  </component>
+</component>

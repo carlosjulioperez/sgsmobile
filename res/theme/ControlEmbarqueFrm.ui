@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<component type="Form" name="ControlEmbarque" cloudDestinationProperty="ControlEmbarque2" layout="BoxLayout" boxLayoutAxis="Y" title="Control del Embarque Granel" >
+<component type="Form" name="ControlEmbarqueFrm" cloudDestinationProperty="ControlEmbarque2" layout="BoxLayout" boxLayoutAxis="Y" title="Control del Embarque Granel" >
   <component type="Tabs" name="Tabs" cloudDestinationProperty="Tabs" >
     <custom name="titles" type="java.lang.String" array="true" dimensions="1" >
       <str>Inspecci&#xf3;n</str>

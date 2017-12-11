@@ -18,6 +18,7 @@ import com.codename1.l10n.L10NManager;
 import com.codename1.processing.Result;
 import com.codename1.ui.*; 
 import com.codename1.ui.events.*;
+import com.codename1.ui.list.DefaultListModel;
 import com.codename1.ui.spinner.DateSpinner;
 import com.codename1.ui.table.DefaultTableModel;
 import com.codename1.ui.table.Table;
@@ -25,6 +26,7 @@ import com.codename1.ui.table.TableModel;
 import com.codename1.ui.util.Resources;
 import ec.sgs.mobile.bean.Clasificacion;
 import ec.sgs.mobile.bean.DetalleCajas;
+import ec.sgs.mobile.bean.util.Utileria;
 import ec.sgs.mobile.cn1.Configuracion;
 import generated.StateMachineBase;
 import java.io.IOException;
@@ -33,6 +35,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.Vector;
 
 /**
  *
@@ -42,6 +45,8 @@ public class StateMachine extends StateMachineBase {
     
     private final L10NManager lnm = L10NManager.getInstance();
     private Storage storage;
+    
+    private Vector detalleCajasVector;
     
     private String inspeccionService;
 
@@ -103,10 +108,12 @@ public class StateMachine extends StateMachineBase {
     private TextField   tipoProductoP1;
     
     //Controles para Clasificacion
-    private Clasificacion clasificacion;
+    private Clasificacion   clasificacion;
     
     //Controles para Detalle de Cajas
-    private DetalleCajas detalleCajas;
+    private DetalleCajas    detalleCajas;
+    private TextField       filaDC;
+    private TextField       cantidadDC;
     
     public StateMachine(String resFile) {
         super(resFile);
@@ -124,13 +131,12 @@ public class StateMachine extends StateMachineBase {
 
     private void definirConfiguracion(){
         Dialog.show ("Configuración", "Defina los datos de configuración del equipo", "OK", null);
-        showForm("Configuracion", null);
+        showForm("ConfiguracionFrm", null);
     }
     
     @Override
     protected void postMain(Form f) {
         storage = Storage.getInstance();
-        
         //Lee la configuración del móvil
         Configuracion obj = (Configuracion)storage.readObject("configuracion");
         if (obj!=null){
@@ -144,7 +150,7 @@ public class StateMachine extends StateMachineBase {
     }
     
     @Override
-    protected void beforeConfiguracion(Form f) {
+    protected void beforeConfiguracionFrm(Form f) {
         servidor  = findServidor();
         puerto    = findPuerto();
         inspector = findInspector();       
@@ -159,7 +165,7 @@ public class StateMachine extends StateMachineBase {
     }
 
     @Override
-    protected void onConfiguracion_GrabarAction(Component c, ActionEvent event) {
+    protected void onConfiguracionFrm_GrabarAction(Component c, ActionEvent event) {
         Configuracion obj = new Configuracion();
         obj.setServidor(servidor.getText());
         obj.setPuerto(puerto.getText());
@@ -170,11 +176,11 @@ public class StateMachine extends StateMachineBase {
     }
 
     @Override
-    protected void postInspeccion(Form f) {
+    protected void postInspeccionFrm(Form f) {
     }
 
     @Override
-    protected void beforeInspeccion(Form f) {
+    protected void beforeInspeccionFrm(Form f) {
         //Constraints
         contenedorNum                = findContenedorNum();
         tamano                       = findTamano();
@@ -217,7 +223,7 @@ public class StateMachine extends StateMachineBase {
     }
 
     @Override
-    protected void onInspeccion_GrabarAction(Component c, ActionEvent event) {
+    protected void onInspeccionFrm_GrabarAction(Component c, ActionEvent event) {
         //https://groups.google.com/forum/#!topic/codenameone-discussions/tGPeQrNRO58
         //https://stackoverflow.com/questions/39063909/how-to-post-json-to-a-rest-webservice-in-codenameone
         
@@ -343,7 +349,7 @@ public class StateMachine extends StateMachineBase {
                         public void actionPerformed(ActionEvent ev) {
                             //System.out.println( mb.getUIID() );
                             inspeccionItemId = mb.getUIID();
-                            showForm("ControlEmbarque", null);
+                            showForm("ControlEmbarqueFrm", null);
                         }
                     });
                     
@@ -393,7 +399,7 @@ public class StateMachine extends StateMachineBase {
     }
     
     @Override
-    protected void beforeControlEmbarque(Form f) {
+    protected void beforeControlEmbarqueFrm(Form f) {
         
         leerDatosInspeccion();
         infoCE              = findInfoCE();
@@ -416,36 +422,40 @@ public class StateMachine extends StateMachineBase {
     }
 
     @Override
-    protected void onControlEmbarque_AgregarProductoCEAction(Component c, ActionEvent event) {
-        showForm("Producto", null);
+    protected void onControlEmbarqueFrm_AgregarProductoCEAction(Component c, ActionEvent event) {
+        showForm("ProductoFrm", null);
     }
 
     @Override
-    protected void beforeProducto(Form f) {
+    protected void beforeProductoFrm(Form f) {
         marcaP1             = new TextField();
         descripcionPesosP1  = new TextField();
         presentacionP1      = new TextField();
         empaqueP1           = new TextField();
         tipoProductoP1      = new TextField();
+        
+        detalleCajasVector = new Vector();
     }
 
     @Override
-    protected void onProducto_GrabarProductoP1Action(Component c, ActionEvent event) {
+    protected void onProductoFrm_GrabarProductoP1Action(Component c, ActionEvent event) {
     
     }
 
     @Override
-    protected void onProducto_AgregarClasificacionP1Action(Component c, ActionEvent event) {
-        showForm("Clasificacion", null);
+    protected void onProductoFrm_AgregarClasificacionP1Action(Component c, ActionEvent event) {
+        showForm("ClasificacionFrm", null);
     }
 
     @Override
-    protected void beforeClasificacion(Form f) {
-        clasificacion = new Clasificacion();
+    protected void beforeClasificacionFrm(Form f) {
+        clasificacion       = new Clasificacion();
+        List detalleCajasC1 = findDetalleCajasC1();
+        detalleCajasC1.setModel(new DefaultListModel(detalleCajasVector));
     }
 
     @Override
-    protected void onClasificacion_GrabarClasificacionC1Action(Component c, ActionEvent event) {
+    protected void onClasificacionFrm_GrabarClasificacionC1Action(Component c, ActionEvent event) {
         agregarClasificacion(clasificacion);
     }
     
@@ -455,23 +465,48 @@ public class StateMachine extends StateMachineBase {
     }
 
     @Override
-    protected void onClasificacion_AgregarDetalleCajasC1Action(Component c, ActionEvent event) {
-        showForm("DetalleCajas", null);
+    protected void onClasificacionFrm_AgregarDetalleCajasC1Action(Component c, ActionEvent event) {
+        showForm("DetalleCajasFrm", null);
     }
 
     @Override
-    protected void beforeDetalleCajas(Form f) {
-        detalleCajas = new DetalleCajas();
+    protected void beforeDetalleCajasFrm(Form f) {
+        detalleCajas    = new DetalleCajas();
+        filaDC          = findFilaDC();
+        cantidadDC      = findCantidadDC();
     }
 
     @Override
-    protected void onDetalleCajas_GrabarDetalleCajasD1Action(Component c, ActionEvent event) {
-        agregarDetalleCajas(detalleCajas);
+    protected void onDetalleCajasFrm_GrabarDetalleCajasDCAction(Component c, ActionEvent event) {
+        agregarDetalleCajas();
     }
     
     //Agregar detalle de cajas en Clasificacion
-    private void agregarDetalleCajas(DetalleCajas detalleCajas){
-        //TODO validaciones
+    private void agregarDetalleCajas(){
+        DetalleCajas obj = new DetalleCajas();
+
+        String strFila     = filaDC.getText();
+        String strCantidad = cantidadDC.getText();
+        
+        obj.setFila     ( Utileria.parseToShort( strFila ));
+        obj.setCantidad ( Utileria.parseToShort( strCantidad ));
+
+        Hashtable table = new Hashtable();
+        table.put("Pojo", obj); //Agrego el POJO
+        table.put("Line2", strFila);
+        table.put("Line3", strCantidad);
+        detalleCajasVector.addElement(table);
+        //Display.getInstance().getCurrent().revalidate();
+
+        /*
+        MultiButton mb = new MultiButton("Fila: " + fila);
+        mb.setTextLine2("Cajas: " + cantidad);
+        mb.setPropertyValue("valor", obj);
+        listaDetalleCajasC1.addComponent(mb);
+        listaDetalleCajasC1.revalidate();
+        */
+        showForm("ClasificacionFrm", null);
+        //Display.getInstance().getCurrent().revalidate();        
     }
     
 }
