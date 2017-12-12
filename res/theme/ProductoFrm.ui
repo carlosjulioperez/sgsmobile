@@ -33,7 +33,7 @@
         <component type="CheckBox" name="quitarElementoP1" cloudDestinationProperty="CheckBox" text="Quitar" >
         </component>
       </component>
-      <component type="Container" name="listaClasificacionP1" cloudDestinationProperty="Container2" layout="BoxLayout" boxLayoutAxis="Y" >
+      <component type="MultiList" name="clasificaciones" cloudDestinationProperty="clasificaciones" >
         <layoutConstraint value="Center" />
       </component>
     </component>

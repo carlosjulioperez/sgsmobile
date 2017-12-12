@@ -46,7 +46,7 @@ public class StateMachine extends StateMachineBase {
     private final L10NManager lnm = L10NManager.getInstance();
     private Storage storage;
     
-    private Vector detalleCajasVector;
+    private Vector clasificacionesVector;
     
     private String inspeccionService;
 
@@ -430,7 +430,9 @@ public class StateMachine extends StateMachineBase {
         empaqueP1           = new TextField();
         tipoProductoP1      = new TextField();
         
-        detalleCajasVector = new Vector();
+        clasificacion       = new Clasificacion();
+        
+        clasificacionesVector = new Vector();
     }
 
     @Override
@@ -523,6 +525,10 @@ public class StateMachine extends StateMachineBase {
 
     @Override
     protected void onClasificacionFrm_GrabarClasificacionCAction(Component c, ActionEvent event) {
-    
+        clasificacion = 
+        TableModel model = cajasPorFila.getModel();
+        for (int i=0; i<model.getRowCount(); i++){
+            System.out.println(model.getValueAt(i, 1));
+        }
     }
 }

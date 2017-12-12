@@ -34,17 +34,18 @@ public abstract class StateMachineBase extends UIBuilder {
     public Container startApp(Resources res, String resPath, boolean loadTheme) {
         initVars();
         UIBuilder.registerCustomComponent("DateSpinner", com.codename1.ui.spinner.DateSpinner.class);
-        UIBuilder.registerCustomComponent("Container", com.codename1.ui.Container.class);
         UIBuilder.registerCustomComponent("ComponentGroup", com.codename1.ui.ComponentGroup.class);
         UIBuilder.registerCustomComponent("Table", com.codename1.ui.table.Table.class);
         UIBuilder.registerCustomComponent("Form", com.codename1.ui.Form.class);
-        UIBuilder.registerCustomComponent("Button", com.codename1.ui.Button.class);
         UIBuilder.registerCustomComponent("TextArea", com.codename1.ui.TextArea.class);
-        UIBuilder.registerCustomComponent("CheckBox", com.codename1.ui.CheckBox.class);
         UIBuilder.registerCustomComponent("Label", com.codename1.ui.Label.class);
+        UIBuilder.registerCustomComponent("MultiList", com.codename1.ui.list.MultiList.class);
+        UIBuilder.registerCustomComponent("RadioButton", com.codename1.ui.RadioButton.class);
+        UIBuilder.registerCustomComponent("Container", com.codename1.ui.Container.class);
+        UIBuilder.registerCustomComponent("Button", com.codename1.ui.Button.class);
+        UIBuilder.registerCustomComponent("CheckBox", com.codename1.ui.CheckBox.class);
         UIBuilder.registerCustomComponent("Tabs", com.codename1.ui.Tabs.class);
         UIBuilder.registerCustomComponent("TextField", com.codename1.ui.TextField.class);
-        UIBuilder.registerCustomComponent("RadioButton", com.codename1.ui.RadioButton.class);
         if(loadTheme) {
             if(res == null) {
                 try {
@@ -80,17 +81,18 @@ public abstract class StateMachineBase extends UIBuilder {
     public Container createWidget(Resources res, String resPath, boolean loadTheme) {
         initVars();
         UIBuilder.registerCustomComponent("DateSpinner", com.codename1.ui.spinner.DateSpinner.class);
-        UIBuilder.registerCustomComponent("Container", com.codename1.ui.Container.class);
         UIBuilder.registerCustomComponent("ComponentGroup", com.codename1.ui.ComponentGroup.class);
         UIBuilder.registerCustomComponent("Table", com.codename1.ui.table.Table.class);
         UIBuilder.registerCustomComponent("Form", com.codename1.ui.Form.class);
-        UIBuilder.registerCustomComponent("Button", com.codename1.ui.Button.class);
         UIBuilder.registerCustomComponent("TextArea", com.codename1.ui.TextArea.class);
-        UIBuilder.registerCustomComponent("CheckBox", com.codename1.ui.CheckBox.class);
         UIBuilder.registerCustomComponent("Label", com.codename1.ui.Label.class);
+        UIBuilder.registerCustomComponent("MultiList", com.codename1.ui.list.MultiList.class);
+        UIBuilder.registerCustomComponent("RadioButton", com.codename1.ui.RadioButton.class);
+        UIBuilder.registerCustomComponent("Container", com.codename1.ui.Container.class);
+        UIBuilder.registerCustomComponent("Button", com.codename1.ui.Button.class);
+        UIBuilder.registerCustomComponent("CheckBox", com.codename1.ui.CheckBox.class);
         UIBuilder.registerCustomComponent("Tabs", com.codename1.ui.Tabs.class);
         UIBuilder.registerCustomComponent("TextField", com.codename1.ui.TextField.class);
-        UIBuilder.registerCustomComponent("RadioButton", com.codename1.ui.RadioButton.class);
         if(loadTheme) {
             if(res == null) {
                 try {
@@ -740,18 +742,6 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.Container findListaClasificacionP1(Component root) {
-        return (com.codename1.ui.Container)findByName("listaClasificacionP1", root);
-    }
-
-    public com.codename1.ui.Container findListaClasificacionP1() {
-        com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("listaClasificacionP1", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Container)findByName("listaClasificacionP1", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.CheckBox findFlucs(Component root) {
         return (com.codename1.ui.CheckBox)findByName("flucs", root);
     }
@@ -1096,6 +1086,18 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("oinCE", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.TextField)findByName("oinCE", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.list.MultiList findClasificaciones(Component root) {
+        return (com.codename1.ui.list.MultiList)findByName("clasificaciones", root);
+    }
+
+    public com.codename1.ui.list.MultiList findClasificaciones() {
+        com.codename1.ui.list.MultiList cmp = (com.codename1.ui.list.MultiList)findByName("clasificaciones", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.list.MultiList)findByName("clasificaciones", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -1753,6 +1755,18 @@ public abstract class StateMachineBase extends UIBuilder {
     protected void setStateMain(Form f, Hashtable state) {
     }
 
+    protected boolean setListModel(List cmp) {
+        String listName = cmp.getName();
+        if("clasificaciones".equals(listName)) {
+            return initListModelClasificaciones(cmp);
+        }
+        return super.setListModel(cmp);
+    }
+
+    protected boolean initListModelClasificaciones(List cmp) {
+        return false;
+    }
+
     protected void handleComponentAction(Component c, ActionEvent event) {
         Container rootContainerAncestor = getRootAncestor(c);
         if(rootContainerAncestor == null) return;
@@ -1793,6 +1807,10 @@ public abstract class StateMachineBase extends UIBuilder {
             }
             if("quitarElementoP1".equals(c.getName())) {
                 onProductoFrm_QuitarElementoP1Action(c, event);
+                return;
+            }
+            if("clasificaciones".equals(c.getName())) {
+                onProductoFrm_ClasificacionesAction(c, event);
                 return;
             }
         }
@@ -2040,6 +2058,9 @@ public abstract class StateMachineBase extends UIBuilder {
       }
 
       protected void onProductoFrm_QuitarElementoP1Action(Component c, ActionEvent event) {
+      }
+
+      protected void onProductoFrm_ClasificacionesAction(Component c, ActionEvent event) {
       }
 
       protected void onInspeccionBusqueda_ContenedorRadAction(Component c, ActionEvent event) {
