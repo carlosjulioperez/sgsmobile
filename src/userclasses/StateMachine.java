@@ -18,7 +18,6 @@ import com.codename1.l10n.L10NManager;
 import com.codename1.processing.Result;
 import com.codename1.ui.*; 
 import com.codename1.ui.events.*;
-import com.codename1.ui.list.DefaultListModel;
 import com.codename1.ui.spinner.DateSpinner;
 import com.codename1.ui.table.DefaultTableModel;
 import com.codename1.ui.table.Table;
@@ -33,7 +32,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
@@ -109,6 +110,7 @@ public class StateMachine extends StateMachineBase {
     
     //Controles para Clasificacion
     private Clasificacion   clasificacion;
+    private TextField       modelo;
     private Table           cajasPorFila;
         
     public StateMachine(String resFile) {
@@ -476,41 +478,42 @@ public class StateMachine extends StateMachineBase {
 
     @Override
     protected void beforeClasificacionFrm(Form f) {
+        modelo = findModelo();
         Object[][] valores = {
-            {1, 0},
-            {2, 0},
-            {3, 0},
-            {4, 0},
-            {5, 0},
-            {6, 0},
-            {7, 0},
-            {8, 0},
-            {9, 0},
-            {10, 0},
-            {11, 0},
-            {12, 0},
-            {13, 0},
-            {14, 0},
-            {15, 0},
-            {16, 0},
-            {17, 0},
-            {18, 0},
-            {19, 0},
-            {20, 0},
-            {21, 0},
-            {22, 0},
-            {23, 0},
-            {24, 0},
-            {25, 0},
-            {26, 0},
-            {27, 0},
-            {28, 0},
-            {29, 0},
-            {30, 0},
-            {31, 0},
-            {32, 0},
-            {33, 0},
-            {34, 0},
+            {1, ""},
+            {2, ""},
+            {3, ""},
+            {4, ""},
+            {5, ""},
+            {6, ""},
+            {7, ""},
+            {8, ""},
+            {9, ""},
+            {10, ""},
+            {11, ""},
+            {12, ""},
+            {13, ""},
+            {14, ""},
+            {15, ""},
+            {16, ""},
+            {17, ""},
+            {18, ""},
+            {19, ""},
+            {20, ""},
+            {21, ""},
+            {22, ""},
+            {23, ""},
+            {24, ""},
+            {25, ""},
+            {26, ""},
+            {27, ""},
+            {28, ""},
+            {29, ""},
+            {30, ""},
+            {31, ""},
+            {32, ""},
+            {33, ""},
+            {34, ""},
         };
    
         TableModel model = new DefaultTableModel(new String[]{"Fila", "Cantidad de cajas"}, valores){
@@ -525,10 +528,23 @@ public class StateMachine extends StateMachineBase {
 
     @Override
     protected void onClasificacionFrm_GrabarClasificacionCAction(Component c, ActionEvent event) {
-        clasificacion = 
+        clasificacion = new Clasificacion();
+        clasificacion.setModelo(modelo.getText());
+        
+        List <DetalleCajas> detalles = new ArrayList();
         TableModel model = cajasPorFila.getModel();
-        for (int i=0; i<model.getRowCount(); i++){
-            System.out.println(model.getValueAt(i, 1));
+        for (int i=0; i < model.getRowCount(); i++){
+
+            short cantidad = Utileria.parseToShort((String)model.getValueAt(i, 1));
+            if (cantidad > 0){
+                DetalleCajas detalle = new DetalleCajas();
+                detalle.setFila((short)(i+1));
+                detalle.setCantidad(cantidad);
+                //System.out.println(cantidad);
+
+                detalles.add(detalle);
+            }
         }
+        clasificacion.setDetalleCajas(detalles);
     }
 }
