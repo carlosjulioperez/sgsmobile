@@ -26,6 +26,7 @@ import com.codename1.ui.table.TableModel;
 import com.codename1.ui.util.Resources;
 import ec.sgs.mobile.bean.Clasificacion;
 import ec.sgs.mobile.bean.DetalleCajas;
+import ec.sgs.mobile.bean.Producto;
 import ec.sgs.mobile.bean.util.Utileria;
 import ec.sgs.mobile.cn1.Configuracion;
 import generated.StateMachineBase;
@@ -47,6 +48,7 @@ public class StateMachine extends StateMachineBase {
     private final L10NManager lnm = L10NManager.getInstance();
     private Storage storage;
     
+    private Vector productosVector;
     private Vector clasificacionesVector;
     
     private String inspeccionService;
@@ -96,24 +98,25 @@ public class StateMachine extends StateMachineBase {
     private Container   listadoInspecciones;
     
     //Controles de ControlEmbarque2
-    private Table       infoCE;
-    private String      inspeccionItemId;
-    private Map         inspeccionItem;
-    private Container   listaProductosCE;
+    private Table      infoCE;
+    private String     inspeccionItemId;
+    private Map        inspeccionItem;
     
     //Controles de Producto1
-    private CheckBox    quitarElementoP1;
-    private TextField   marcaP1;
-    private TextField   descripcionPesosP1;
-    private TextField   presentacionP1;
-    private TextField   empaqueP1;
-    private TextField   tipoProductoP1;
+    private Producto  productoSeleccionado;
+    private int       productoIndex;
+    private CheckBox  quitarElementoP1;
+    private TextField marcaP1;
+    private TextField descripcionPesosP1;
+    private TextField presentacionP1;
+    private TextField empaqueP1;
+    private TextField tipoProductoP1;
     
     //Controles para Clasificacion
-    private Clasificacion   clasificacionSeleccionada;
-    private int             clasificacionIndex;
-    private TextField       modelo;
-    private Table           cajasPorFila;
+    private Clasificacion clasificacionSeleccionada;
+    private int           clasificacionIndex;
+    private TextField     modelo;
+    private Table         cajasPorFila;
         
     public StateMachine(String resFile) {
         super(resFile);
@@ -309,11 +312,12 @@ public class StateMachine extends StateMachineBase {
 
     @Override
     protected void beforeInspeccionBusqueda(Form f) {
-        contenedorRad = findContenedorRad();
-        clienteRad = findClienteRad();
-        valor = findValor();
+        productosVector     = new Vector();
+        contenedorRad       = findContenedorRad();
+        clienteRad          = findClienteRad();
+        valor               = findValor();
         listadoInspecciones = findListadoInspecciones();
-        inspeccionItemId = "";
+        inspeccionItemId    = "";
     }
 
     @Override
@@ -401,11 +405,12 @@ public class StateMachine extends StateMachineBase {
     @Override
     protected void beforeControlEmbarqueFrm(Form f) {
         
+        productoSeleccionado  = new Producto();
+        productoIndex         = -1;
         clasificacionesVector = new Vector();
         
         leerDatosInspeccion();
         infoCE              = findInfoCE();
-        listaProductosCE    = findListaProductosCE();
         
         String[][] valores = new String[][] {
             {"ID"         , (String)inspeccionItem.get("id")},
@@ -420,6 +425,8 @@ public class StateMachine extends StateMachineBase {
    
         TableModel model = new DefaultTableModel(new String[]{"Campo", "Valor"}, valores);
         infoCE.setModel(model);
+        
+        mostrarProductos();
 
     }
 
@@ -447,9 +454,69 @@ public class StateMachine extends StateMachineBase {
         multilistClasificaciones.setModel(new DefaultListModel(clasificacionesVector));
     }
 
+    private void mostrarProductos(){
+        List multilistProductos = findProductos();
+        multilistProductos.setModel(new DefaultListModel(productosVector));
+    }
+
+    private boolean validarCampo(String campo, String etiqueta){
+        if (campo.length()==0){
+            Dialog.show ("Validación", "Debe ingresar datos en ["+etiqueta+"]", "OK", null);
+            return true;
+        }
+        return false;
+    }
+    
     @Override
     protected void onProductoFrm_GrabarProductoP1Action(Component c, ActionEvent event) {
     
+        String strMarca = marcaP1.getText();
+        if ( validarCampo(strMarca, "Marca") )
+            return;
+        
+        String strDescPesos = descripcionPesosP1.getText();
+        if ( validarCampo(strDescPesos, "Descripción pesos") )
+            return;
+
+        String strPresentacion = presentacionP1.getText();
+        if ( validarCampo(strPresentacion, "Presentación") )
+            return;
+        
+        String strEmpaque = empaqueP1.getText();
+        if ( validarCampo(strEmpaque, "Empaque") )
+            return;
+        
+        String strTipoProducto = tipoProductoP1.getText();
+        if ( validarCampo(strTipoProducto, "Tipo de producto") )
+            return;
+
+        Producto producto = new Producto();
+        producto.setMarca(strMarca);
+        producto.setDescripcionPesos(strDescPesos);
+        producto.setPresentacion(strPresentacion);
+        producto.setEmpaque(strEmpaque);
+        producto.setTipoProducto(strTipoProducto);
+        
+        java.util.List <Clasificacion> clasificaciones = new ArrayList();
+        for (Object object: clasificacionesVector){
+            Hashtable table = (Hashtable)object;
+            Clasificacion clasificacion = (Clasificacion)table.get("Pojo");
+            clasificaciones.add(clasificacion);
+        }
+        producto.setClasificaciones(clasificaciones);
+        
+        //Agregar el producto al listado respectivo en el formulario de control de embarque
+        Hashtable table = new Hashtable();
+        table.put("Pojo"     , producto); //Agrego el POJO
+        table.put("Line2"    , strMarca);
+        
+        if (productoIndex >= 0){
+            productosVector.set(productoIndex, table);
+            productoIndex = -1;
+        }else
+            productosVector.addElement(table);
+
+        showForm("ControlEmbarqueFrm", null);
     }
 
     @Override
@@ -558,10 +625,12 @@ public class StateMachine extends StateMachineBase {
     protected void onClasificacionFrm_GrabarClasificacionCAction(Component c, ActionEvent event) {
         String strModelo = modelo.getText();
         
-        if (strModelo.length()==0){
-            Dialog.show ("Validación", "Debe ingresar el modelo.", "OK", null);
+//        if (strModelo.length()==0){
+//            Dialog.show ("Validación", "Debe ingresar el modelo.", "OK", null);
+//            return;
+//        }
+        if ( validarCampo(strModelo, "Modelo") )
             return;
-        }
         
         Clasificacion clasificacion = new Clasificacion();
         clasificacion.setModelo(strModelo);
@@ -598,7 +667,7 @@ public class StateMachine extends StateMachineBase {
         }else
             clasificacionesVector.addElement(table);
 
-        showForm("ProductoFrm",null);
+        showForm("ProductoFrm", null);
       
     }
 
@@ -610,7 +679,6 @@ public class StateMachine extends StateMachineBase {
         clasificacionIndex = multilistClasificaciones.getSelectedIndex();
         
         if (quitarElementoP1.isSelected()){
-            System.out.println("Eliminar...");
             if (Dialog.show("Confirme", "¿Desea eliminar el ítem?", "Yes", "No")){
                 clasificacionesVector.remove(clasificacionIndex);
                 clasificacionIndex = -1;

@@ -778,18 +778,6 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.Container findListaProductosCE(Component root) {
-        return (com.codename1.ui.Container)findByName("listaProductosCE", root);
-    }
-
-    public com.codename1.ui.Container findListaProductosCE() {
-        com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("listaProductosCE", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Container)findByName("listaProductosCE", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.Container findContainerBusqueda(Component root) {
         return (com.codename1.ui.Container)findByName("ContainerBusqueda", root);
     }
@@ -822,6 +810,18 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("destino", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.TextField)findByName("destino", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.list.MultiList findProductos(Component root) {
+        return (com.codename1.ui.list.MultiList)findByName("productos", root);
+    }
+
+    public com.codename1.ui.list.MultiList findProductos() {
+        com.codename1.ui.list.MultiList cmp = (com.codename1.ui.list.MultiList)findByName("productos", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.list.MultiList)findByName("productos", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -1014,6 +1014,18 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.CheckBox cmp = (com.codename1.ui.CheckBox)findByName("ladosExternosDerecha", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.CheckBox)findByName("ladosExternosDerecha", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.Button findGrabarControlEmbarque(Component root) {
+        return (com.codename1.ui.Button)findByName("grabarControlEmbarque", root);
+    }
+
+    public com.codename1.ui.Button findGrabarControlEmbarque() {
+        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("grabarControlEmbarque", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Button)findByName("grabarControlEmbarque", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -1757,10 +1769,17 @@ public abstract class StateMachineBase extends UIBuilder {
 
     protected boolean setListModel(List cmp) {
         String listName = cmp.getName();
+        if("productos".equals(listName)) {
+            return initListModelProductos(cmp);
+        }
         if("clasificaciones".equals(listName)) {
             return initListModelClasificaciones(cmp);
         }
         return super.setListModel(cmp);
+    }
+
+    protected boolean initListModelProductos(List cmp) {
+        return false;
     }
 
     protected boolean initListModelClasificaciones(List cmp) {
@@ -1843,6 +1862,18 @@ public abstract class StateMachineBase extends UIBuilder {
             }
         }
         if(rootContainerName.equals("ControlEmbarqueFrm")) {
+            if("agregarProductoCE".equals(c.getName())) {
+                onControlEmbarqueFrm_AgregarProductoCEAction(c, event);
+                return;
+            }
+            if("quitarElementoCE".equals(c.getName())) {
+                onControlEmbarqueFrm_QuitarElementoCEAction(c, event);
+                return;
+            }
+            if("productos".equals(c.getName())) {
+                onControlEmbarqueFrm_ProductosAction(c, event);
+                return;
+            }
             if("oinCE".equals(c.getName())) {
                 onControlEmbarqueFrm_OinCEAction(c, event);
                 return;
@@ -1883,12 +1914,8 @@ public abstract class StateMachineBase extends UIBuilder {
                 onControlEmbarqueFrm_EmbalajeCEAction(c, event);
                 return;
             }
-            if("agregarProductoCE".equals(c.getName())) {
-                onControlEmbarqueFrm_AgregarProductoCEAction(c, event);
-                return;
-            }
-            if("quitarElementoCE".equals(c.getName())) {
-                onControlEmbarqueFrm_QuitarElementoCEAction(c, event);
+            if("grabarControlEmbarque".equals(c.getName())) {
+                onControlEmbarqueFrm_GrabarControlEmbarqueAction(c, event);
                 return;
             }
         }
@@ -2081,6 +2108,15 @@ public abstract class StateMachineBase extends UIBuilder {
       protected void onProductoFrm_GrabarProductoP1Action(Component c, ActionEvent event) {
       }
 
+      protected void onControlEmbarqueFrm_AgregarProductoCEAction(Component c, ActionEvent event) {
+      }
+
+      protected void onControlEmbarqueFrm_QuitarElementoCEAction(Component c, ActionEvent event) {
+      }
+
+      protected void onControlEmbarqueFrm_ProductosAction(Component c, ActionEvent event) {
+      }
+
       protected void onControlEmbarqueFrm_OinCEAction(Component c, ActionEvent event) {
       }
 
@@ -2111,10 +2147,7 @@ public abstract class StateMachineBase extends UIBuilder {
       protected void onControlEmbarqueFrm_EmbalajeCEAction(Component c, ActionEvent event) {
       }
 
-      protected void onControlEmbarqueFrm_AgregarProductoCEAction(Component c, ActionEvent event) {
-      }
-
-      protected void onControlEmbarqueFrm_QuitarElementoCEAction(Component c, ActionEvent event) {
+      protected void onControlEmbarqueFrm_GrabarControlEmbarqueAction(Component c, ActionEvent event) {
       }
 
       protected void onInspeccionBusqueda_ContenedorRadAction(Component c, ActionEvent event) {
