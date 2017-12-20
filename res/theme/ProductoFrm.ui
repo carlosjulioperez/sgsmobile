@@ -4,9 +4,21 @@
   <component type="Tabs" name="Tabs" cloudDestinationProperty="Tabs" flatten="false" >
     <layoutConstraint value="East" />
     <custom name="titles" type="java.lang.String" array="true" dimensions="1" >
-      <str>Datos</str>
       <str>Clasificaci&#xf3;n</str>
+      <str>Datos</str>
     </custom>
+    <component type="Container" name="Container1" tabTitle="Clasificaci&#xf3;n" cloudDestinationProperty="Container1" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
+      <component type="Container" name="Container" cloudDestinationProperty="Container" layout="GridLayout" gridLayoutRows="1" gridLayoutColumns="2" >
+        <layoutConstraint value="North" />
+        <component type="Button" name="agregarClasificacionP1" cloudDestinationProperty="agregarClasificaci&#xf3;n" text="Agregar Clasificaci&#xf3;n" >
+        </component>
+        <component type="CheckBox" name="quitarElementoP1" cloudDestinationProperty="CheckBox" text="Quitar" >
+        </component>
+      </component>
+      <component type="MultiList" name="clasificaciones" cloudDestinationProperty="clasificaciones" >
+        <layoutConstraint value="Center" />
+      </component>
+    </component>
     <component type="Container" name="Container3" tabTitle="Datos" cloudDestinationProperty="Container3" flatten="false" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
       <component type="ComponentGroup" name="ComponentGroup" cloudDestinationProperty="ComponentGroup" >
         <layoutConstraint value="North" />
@@ -23,18 +35,6 @@
       </component>
       <component type="Button" name="grabarProductoP1" cloudDestinationProperty="agregarP1" text="Grabar producto" >
         <layoutConstraint value="South" />
-      </component>
-    </component>
-    <component type="Container" name="Container1" tabTitle="Clasificaci&#xf3;n" cloudDestinationProperty="Container1" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
-      <component type="Container" name="Container" cloudDestinationProperty="Container" layout="GridLayout" gridLayoutRows="1" gridLayoutColumns="2" >
-        <layoutConstraint value="North" />
-        <component type="Button" name="agregarClasificacionP1" cloudDestinationProperty="agregarClasificaci&#xf3;n" text="Agregar Clasificaci&#xf3;n" >
-        </component>
-        <component type="CheckBox" name="quitarElementoP1" cloudDestinationProperty="CheckBox" text="Quitar" >
-        </component>
-      </component>
-      <component type="MultiList" name="clasificaciones" cloudDestinationProperty="clasificaciones" >
-        <layoutConstraint value="Center" />
       </component>
     </component>
   </component>

@@ -18,6 +18,7 @@ import com.codename1.l10n.L10NManager;
 import com.codename1.processing.Result;
 import com.codename1.ui.*; 
 import com.codename1.ui.events.*;
+import com.codename1.ui.list.DefaultListModel;
 import com.codename1.ui.spinner.DateSpinner;
 import com.codename1.ui.table.DefaultTableModel;
 import com.codename1.ui.table.Table;
@@ -34,7 +35,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
@@ -109,7 +109,7 @@ public class StateMachine extends StateMachineBase {
     private TextField   tipoProductoP1;
     
     //Controles para Clasificacion
-    private Clasificacion   clasificacion;
+    private Clasificacion   clasificacionSeleccionada;
     private TextField       modelo;
     private Table           cajasPorFila;
         
@@ -399,6 +399,8 @@ public class StateMachine extends StateMachineBase {
     @Override
     protected void beforeControlEmbarqueFrm(Form f) {
         
+        clasificacionesVector = new Vector();
+        
         leerDatosInspeccion();
         infoCE              = findInfoCE();
         listaProductosCE    = findListaProductosCE();
@@ -432,9 +434,11 @@ public class StateMachine extends StateMachineBase {
         empaqueP1           = new TextField();
         tipoProductoP1      = new TextField();
         
-        clasificacion       = new Clasificacion();
+        clasificacionSeleccionada       = new Clasificacion();
         
-        clasificacionesVector = new Vector();
+        //Mostrar clasificaciones
+        List multilistClasificaciones = findClasificaciones();
+        multilistClasificaciones.setModel(new DefaultListModel(clasificacionesVector));
     }
 
     @Override
@@ -445,11 +449,6 @@ public class StateMachine extends StateMachineBase {
     @Override
     protected void onProductoFrm_AgregarClasificacionP1Action(Component c, ActionEvent event) {
         showForm("ClasificacionFrm", null);
-    }
-
-    //Agregar detalle de cajas en Clasificacion
-    private void agregarClasificacion(Clasificacion clasificacion){
-        //TODO validaciones
     }
 
     //Agregar detalle de cajas en Clasificacion
@@ -479,6 +478,8 @@ public class StateMachine extends StateMachineBase {
     @Override
     protected void beforeClasificacionFrm(Form f) {
         modelo = findModelo();
+        //https://stackoverflow.com/questions/12231453/syntax-for-creating-a-two-dimensional-array
+        /*
         Object[][] valores = {
             {1, ""},
             {2, ""},
@@ -515,7 +516,15 @@ public class StateMachine extends StateMachineBase {
             {33, ""},
             {34, ""},
         };
-   
+        */
+
+        int tamano = 10;
+        Object[][] valores = new Object[tamano][2];
+        for (short i=0; i<tamano; i++){
+            valores[i][0] = i+1;
+            valores[i][1] = "";
+        }
+        
         TableModel model = new DefaultTableModel(new String[]{"Fila", "Cantidad de cajas"}, valores){
             public boolean isCellEditable(int row, int col) {
                 return col != 0;
@@ -528,10 +537,17 @@ public class StateMachine extends StateMachineBase {
 
     @Override
     protected void onClasificacionFrm_GrabarClasificacionCAction(Component c, ActionEvent event) {
-        clasificacion = new Clasificacion();
-        clasificacion.setModelo(modelo.getText());
+        String strModelo = modelo.getText();
         
-        List <DetalleCajas> detalles = new ArrayList();
+        if (strModelo.length()==0){
+            Dialog.show ("Validación", "Debe ingresar el modelo", "OK", null);
+            return;
+        }
+        
+        clasificacionSeleccionada = new Clasificacion();
+        clasificacionSeleccionada.setModelo(strModelo);
+        
+        java.util.List <DetalleCajas> detalles = new ArrayList();
         TableModel model = cajasPorFila.getModel();
         for (int i=0; i < model.getRowCount(); i++){
 
@@ -545,6 +561,28 @@ public class StateMachine extends StateMachineBase {
                 detalles.add(detalle);
             }
         }
-        clasificacion.setDetalleCajas(detalles);
+        clasificacionSeleccionada.setDetalleCajas(detalles);
+        
+        //Agregar la clasificacion al listado respectivo en el formuario de productos
+        Hashtable table = new Hashtable();
+        table.put("Pojo", clasificacionSeleccionada); //Agrego el POJO
+        table.put("Line2", strModelo);
+        //table.put("Line3", strCantd); //Total de cajas
+        clasificacionesVector.addElement(table);
+        showForm("ProductoFrm",null);
+      
+    }
+
+    //Seleccionar haciendo clien en uno de los elementos...
+    @Override
+    protected void onProductoFrm_ClasificacionesAction(Component c, ActionEvent event) {
+        List multilistClasificaciones = findClasificaciones();
+        Hashtable table = (Hashtable)multilistClasificaciones.getSelectedItem();
+        
+        //Obtener el objeto y mostrar sus datos para modificación...
+        //Clasificacion clasificacion = (Clasificacion)table.get("Pojo");
+        clasificacionSeleccionada = (Clasificacion)table.get("Pojo");
+        showForm("ClasificacionFrm",null);
+    
     }
 }

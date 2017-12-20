@@ -34,8 +34,8 @@ public abstract class StateMachineBase extends UIBuilder {
     public Container startApp(Resources res, String resPath, boolean loadTheme) {
         initVars();
         UIBuilder.registerCustomComponent("DateSpinner", com.codename1.ui.spinner.DateSpinner.class);
-        UIBuilder.registerCustomComponent("ComponentGroup", com.codename1.ui.ComponentGroup.class);
         UIBuilder.registerCustomComponent("Table", com.codename1.ui.table.Table.class);
+        UIBuilder.registerCustomComponent("ComponentGroup", com.codename1.ui.ComponentGroup.class);
         UIBuilder.registerCustomComponent("Form", com.codename1.ui.Form.class);
         UIBuilder.registerCustomComponent("TextArea", com.codename1.ui.TextArea.class);
         UIBuilder.registerCustomComponent("Label", com.codename1.ui.Label.class);
@@ -44,8 +44,8 @@ public abstract class StateMachineBase extends UIBuilder {
         UIBuilder.registerCustomComponent("Container", com.codename1.ui.Container.class);
         UIBuilder.registerCustomComponent("Button", com.codename1.ui.Button.class);
         UIBuilder.registerCustomComponent("CheckBox", com.codename1.ui.CheckBox.class);
-        UIBuilder.registerCustomComponent("Tabs", com.codename1.ui.Tabs.class);
         UIBuilder.registerCustomComponent("TextField", com.codename1.ui.TextField.class);
+        UIBuilder.registerCustomComponent("Tabs", com.codename1.ui.Tabs.class);
         if(loadTheme) {
             if(res == null) {
                 try {
@@ -81,8 +81,8 @@ public abstract class StateMachineBase extends UIBuilder {
     public Container createWidget(Resources res, String resPath, boolean loadTheme) {
         initVars();
         UIBuilder.registerCustomComponent("DateSpinner", com.codename1.ui.spinner.DateSpinner.class);
-        UIBuilder.registerCustomComponent("ComponentGroup", com.codename1.ui.ComponentGroup.class);
         UIBuilder.registerCustomComponent("Table", com.codename1.ui.table.Table.class);
+        UIBuilder.registerCustomComponent("ComponentGroup", com.codename1.ui.ComponentGroup.class);
         UIBuilder.registerCustomComponent("Form", com.codename1.ui.Form.class);
         UIBuilder.registerCustomComponent("TextArea", com.codename1.ui.TextArea.class);
         UIBuilder.registerCustomComponent("Label", com.codename1.ui.Label.class);
@@ -91,8 +91,8 @@ public abstract class StateMachineBase extends UIBuilder {
         UIBuilder.registerCustomComponent("Container", com.codename1.ui.Container.class);
         UIBuilder.registerCustomComponent("Button", com.codename1.ui.Button.class);
         UIBuilder.registerCustomComponent("CheckBox", com.codename1.ui.CheckBox.class);
-        UIBuilder.registerCustomComponent("Tabs", com.codename1.ui.Tabs.class);
         UIBuilder.registerCustomComponent("TextField", com.codename1.ui.TextField.class);
+        UIBuilder.registerCustomComponent("Tabs", com.codename1.ui.Tabs.class);
         if(loadTheme) {
             if(res == null) {
                 try {
@@ -778,18 +778,6 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.Container findContainerBusqueda(Component root) {
-        return (com.codename1.ui.Container)findByName("ContainerBusqueda", root);
-    }
-
-    public com.codename1.ui.Container findContainerBusqueda() {
-        com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("ContainerBusqueda", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Container)findByName("ContainerBusqueda", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.Container findListaProductosCE(Component root) {
         return (com.codename1.ui.Container)findByName("listaProductosCE", root);
     }
@@ -798,6 +786,18 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("listaProductosCE", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.Container)findByName("listaProductosCE", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.Container findContainerBusqueda(Component root) {
+        return (com.codename1.ui.Container)findByName("ContainerBusqueda", root);
+    }
+
+    public com.codename1.ui.Container findContainerBusqueda() {
+        com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("ContainerBusqueda", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Container)findByName("ContainerBusqueda", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -1160,18 +1160,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
     protected void exitForm(Form f) {
-        if("ProductoFrm".equals(f.getName())) {
-            exitProductoFrm(f);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
-        if("InspeccionBusqueda".equals(f.getName())) {
-            exitInspeccionBusqueda(f);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("ClasificacionFrm".equals(f.getName())) {
             exitClasificacionFrm(f);
             aboutToShowThisContainer = null;
@@ -1184,8 +1172,20 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("ProductoFrm".equals(f.getName())) {
+            exitProductoFrm(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("ControlEmbarqueFrm".equals(f.getName())) {
             exitControlEmbarqueFrm(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("InspeccionBusqueda".equals(f.getName())) {
+            exitInspeccionBusqueda(f);
             aboutToShowThisContainer = null;
             return;
         }
@@ -1206,14 +1206,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void exitProductoFrm(Form f) {
-    }
-
-
-    protected void exitInspeccionBusqueda(Form f) {
-    }
-
-
     protected void exitClasificacionFrm(Form f) {
     }
 
@@ -1222,7 +1214,15 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void exitProductoFrm(Form f) {
+    }
+
+
     protected void exitControlEmbarqueFrm(Form f) {
+    }
+
+
+    protected void exitInspeccionBusqueda(Form f) {
     }
 
 
@@ -1235,18 +1235,6 @@ public abstract class StateMachineBase extends UIBuilder {
 
     protected void beforeShow(Form f) {
     aboutToShowThisContainer = f;
-        if("ProductoFrm".equals(f.getName())) {
-            beforeProductoFrm(f);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
-        if("InspeccionBusqueda".equals(f.getName())) {
-            beforeInspeccionBusqueda(f);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("ClasificacionFrm".equals(f.getName())) {
             beforeClasificacionFrm(f);
             aboutToShowThisContainer = null;
@@ -1259,8 +1247,20 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("ProductoFrm".equals(f.getName())) {
+            beforeProductoFrm(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("ControlEmbarqueFrm".equals(f.getName())) {
             beforeControlEmbarqueFrm(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("InspeccionBusqueda".equals(f.getName())) {
+            beforeInspeccionBusqueda(f);
             aboutToShowThisContainer = null;
             return;
         }
@@ -1281,14 +1281,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void beforeProductoFrm(Form f) {
-    }
-
-
-    protected void beforeInspeccionBusqueda(Form f) {
-    }
-
-
     protected void beforeClasificacionFrm(Form f) {
     }
 
@@ -1297,7 +1289,15 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void beforeProductoFrm(Form f) {
+    }
+
+
     protected void beforeControlEmbarqueFrm(Form f) {
+    }
+
+
+    protected void beforeInspeccionBusqueda(Form f) {
     }
 
 
@@ -1310,18 +1310,6 @@ public abstract class StateMachineBase extends UIBuilder {
 
     protected void beforeShowContainer(Container c) {
         aboutToShowThisContainer = c;
-        if("ProductoFrm".equals(c.getName())) {
-            beforeContainerProductoFrm(c);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
-        if("InspeccionBusqueda".equals(c.getName())) {
-            beforeContainerInspeccionBusqueda(c);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("ClasificacionFrm".equals(c.getName())) {
             beforeContainerClasificacionFrm(c);
             aboutToShowThisContainer = null;
@@ -1334,8 +1322,20 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("ProductoFrm".equals(c.getName())) {
+            beforeContainerProductoFrm(c);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("ControlEmbarqueFrm".equals(c.getName())) {
             beforeContainerControlEmbarqueFrm(c);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("InspeccionBusqueda".equals(c.getName())) {
+            beforeContainerInspeccionBusqueda(c);
             aboutToShowThisContainer = null;
             return;
         }
@@ -1356,14 +1356,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void beforeContainerProductoFrm(Container c) {
-    }
-
-
-    protected void beforeContainerInspeccionBusqueda(Container c) {
-    }
-
-
     protected void beforeContainerClasificacionFrm(Container c) {
     }
 
@@ -1372,7 +1364,15 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void beforeContainerProductoFrm(Container c) {
+    }
+
+
     protected void beforeContainerControlEmbarqueFrm(Container c) {
+    }
+
+
+    protected void beforeContainerInspeccionBusqueda(Container c) {
     }
 
 
@@ -1384,18 +1384,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
     protected void postShow(Form f) {
-        if("ProductoFrm".equals(f.getName())) {
-            postProductoFrm(f);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
-        if("InspeccionBusqueda".equals(f.getName())) {
-            postInspeccionBusqueda(f);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("ClasificacionFrm".equals(f.getName())) {
             postClasificacionFrm(f);
             aboutToShowThisContainer = null;
@@ -1408,8 +1396,20 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("ProductoFrm".equals(f.getName())) {
+            postProductoFrm(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("ControlEmbarqueFrm".equals(f.getName())) {
             postControlEmbarqueFrm(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("InspeccionBusqueda".equals(f.getName())) {
+            postInspeccionBusqueda(f);
             aboutToShowThisContainer = null;
             return;
         }
@@ -1430,14 +1430,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void postProductoFrm(Form f) {
-    }
-
-
-    protected void postInspeccionBusqueda(Form f) {
-    }
-
-
     protected void postClasificacionFrm(Form f) {
     }
 
@@ -1446,7 +1438,15 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void postProductoFrm(Form f) {
+    }
+
+
     protected void postControlEmbarqueFrm(Form f) {
+    }
+
+
+    protected void postInspeccionBusqueda(Form f) {
     }
 
 
@@ -1458,18 +1458,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
     protected void postShowContainer(Container c) {
-        if("ProductoFrm".equals(c.getName())) {
-            postContainerProductoFrm(c);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
-        if("InspeccionBusqueda".equals(c.getName())) {
-            postContainerInspeccionBusqueda(c);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("ClasificacionFrm".equals(c.getName())) {
             postContainerClasificacionFrm(c);
             aboutToShowThisContainer = null;
@@ -1482,8 +1470,20 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("ProductoFrm".equals(c.getName())) {
+            postContainerProductoFrm(c);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("ControlEmbarqueFrm".equals(c.getName())) {
             postContainerControlEmbarqueFrm(c);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("InspeccionBusqueda".equals(c.getName())) {
+            postContainerInspeccionBusqueda(c);
             aboutToShowThisContainer = null;
             return;
         }
@@ -1504,14 +1504,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void postContainerProductoFrm(Container c) {
-    }
-
-
-    protected void postContainerInspeccionBusqueda(Container c) {
-    }
-
-
     protected void postContainerClasificacionFrm(Container c) {
     }
 
@@ -1520,7 +1512,15 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void postContainerProductoFrm(Container c) {
+    }
+
+
     protected void postContainerControlEmbarqueFrm(Container c) {
+    }
+
+
+    protected void postContainerInspeccionBusqueda(Container c) {
     }
 
 
@@ -1532,18 +1532,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
     protected void onCreateRoot(String rootName) {
-        if("ProductoFrm".equals(rootName)) {
-            onCreateProductoFrm();
-            aboutToShowThisContainer = null;
-            return;
-        }
-
-        if("InspeccionBusqueda".equals(rootName)) {
-            onCreateInspeccionBusqueda();
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("ClasificacionFrm".equals(rootName)) {
             onCreateClasificacionFrm();
             aboutToShowThisContainer = null;
@@ -1556,8 +1544,20 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("ProductoFrm".equals(rootName)) {
+            onCreateProductoFrm();
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("ControlEmbarqueFrm".equals(rootName)) {
             onCreateControlEmbarqueFrm();
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("InspeccionBusqueda".equals(rootName)) {
+            onCreateInspeccionBusqueda();
             aboutToShowThisContainer = null;
             return;
         }
@@ -1578,14 +1578,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void onCreateProductoFrm() {
-    }
-
-
-    protected void onCreateInspeccionBusqueda() {
-    }
-
-
     protected void onCreateClasificacionFrm() {
     }
 
@@ -1594,7 +1586,15 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void onCreateProductoFrm() {
+    }
+
+
     protected void onCreateControlEmbarqueFrm() {
+    }
+
+
+    protected void onCreateInspeccionBusqueda() {
     }
 
 
@@ -1607,18 +1607,6 @@ public abstract class StateMachineBase extends UIBuilder {
 
     protected Hashtable getFormState(Form f) {
         Hashtable h = super.getFormState(f);
-        if("ProductoFrm".equals(f.getName())) {
-            getStateProductoFrm(f, h);
-            aboutToShowThisContainer = null;
-            return h;
-        }
-
-        if("InspeccionBusqueda".equals(f.getName())) {
-            getStateInspeccionBusqueda(f, h);
-            aboutToShowThisContainer = null;
-            return h;
-        }
-
         if("ClasificacionFrm".equals(f.getName())) {
             getStateClasificacionFrm(f, h);
             aboutToShowThisContainer = null;
@@ -1631,8 +1619,20 @@ public abstract class StateMachineBase extends UIBuilder {
             return h;
         }
 
+        if("ProductoFrm".equals(f.getName())) {
+            getStateProductoFrm(f, h);
+            aboutToShowThisContainer = null;
+            return h;
+        }
+
         if("ControlEmbarqueFrm".equals(f.getName())) {
             getStateControlEmbarqueFrm(f, h);
+            aboutToShowThisContainer = null;
+            return h;
+        }
+
+        if("InspeccionBusqueda".equals(f.getName())) {
+            getStateInspeccionBusqueda(f, h);
             aboutToShowThisContainer = null;
             return h;
         }
@@ -1653,14 +1653,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void getStateProductoFrm(Form f, Hashtable h) {
-    }
-
-
-    protected void getStateInspeccionBusqueda(Form f, Hashtable h) {
-    }
-
-
     protected void getStateClasificacionFrm(Form f, Hashtable h) {
     }
 
@@ -1669,7 +1661,15 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void getStateProductoFrm(Form f, Hashtable h) {
+    }
+
+
     protected void getStateControlEmbarqueFrm(Form f, Hashtable h) {
+    }
+
+
+    protected void getStateInspeccionBusqueda(Form f, Hashtable h) {
     }
 
 
@@ -1682,18 +1682,6 @@ public abstract class StateMachineBase extends UIBuilder {
 
     protected void setFormState(Form f, Hashtable state) {
         super.setFormState(f, state);
-        if("ProductoFrm".equals(f.getName())) {
-            setStateProductoFrm(f, state);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
-        if("InspeccionBusqueda".equals(f.getName())) {
-            setStateInspeccionBusqueda(f, state);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("ClasificacionFrm".equals(f.getName())) {
             setStateClasificacionFrm(f, state);
             aboutToShowThisContainer = null;
@@ -1706,8 +1694,20 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("ProductoFrm".equals(f.getName())) {
+            setStateProductoFrm(f, state);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
         if("ControlEmbarqueFrm".equals(f.getName())) {
             setStateControlEmbarqueFrm(f, state);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("InspeccionBusqueda".equals(f.getName())) {
+            setStateInspeccionBusqueda(f, state);
             aboutToShowThisContainer = null;
             return;
         }
@@ -1728,14 +1728,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void setStateProductoFrm(Form f, Hashtable state) {
-    }
-
-
-    protected void setStateInspeccionBusqueda(Form f, Hashtable state) {
-    }
-
-
     protected void setStateClasificacionFrm(Form f, Hashtable state) {
     }
 
@@ -1744,7 +1736,15 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
+    protected void setStateProductoFrm(Form f, Hashtable state) {
+    }
+
+
     protected void setStateControlEmbarqueFrm(Form f, Hashtable state) {
+    }
+
+
+    protected void setStateInspeccionBusqueda(Form f, Hashtable state) {
     }
 
 
@@ -1776,62 +1776,6 @@ public abstract class StateMachineBase extends UIBuilder {
             c = c.getParent().getLeadParent();
         }
         if(rootContainerName == null) return;
-        if(rootContainerName.equals("ProductoFrm")) {
-            if("marcaP1".equals(c.getName())) {
-                onProductoFrm_MarcaP1Action(c, event);
-                return;
-            }
-            if("descripcionPesosP1".equals(c.getName())) {
-                onProductoFrm_DescripcionPesosP1Action(c, event);
-                return;
-            }
-            if("presentacionP1".equals(c.getName())) {
-                onProductoFrm_PresentacionP1Action(c, event);
-                return;
-            }
-            if("empaqueP1".equals(c.getName())) {
-                onProductoFrm_EmpaqueP1Action(c, event);
-                return;
-            }
-            if("tipoProductoP1".equals(c.getName())) {
-                onProductoFrm_TipoProductoP1Action(c, event);
-                return;
-            }
-            if("grabarProductoP1".equals(c.getName())) {
-                onProductoFrm_GrabarProductoP1Action(c, event);
-                return;
-            }
-            if("agregarClasificacionP1".equals(c.getName())) {
-                onProductoFrm_AgregarClasificacionP1Action(c, event);
-                return;
-            }
-            if("quitarElementoP1".equals(c.getName())) {
-                onProductoFrm_QuitarElementoP1Action(c, event);
-                return;
-            }
-            if("clasificaciones".equals(c.getName())) {
-                onProductoFrm_ClasificacionesAction(c, event);
-                return;
-            }
-        }
-        if(rootContainerName.equals("InspeccionBusqueda")) {
-            if("contenedorRad".equals(c.getName())) {
-                onInspeccionBusqueda_ContenedorRadAction(c, event);
-                return;
-            }
-            if("clienteRad".equals(c.getName())) {
-                onInspeccionBusqueda_ClienteRadAction(c, event);
-                return;
-            }
-            if("valor".equals(c.getName())) {
-                onInspeccionBusqueda_ValorAction(c, event);
-                return;
-            }
-            if("buscar".equals(c.getName())) {
-                onInspeccionBusqueda_BuscarAction(c, event);
-                return;
-            }
-        }
         if(rootContainerName.equals("ClasificacionFrm")) {
             if("modelo".equals(c.getName())) {
                 onClasificacionFrm_ModeloAction(c, event);
@@ -1857,6 +1801,44 @@ public abstract class StateMachineBase extends UIBuilder {
             }
             if("grabar".equals(c.getName())) {
                 onConfiguracionFrm_GrabarAction(c, event);
+                return;
+            }
+        }
+        if(rootContainerName.equals("ProductoFrm")) {
+            if("agregarClasificacionP1".equals(c.getName())) {
+                onProductoFrm_AgregarClasificacionP1Action(c, event);
+                return;
+            }
+            if("quitarElementoP1".equals(c.getName())) {
+                onProductoFrm_QuitarElementoP1Action(c, event);
+                return;
+            }
+            if("clasificaciones".equals(c.getName())) {
+                onProductoFrm_ClasificacionesAction(c, event);
+                return;
+            }
+            if("marcaP1".equals(c.getName())) {
+                onProductoFrm_MarcaP1Action(c, event);
+                return;
+            }
+            if("descripcionPesosP1".equals(c.getName())) {
+                onProductoFrm_DescripcionPesosP1Action(c, event);
+                return;
+            }
+            if("presentacionP1".equals(c.getName())) {
+                onProductoFrm_PresentacionP1Action(c, event);
+                return;
+            }
+            if("empaqueP1".equals(c.getName())) {
+                onProductoFrm_EmpaqueP1Action(c, event);
+                return;
+            }
+            if("tipoProductoP1".equals(c.getName())) {
+                onProductoFrm_TipoProductoP1Action(c, event);
+                return;
+            }
+            if("grabarProductoP1".equals(c.getName())) {
+                onProductoFrm_GrabarProductoP1Action(c, event);
                 return;
             }
         }
@@ -1907,6 +1889,24 @@ public abstract class StateMachineBase extends UIBuilder {
             }
             if("quitarElementoCE".equals(c.getName())) {
                 onControlEmbarqueFrm_QuitarElementoCEAction(c, event);
+                return;
+            }
+        }
+        if(rootContainerName.equals("InspeccionBusqueda")) {
+            if("contenedorRad".equals(c.getName())) {
+                onInspeccionBusqueda_ContenedorRadAction(c, event);
+                return;
+            }
+            if("clienteRad".equals(c.getName())) {
+                onInspeccionBusqueda_ClienteRadAction(c, event);
+                return;
+            }
+            if("valor".equals(c.getName())) {
+                onInspeccionBusqueda_ValorAction(c, event);
+                return;
+            }
+            if("buscar".equals(c.getName())) {
+                onInspeccionBusqueda_BuscarAction(c, event);
                 return;
             }
         }
@@ -2036,45 +2036,6 @@ public abstract class StateMachineBase extends UIBuilder {
         }
     }
 
-      protected void onProductoFrm_MarcaP1Action(Component c, ActionEvent event) {
-      }
-
-      protected void onProductoFrm_DescripcionPesosP1Action(Component c, ActionEvent event) {
-      }
-
-      protected void onProductoFrm_PresentacionP1Action(Component c, ActionEvent event) {
-      }
-
-      protected void onProductoFrm_EmpaqueP1Action(Component c, ActionEvent event) {
-      }
-
-      protected void onProductoFrm_TipoProductoP1Action(Component c, ActionEvent event) {
-      }
-
-      protected void onProductoFrm_GrabarProductoP1Action(Component c, ActionEvent event) {
-      }
-
-      protected void onProductoFrm_AgregarClasificacionP1Action(Component c, ActionEvent event) {
-      }
-
-      protected void onProductoFrm_QuitarElementoP1Action(Component c, ActionEvent event) {
-      }
-
-      protected void onProductoFrm_ClasificacionesAction(Component c, ActionEvent event) {
-      }
-
-      protected void onInspeccionBusqueda_ContenedorRadAction(Component c, ActionEvent event) {
-      }
-
-      protected void onInspeccionBusqueda_ClienteRadAction(Component c, ActionEvent event) {
-      }
-
-      protected void onInspeccionBusqueda_ValorAction(Component c, ActionEvent event) {
-      }
-
-      protected void onInspeccionBusqueda_BuscarAction(Component c, ActionEvent event) {
-      }
-
       protected void onClasificacionFrm_ModeloAction(Component c, ActionEvent event) {
       }
 
@@ -2091,6 +2052,33 @@ public abstract class StateMachineBase extends UIBuilder {
       }
 
       protected void onConfiguracionFrm_GrabarAction(Component c, ActionEvent event) {
+      }
+
+      protected void onProductoFrm_AgregarClasificacionP1Action(Component c, ActionEvent event) {
+      }
+
+      protected void onProductoFrm_QuitarElementoP1Action(Component c, ActionEvent event) {
+      }
+
+      protected void onProductoFrm_ClasificacionesAction(Component c, ActionEvent event) {
+      }
+
+      protected void onProductoFrm_MarcaP1Action(Component c, ActionEvent event) {
+      }
+
+      protected void onProductoFrm_DescripcionPesosP1Action(Component c, ActionEvent event) {
+      }
+
+      protected void onProductoFrm_PresentacionP1Action(Component c, ActionEvent event) {
+      }
+
+      protected void onProductoFrm_EmpaqueP1Action(Component c, ActionEvent event) {
+      }
+
+      protected void onProductoFrm_TipoProductoP1Action(Component c, ActionEvent event) {
+      }
+
+      protected void onProductoFrm_GrabarProductoP1Action(Component c, ActionEvent event) {
       }
 
       protected void onControlEmbarqueFrm_OinCEAction(Component c, ActionEvent event) {
@@ -2127,6 +2115,18 @@ public abstract class StateMachineBase extends UIBuilder {
       }
 
       protected void onControlEmbarqueFrm_QuitarElementoCEAction(Component c, ActionEvent event) {
+      }
+
+      protected void onInspeccionBusqueda_ContenedorRadAction(Component c, ActionEvent event) {
+      }
+
+      protected void onInspeccionBusqueda_ClienteRadAction(Component c, ActionEvent event) {
+      }
+
+      protected void onInspeccionBusqueda_ValorAction(Component c, ActionEvent event) {
+      }
+
+      protected void onInspeccionBusqueda_BuscarAction(Component c, ActionEvent event) {
       }
 
       protected void onInspeccionFrm_ContenedorNumAction(Component c, ActionEvent event) {
