@@ -5,6 +5,7 @@
  */
 package ec.sgs.mobile.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,6 +14,10 @@ import java.util.List;
  * 2017-12-07
  */
 public class Clasificacion {
+
+    public Clasificacion() {
+        this.detalleCajas = new ArrayList();
+    }
     
     private String modelo;
     
@@ -32,6 +37,24 @@ public class Clasificacion {
 
     public void setDetalleCajas(List<DetalleCajas> detalleCajas) {
         this.detalleCajas = detalleCajas;
+    }
+    
+    public int getTotalCajas(){
+        int total = 0;
+        for (DetalleCajas detalle: detalleCajas)
+            total += detalle.getCantidad();
+        return total;
+    }
+    
+    public int getCantidadEnFila(int fila){
+        int valor = 0;
+        for (DetalleCajas detalle: detalleCajas){
+            if (detalle.getFila() == fila){
+                valor = detalle.getCantidad();
+                break;
+            }
+        }
+        return valor;
     }
     
 }

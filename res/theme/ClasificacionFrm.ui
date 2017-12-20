@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<component type="Form" name="ClasificacionFrm" cloudDestinationProperty="ClasificacionesFrm" layout="BoxLayout" boxLayoutAxis="Y" title="Nueva Clasificaci&#xf3;n" >
+<component type="Form" name="ClasificacionFrm" cloudDestinationProperty="ClasificacionesFrm" layout="BoxLayout" boxLayoutAxis="Y" title="Clasificaci&#xf3;n" >
   <component type="TextField" name="modelo" cloudBoundProperty="text" cloudDestinationProperty="TextField" text="" hint="Modelo..." >
   </component>
   <component type="Table" name="cajasPorFila" cloudDestinationProperty="Table" >

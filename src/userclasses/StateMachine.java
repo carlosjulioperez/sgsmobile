@@ -110,6 +110,7 @@ public class StateMachine extends StateMachineBase {
     
     //Controles para Clasificacion
     private Clasificacion   clasificacionSeleccionada;
+    private int             clasificacionIndex;
     private TextField       modelo;
     private Table           cajasPorFila;
         
@@ -428,13 +429,13 @@ public class StateMachine extends StateMachineBase {
 
     @Override
     protected void beforeProductoFrm(Form f) {
-        marcaP1             = new TextField();
-        descripcionPesosP1  = new TextField();
-        presentacionP1      = new TextField();
-        empaqueP1           = new TextField();
-        tipoProductoP1      = new TextField();
-        
-        clasificacionSeleccionada       = new Clasificacion();
+        marcaP1                   = new TextField();
+        descripcionPesosP1        = new TextField();
+        presentacionP1            = new TextField();
+        empaqueP1                 = new TextField();
+        tipoProductoP1            = new TextField();
+        clasificacionSeleccionada = new Clasificacion();
+        clasificacionIndex        = -1;
         
         //Mostrar clasificaciones
         List multilistClasificaciones = findClasificaciones();
@@ -517,12 +518,25 @@ public class StateMachine extends StateMachineBase {
             {34, ""},
         };
         */
+        
+        boolean isDetalles = clasificacionSeleccionada.getTotalCajas() > 0;
+        if (isDetalles)
+            modelo.setText(clasificacionSeleccionada.getModelo());
 
-        int tamano = 10;
+        int tamano = 34;
         Object[][] valores = new Object[tamano][2];
-        for (short i=0; i<tamano; i++){
-            valores[i][0] = i+1;
-            valores[i][1] = "";
+        for (int i=0; i<tamano; i++){
+            int fila = i+1;
+            
+            //Recorrer el objeto clasificacion y determinar el valor de la cantidad en la fila especificada
+            String cantidadCajas = "";
+            if ( isDetalles ){
+                int cantidad = clasificacionSeleccionada.getCantidadEnFila(fila);
+                if (cantidad > 0)
+                    cantidadCajas = ""+cantidad;
+            }
+            valores[i][0] = fila;
+            valores[i][1] = cantidadCajas;
         }
         
         TableModel model = new DefaultTableModel(new String[]{"Fila", "Cantidad de cajas"}, valores){
@@ -540,12 +554,12 @@ public class StateMachine extends StateMachineBase {
         String strModelo = modelo.getText();
         
         if (strModelo.length()==0){
-            Dialog.show ("Validación", "Debe ingresar el modelo", "OK", null);
+            Dialog.show ("Validación", "Debe ingresar el modelo.", "OK", null);
             return;
         }
         
-        clasificacionSeleccionada = new Clasificacion();
-        clasificacionSeleccionada.setModelo(strModelo);
+        Clasificacion clasificacion = new Clasificacion();
+        clasificacion.setModelo(strModelo);
         
         java.util.List <DetalleCajas> detalles = new ArrayList();
         TableModel model = cajasPorFila.getModel();
@@ -557,18 +571,28 @@ public class StateMachine extends StateMachineBase {
                 detalle.setFila((short)(i+1));
                 detalle.setCantidad(cantidad);
                 //System.out.println(cantidad);
-
                 detalles.add(detalle);
             }
         }
-        clasificacionSeleccionada.setDetalleCajas(detalles);
+        clasificacion.setDetalleCajas(detalles);
+        
+        if (clasificacion.getTotalCajas()==0){
+            Dialog.show ("Validación", "No ha ingresado cantidades de cajas.", "OK", null);
+            return;
+        }
         
         //Agregar la clasificacion al listado respectivo en el formuario de productos
         Hashtable table = new Hashtable();
-        table.put("Pojo", clasificacionSeleccionada); //Agrego el POJO
-        table.put("Line2", strModelo);
-        //table.put("Line3", strCantd); //Total de cajas
-        clasificacionesVector.addElement(table);
+        table.put("Pojo"     , clasificacion); //Agrego el POJO
+        table.put("Line2"    , strModelo);
+        table.put("Line3"    , clasificacion.getTotalCajas()+" cajas"); //Total de cajas
+
+        if (clasificacionIndex >=0 ){
+            clasificacionesVector.set(clasificacionIndex, table);
+            clasificacionIndex = -1;
+        }else
+            clasificacionesVector.addElement(table);
+
         showForm("ProductoFrm",null);
       
     }
@@ -578,9 +602,9 @@ public class StateMachine extends StateMachineBase {
     protected void onProductoFrm_ClasificacionesAction(Component c, ActionEvent event) {
         List multilistClasificaciones = findClasificaciones();
         Hashtable table = (Hashtable)multilistClasificaciones.getSelectedItem();
+        clasificacionIndex = multilistClasificaciones.getSelectedIndex();
         
         //Obtener el objeto y mostrar sus datos para modificación...
-        //Clasificacion clasificacion = (Clasificacion)table.get("Pojo");
         clasificacionSeleccionada = (Clasificacion)table.get("Pojo");
         showForm("ClasificacionFrm",null);
     
