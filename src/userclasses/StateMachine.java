@@ -102,6 +102,7 @@ public class StateMachine extends StateMachineBase {
     private Container   listaProductosCE;
     
     //Controles de Producto1
+    private CheckBox    quitarElementoP1;
     private TextField   marcaP1;
     private TextField   descripcionPesosP1;
     private TextField   presentacionP1;
@@ -429,15 +430,19 @@ public class StateMachine extends StateMachineBase {
 
     @Override
     protected void beforeProductoFrm(Form f) {
-        marcaP1                   = new TextField();
-        descripcionPesosP1        = new TextField();
-        presentacionP1            = new TextField();
-        empaqueP1                 = new TextField();
-        tipoProductoP1            = new TextField();
-        clasificacionSeleccionada = new Clasificacion();
-        clasificacionIndex        = -1;
-        
+        quitarElementoP1              = findQuitarElementoP1();
+        marcaP1                       = findMarcaP1();
+        descripcionPesosP1            = findDescripcionPesosP1();
+        presentacionP1                = findPresentacionP1();
+        empaqueP1                     = findEmpaqueP1();
+        tipoProductoP1                = findTipoProductoP1();
+        clasificacionSeleccionada     = new Clasificacion();
+        clasificacionIndex            = -1;
         //Mostrar clasificaciones
+        mostrarClasificaciones();
+    }
+    
+    private void mostrarClasificaciones(){
         List multilistClasificaciones = findClasificaciones();
         multilistClasificaciones.setModel(new DefaultListModel(clasificacionesVector));
     }
@@ -604,9 +609,18 @@ public class StateMachine extends StateMachineBase {
         Hashtable table = (Hashtable)multilistClasificaciones.getSelectedItem();
         clasificacionIndex = multilistClasificaciones.getSelectedIndex();
         
-        //Obtener el objeto y mostrar sus datos para modificación...
-        clasificacionSeleccionada = (Clasificacion)table.get("Pojo");
-        showForm("ClasificacionFrm",null);
+        if (quitarElementoP1.isSelected()){
+            System.out.println("Eliminar...");
+            if (Dialog.show("Confirme", "¿Desea eliminar el ítem?", "Yes", "No")){
+                clasificacionesVector.remove(clasificacionIndex);
+                clasificacionIndex = -1;
+                mostrarClasificaciones();
+            }
+        }else{
+            //Obtener el objeto y mostrar sus datos para modificación...
+            clasificacionSeleccionada = (Clasificacion)table.get("Pojo");
+            showForm("ClasificacionFrm",null);
+        }
     
     }
 }
