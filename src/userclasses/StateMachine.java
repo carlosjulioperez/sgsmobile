@@ -25,6 +25,7 @@ import com.codename1.ui.table.Table;
 import com.codename1.ui.table.TableModel;
 import com.codename1.ui.util.Resources;
 import ec.sgs.mobile.bean.Clasificacion;
+import ec.sgs.mobile.bean.ControlEmbarque;
 import ec.sgs.mobile.bean.DetalleCajas;
 import ec.sgs.mobile.bean.Producto;
 import ec.sgs.mobile.bean.util.Utileria;
@@ -47,8 +48,6 @@ public class StateMachine extends StateMachineBase {
     
     private final L10NManager lnm = L10NManager.getInstance();
     private Storage storage;
-    
-    private Vector productosVector;
     
     private String inspeccionService;
 
@@ -91,6 +90,7 @@ public class StateMachine extends StateMachineBase {
     private TextArea observaciones;
     
     //Controles de InspeccionBusqueda
+    private ControlEmbarque controlEmbarque;
     private RadioButton contenedorRad;
     private RadioButton clienteRad;
     private TextField   valor;
@@ -311,9 +311,7 @@ public class StateMachine extends StateMachineBase {
 
     @Override
     protected void beforeInspeccionBusqueda(Form f) {
-    
-        productosVector     = new Vector();
-
+        controlEmbarque     = new ControlEmbarque();
         contenedorRad       = findContenedorRad();
         clienteRad          = findClienteRad();
         valor               = findValor();
@@ -405,7 +403,6 @@ public class StateMachine extends StateMachineBase {
     
     @Override
     protected void beforeControlEmbarqueFrm(Form f) {
-        producto           = new Producto();
         quitarElementoCE   = findQuitarElementoCE();
         
         leerDatosInspeccion();
@@ -425,13 +422,12 @@ public class StateMachine extends StateMachineBase {
         TableModel model = new DefaultTableModel(new String[]{"Campo", "Valor"}, valores);
         infoCE.setModel(model);
         
-        mostrarProductos();
-
+        productoListaMostrar();
     }
 
     @Override
     protected void onControlEmbarqueFrm_AgregarProductoCEAction(Component c, ActionEvent event) {
-        showForm("ProductoFrm", null);
+        productoAgregar();
     }
 
     @Override
@@ -443,27 +439,15 @@ public class StateMachine extends StateMachineBase {
         empaqueP1          = findEmpaqueP1();
         tipoProductoP1     = findTipoProductoP1();
         
-        mostrarClasificaciones();
+        marcaP1.            setText(producto.getMarca());
+        descripcionPesosP1. setText(producto.getDescripcionPesos());
+        presentacionP1.     setText(producto.getPresentacion());
+        empaqueP1.          setText(producto.getEmpaque());
+        tipoProductoP1.     setText(producto.getTipoProducto());
+        
+        clasificacionListaMostrar();
     }
     
-    private void mostrarClasificaciones(){
-        Vector items = new Vector();
-        for(Clasificacion clasificacion: producto.getClasificaciones()){
-            Hashtable table = new Hashtable();
-            table.put("Pojo"  , clasificacion); //Agrego el POJO
-            table.put("Line2" , clasificacion.getModelo());
-            table.put("Line3" , clasificacion.getTotalCajas()+" cajas"); //Total de cajas
-            items.addElement(table);
-        }
-        List multilistClasificaciones = findClasificaciones();
-        multilistClasificaciones.setModel(new DefaultListModel(items));
-    }
-
-    private void mostrarProductos(){
-        List multilistProductos = findProductos();
-        multilistProductos.setModel(new DefaultListModel(productosVector));
-    }
-
     private boolean validarCampo(String campo, String etiqueta){
         if (campo.length()==0){
             Dialog.show ("Validación", "Debe ingresar datos en ["+etiqueta+"]", "OK", null);
@@ -474,62 +458,12 @@ public class StateMachine extends StateMachineBase {
     
     @Override
     protected void onProductoFrm_GrabarProductoP1Action(Component c, ActionEvent event) {
-    
-        String strMarca = marcaP1.getText();
-        if ( validarCampo(strMarca, "Marca") )
-            return;
-        
-        String strDescPesos = descripcionPesosP1.getText();
-        if ( validarCampo(strDescPesos, "Descripción pesos") )
-            return;
-
-        String strPresentacion = presentacionP1.getText();
-        if ( validarCampo(strPresentacion, "Presentación") )
-            return;
-        
-        String strEmpaque = empaqueP1.getText();
-        if ( validarCampo(strEmpaque, "Empaque") )
-            return;
-        
-        String strTipoProducto = tipoProductoP1.getText();
-        if ( validarCampo(strTipoProducto, "Tipo de producto") )
-            return;
-
-        Producto producto = new Producto();
-        producto.setMarca(strMarca);
-        producto.setDescripcionPesos(strDescPesos);
-        producto.setPresentacion(strPresentacion);
-        producto.setEmpaque(strEmpaque);
-        producto.setTipoProducto(strTipoProducto);
-        
-        //Esto es innecesario con la mejora...
-//        java.util.List <Clasificacion> clasificaciones = new ArrayList();
-//        for (Object object: clasificacionesVector){
-//            Hashtable table = (Hashtable)object;
-//            Clasificacion clasificacion = (Clasificacion)table.get("Pojo");
-//            clasificaciones.add(clasificacion);
-//        }
-//        producto.setClasificaciones(clasificaciones);
-        
-        //Agregar el producto al listado respectivo en el formulario de control de embarque
-        Hashtable table = new Hashtable();
-        table.put("Pojo"     , producto); //Agrego el POJO
-        table.put("Line2"    , strMarca);
-        
-        if (productoIndex >= 0){
-            productosVector.set(productoIndex, table);
-            productoIndex = -1;
-        }else
-            productosVector.addElement(table);
-
-        showForm("ControlEmbarqueFrm", null);
+        productoGrabar();
     }
 
     @Override
     protected void onProductoFrm_AgregarClasificacionP1Action(Component c, ActionEvent event) {
-        clasificacion = new Clasificacion();
-        clasificacionIndex = -1;
-        showForm("ClasificacionFrm", null);
+        clasificacionAgregar();
     }
 
     @Override
@@ -571,36 +505,40 @@ public class StateMachine extends StateMachineBase {
 
     @Override
     protected void onClasificacionFrm_GrabarClasificacionCAction(Component c, ActionEvent event) {
-        grabarClasificacion();
+        clasificacionGrabar();
     }
 
     //Seleccionar haciendo clien en uno de los elementos...
     @Override
     protected void onProductoFrm_ClasificacionesAction(Component c, ActionEvent event) {
-        accionClasificaciones();
+        clasificacionAccionar();
     }
 
     @Override
     protected void onControlEmbarqueFrm_ProductosAction(Component c, ActionEvent event) {
-        List multilistProductos = findProductos();
-        Hashtable table = (Hashtable)multilistProductos.getSelectedItem();
-        productoIndex = multilistProductos.getSelectedIndex();
-        
-        if (quitarElementoCE.isSelected()){
-            if (Dialog.show("Confirme", "¿Desea eliminar el ítem?", "Yes", "No")){
-                productosVector.remove(productoIndex);
-                productoIndex = -1;
-                mostrarProductos();
-            }
-        }else{
-            //Obtener el objeto y mostrar sus datos para modificación...
-            producto = (Producto)table.get("Pojo");
-            showForm("ProductoFrm", null);
-        }
-    
+        productoAccionar();
     }
- 
-    private void grabarClasificacion(){
+    
+    private void clasificacionAgregar(){
+        clasificacion = new Clasificacion();
+        clasificacionIndex = -1;
+        showForm("ClasificacionFrm", null);
+    }
+
+    private void clasificacionListaMostrar(){
+        Vector items = new Vector();
+        for(Clasificacion clasificacion: producto.getClasificaciones()){
+            Hashtable table = new Hashtable();
+            table.put("Pojo"  , clasificacion); //Agrego el POJO
+            table.put("Line2" , clasificacion.getModelo());
+            table.put("Line3" , clasificacion.getTotalCajas()+" cajas"); //Total de cajas
+            items.addElement(table);
+        }
+        List lista = findClasificaciones();
+        lista.setModel(new DefaultListModel(items));
+    }
+
+    private void clasificacionGrabar(){
         String strModelo = modelo.getText();
         
         if ( validarCampo(strModelo, "Modelo") )
@@ -637,19 +575,18 @@ public class StateMachine extends StateMachineBase {
             producto.getClasificaciones().add(clasificacion);
 
         showForm("ProductoFrm", null);
-
     }
     
-    private void accionClasificaciones(){
-        List multilistClasificaciones = findClasificaciones();
-        Hashtable table = (Hashtable)multilistClasificaciones.getSelectedItem();
-        clasificacionIndex = multilistClasificaciones.getSelectedIndex();
+    private void clasificacionAccionar(){
+        List lista = findClasificaciones();
+        Hashtable table = (Hashtable)lista.getSelectedItem();
+        clasificacionIndex = lista.getSelectedIndex();
         
         if (quitarElementoP1.isSelected()){
             if (Dialog.show("Confirme", "¿Desea eliminar el ítem?", "Yes", "No")){
                 producto.getClasificaciones().remove(clasificacionIndex);
                 clasificacionIndex = -1;
-                mostrarClasificaciones();
+                clasificacionListaMostrar();
             }
         }else{
             //Obtener el objeto y mostrar sus datos para modificación...
@@ -658,4 +595,76 @@ public class StateMachine extends StateMachineBase {
         }
     }
     
+    private void productoAgregar(){
+        producto = new Producto();
+        productoIndex = -1;
+        showForm("ProductoFrm", null);
+    }
+ 
+    private void productoListaMostrar(){
+        Vector items = new Vector();
+        for (Producto producto: controlEmbarque.getProductos()){
+            Hashtable table = new Hashtable();
+            table.put("Pojo"     , producto); //Agrego el POJO
+            table.put("Line2"    , producto.getMarca());
+                items.addElement(table);
+        }
+        List lista = findProductos();
+        lista.setModel(new DefaultListModel(items));
+    }
+
+    private void productoGrabar(){
+        String strMarca = marcaP1.getText();
+        if ( validarCampo(strMarca, "Marca") )
+            return;
+        
+        String strDescPesos = descripcionPesosP1.getText();
+        if ( validarCampo(strDescPesos, "Descripción pesos") )
+            return;
+
+        String strPresentacion = presentacionP1.getText();
+        if ( validarCampo(strPresentacion, "Presentación") )
+            return;
+        
+        String strEmpaque = empaqueP1.getText();
+        if ( validarCampo(strEmpaque, "Empaque") )
+            return;
+        
+        String strTipoProducto = tipoProductoP1.getText();
+        if ( validarCampo(strTipoProducto, "Tipo de producto") )
+            return;
+
+        producto.setMarca(strMarca);
+        producto.setDescripcionPesos(strDescPesos);
+        producto.setPresentacion(strPresentacion);
+        producto.setEmpaque(strEmpaque);
+        producto.setTipoProducto(strTipoProducto);
+        
+        if (productoIndex >= 0){
+            controlEmbarque.getProductos().set(productoIndex, producto);
+            productoIndex = -1;
+        }else
+            controlEmbarque.getProductos().add(producto);
+
+        showForm("ControlEmbarqueFrm", null);
+    }
+    
+    private void productoAccionar(){
+        List lista = findProductos();
+        Hashtable table = (Hashtable)lista.getSelectedItem();
+        productoIndex = lista.getSelectedIndex();
+        
+        if (quitarElementoCE.isSelected()){
+            if (Dialog.show("Confirme", "¿Desea eliminar el ítem?", "Yes", "No")){
+                controlEmbarque.getProductos().remove(productoIndex);
+                productoIndex = -1;
+                productoListaMostrar();
+            }
+        }else{
+            //Obtener el objeto y mostrar sus datos para modificación...
+            producto = (Producto)table.get("Pojo");
+            showForm("ProductoFrm", null);
+        }
+        
+    }
 }
