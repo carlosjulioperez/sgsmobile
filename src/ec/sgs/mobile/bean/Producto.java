@@ -5,6 +5,7 @@
  */
 package ec.sgs.mobile.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +20,7 @@ public class Producto {
     private String empaque;
     private String tipoProducto;
     
-    private List <Clasificacion> clasificaciones;
+    private List <Clasificacion> clasificaciones = new ArrayList();
 
     public String getMarca() {
         return marca;

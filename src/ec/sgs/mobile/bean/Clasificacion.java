@@ -15,13 +15,9 @@ import java.util.List;
  */
 public class Clasificacion {
 
-    public Clasificacion() {
-        this.detalleCajas = new ArrayList();
-    }
-    
     private String modelo;
     
-    private List<DetalleCajas>detalleCajas;
+    private List<DetalleCajas>detalleCajas = new ArrayList();
 
     public String getModelo() {
         return modelo;
