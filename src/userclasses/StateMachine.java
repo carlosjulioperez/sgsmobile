@@ -91,16 +91,17 @@ public class StateMachine extends StateMachineBase {
 
     private TextArea observaciones;
     
-    //Controles de ControlEmbarque1
+    //Controles de InspeccionBusqueda
     private RadioButton contenedorRad;
     private RadioButton clienteRad;
     private TextField   valor;
     private Container   listadoInspecciones;
     
-    //Controles de ControlEmbarque2
-    private Table      infoCE;
-    private String     inspeccionItemId;
-    private Map        inspeccionItem;
+    //Controles de ControlEmbarque
+    private Table    infoCE;
+    private String   inspeccionItemId;
+    private Map      inspeccionItem;
+    private CheckBox quitarElementoCE;
     
     //Controles de Producto1
     private Producto  productoSeleccionado;
@@ -404,7 +405,7 @@ public class StateMachine extends StateMachineBase {
     
     @Override
     protected void beforeControlEmbarqueFrm(Form f) {
-        
+        quitarElementoCE      = findQuitarElementoCE();
         productoSeleccionado  = new Producto();
         productoIndex         = -1;
         clasificacionesVector = new Vector();
@@ -688,6 +689,26 @@ public class StateMachine extends StateMachineBase {
             //Obtener el objeto y mostrar sus datos para modificación...
             clasificacionSeleccionada = (Clasificacion)table.get("Pojo");
             showForm("ClasificacionFrm",null);
+        }
+    
+    }
+
+    @Override
+    protected void onControlEmbarqueFrm_ProductosAction(Component c, ActionEvent event) {
+        List multilistProductos = findProductos();
+        Hashtable table = (Hashtable)multilistProductos.getSelectedItem();
+        productoIndex = multilistProductos.getSelectedIndex();
+        
+        if (quitarElementoCE.isSelected()){
+            if (Dialog.show("Confirme", "¿Desea eliminar el ítem?", "Yes", "No")){
+                productosVector.remove(productoIndex);
+                productoIndex = -1;
+                mostrarProductos();
+            }
+        }else{
+            //Obtener el objeto y mostrar sus datos para modificación...
+            productoSeleccionado = (Producto)table.get("Pojo");
+            showForm("ProductoFrm", null);
         }
     
     }
