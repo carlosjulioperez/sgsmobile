@@ -313,7 +313,10 @@ public class StateMachine extends StateMachineBase {
 
     @Override
     protected void beforeInspeccionBusqueda(Form f) {
+    
         productosVector     = new Vector();
+        clasificacionesVector = new Vector();
+
         contenedorRad       = findContenedorRad();
         clienteRad          = findClienteRad();
         valor               = findValor();
@@ -406,9 +409,7 @@ public class StateMachine extends StateMachineBase {
     @Override
     protected void beforeControlEmbarqueFrm(Form f) {
         quitarElementoCE      = findQuitarElementoCE();
-        productoSeleccionado  = new Producto();
-        productoIndex         = -1;
-        clasificacionesVector = new Vector();
+        nuevoProducto();
         
         leerDatosInspeccion();
         infoCE              = findInfoCE();
@@ -433,6 +434,7 @@ public class StateMachine extends StateMachineBase {
 
     @Override
     protected void onControlEmbarqueFrm_AgregarProductoCEAction(Component c, ActionEvent event) {
+        nuevoProducto();
         showForm("ProductoFrm", null);
     }
 
@@ -444,8 +446,8 @@ public class StateMachine extends StateMachineBase {
         presentacionP1                = findPresentacionP1();
         empaqueP1                     = findEmpaqueP1();
         tipoProductoP1                = findTipoProductoP1();
-        clasificacionSeleccionada     = new Clasificacion();
-        clasificacionIndex            = -1;
+        
+        nuevaClasificacion();
         //Mostrar clasificaciones
         mostrarClasificaciones();
     }
@@ -522,6 +524,7 @@ public class StateMachine extends StateMachineBase {
 
     @Override
     protected void onProductoFrm_AgregarClasificacionP1Action(Component c, ActionEvent event) {
+        nuevaClasificacion();
         showForm("ClasificacionFrm", null);
     }
 
@@ -626,10 +629,6 @@ public class StateMachine extends StateMachineBase {
     protected void onClasificacionFrm_GrabarClasificacionCAction(Component c, ActionEvent event) {
         String strModelo = modelo.getText();
         
-//        if (strModelo.length()==0){
-//            Dialog.show ("Validación", "Debe ingresar el modelo.", "OK", null);
-//            return;
-//        }
         if ( validarCampo(strModelo, "Modelo") )
             return;
         
@@ -711,5 +710,15 @@ public class StateMachine extends StateMachineBase {
             showForm("ProductoFrm", null);
         }
     
+    }
+    
+    private void nuevoProducto(){
+        productoSeleccionado  = new Producto();
+        productoIndex         = -1;
+    }
+ 
+    private void nuevaClasificacion(){
+        clasificacionSeleccionada     = new Clasificacion();
+        clasificacionIndex            = -1;
     }
 }
